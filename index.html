@@ -1,298 +1,565 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>EAGLETRADEAVL – Bot Trading XAUUSD Otomatis</title>
   <meta name="description" content="Bot trading XAUUSD M15 otomatis 24/5. Profit saat Anda tidur, kerja, atau liburan. Lisensi harian, bulanan hingga unlimited.">
+
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
   <style>
-    .price-card{transition:transform .3s;}
-    .price-card:hover{transform:scale(1.05);}
-    .gradient-bg{background:linear-gradient(135deg,#7c3aed,#3b82f6);}
-    .gradient-text{background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    :root{
+      --bg-1: #05050a;
+      --bg-2: #0b0f18;
+      --muted: #cbd5e1;
+      --panel: rgba(255,255,255,0.03);
+      --neonA: #9b59ff; /* purple neon */
+      --neonB: #6f42c1; /* deep purple */
+      --glass-border: rgba(255,255,255,0.06);
+    }
+
+    /* Base */
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      overflow-x:hidden;
+    }
+
+    /* Canvas sits behind content */
+    #particle-canvas{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    /* Container sits above canvas */
+    .page {
+      position:relative;
+      z-index:1;
+    }
+
+    /* Headings */
+    h1,h2,h3{ font-family: "Orbitron", sans-serif; color: #fff; letter-spacing: .6px; }
+    .neon-text {
+      background: linear-gradient(90deg, var(--neonA), var(--neonB));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px rgba(155,89,255,0.10);
+    }
+
+    /* glass panels */
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.65);
+      backdrop-filter: blur(8px);
+      transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease;
+    }
+
+    /* floating (gentle) */
+    .float {
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .float-slow { animation-duration: 9s; }
+    .float-fast { animation-duration: 4.5s; }
+
+    @keyframes floaty {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* price card hover */
+    .price-card{ border-radius:12px; padding:1.2rem; transition: transform .28s ease, box-shadow .28s ease; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03);}
+    .price-card:hover{ transform: translateY(-8px) scale(1.01); box-shadow: 0 30px 60px rgba(18,10,40,0.7); }
+
+    /* CTA Button (purple neon) */
+    .btn-cta {
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.72rem 1.3rem;
+      border-radius:999px;
+      font-weight:700;
+      font-family: "Orbitron", sans-serif;
+      color:#0b0810;
+      background: linear-gradient(90deg,var(--neonA), var(--neonB));
+      box-shadow: 0 8px 28px rgba(155,89,255,0.08), 0 0 40px rgba(155,89,255,0.06);
+      text-decoration:none;
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    }
+    .btn-cta:hover{ transform: translateY(-4px); filter:brightness(1.06); box-shadow: 0 30px 80px rgba(155,89,255,0.12); }
+
+    .btn-outline {
+      padding:.58rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,0.06);
+      background:transparent; color:var(--muted); text-decoration:none; transition: all .16s ease;
+    }
+    .btn-outline:hover{ color:var(--neonA); transform: translateY(-2px); background: rgba(255,255,255,0.02); }
+
+    .icon-circle {
+      width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg, rgba(155,89,255,0.12), rgba(111,66,193,0.06));
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 30px rgba(106,46,170,0.06);
+    }
+
+    /* tiny helpers */
+    .tiny { font-size:.92rem; color: rgba(255,255,255,0.72); }
+    .muted-sm { color: rgba(255,255,255,0.65); }
+
+    /* Reveal */
+    .reveal { opacity:0; transform: translateY(18px) scale(.996); transition: all .7s cubic-bezier(.2,.9,.3,1); will-change: transform, opacity; }
+    .reveal.show { opacity:1; transform: none; }
+
+    /* subtle gradient text helper kept */
+    .gradient-text{
+      background:linear-gradient(135deg,var(--neonA),var(--neonB));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    /* footer whatsapp */
+    .wa-btn { display:inline-flex; gap:.5rem; align-items:center; background:#5BFFA6; color:#051121; padding:.6rem .9rem; border-radius:999px; text-decoration:none; font-weight:700; }
+    .wa-btn:hover{ transform: translateY(-2px); }
+
+    /* responsiveness */
+    @media (max-width:640px){
+      .icon-circle{width:56px;height:56px}
+    }
+
   </style>
 </head>
+<body>
 
-<body class="bg-slate-50 font-sans">
+  <!-- particle canvas behind everything -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- HERO -->
-  <header class="gradient-bg text-white">
-    <div class="container mx-auto px-6 py-20 text-center">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">EAGLETRADEAVL</h1>
-      <p class="text-xl md:text-2xl mb-6">Bot Trading XAUUSD M15 Otomatis 24/5</p>
-      <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-        <a href="#pricing" class="block md:inline-block bg-white text-violet-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Lihat Paket</a>
-        <a href="https://wa.me/6289528311840" class="block md:inline-block border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-violet-600 transition">Konsultasi</a>
-      </div>
-    </div>
-  </header>
+  <div class="page">
 
-  <!-- KEUNGGULAN -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Fitur Unggulan</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-chart-line text-white text-2xl"></i>
+    <!-- HERO -->
+    <header class="py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <div class="reveal" id="heroTitle">
+          <h1 class="text-4xl md:text-6xl font-bold neon-text">EAGLETRADEAVL</h1>
+          <p class="mt-4 md:mt-6 text-lg md:text-2xl muted-sm">Bot Trading XAUUSD M15 Otomatis 24/5 — Profit saat Anda tidur, kerja, atau liburan.</p>
+
+          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#pricing" class="btn-cta float float-slow" aria-label="Lihat Paket"> <i class="fas fa-robot"></i> Lihat Paket</a>
+            <a href="https://wa.me/6289528311840" class="btn-outline float float-fast" aria-label="Konsultasi via WhatsApp"><i class="fab fa-whatsapp"></i> Konsultasi</a>
           </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Analisa Multi Timeframe</h3>
-          <p class="text-slate-600 text-sm">Menganalisa dari berbagai timeframe untuk akurasi tinggi</p>
-        </div>
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-shield-alt text-white text-2xl"></i>
-          </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Trailing Stop Dinamis</h3>
-          <p class="text-slate-600 text-sm">Melindungi profit dengan sistem trailing stop adaptif</p>
-        </div>
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-brain text-white text-2xl"></i>
-          </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Teknologi AI Premium</h3>
-          <p class="text-slate-600 text-sm">Algoritma pembelajaran mesin untuk prediksi akurat</p>
-        </div>
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-laptop text-white text-2xl"></i>
-          </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Support PC & Android</h3>
-          <p class="text-slate-600 text-sm">Fleksibilitas trading di berbagai platform</p>
-        </div>
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-clock text-white text-2xl"></i>
-          </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Trading 24/5 Otomatis</h3>
-          <p class="text-slate-600 text-sm">Bekerja mengikuti jam trading pasar global</p>
-        </div>
-        <div class="p-6">
-          <div class="w-16 h-16 mx-auto mb-4 gradient-bg rounded-xl flex items-center justify-center">
-            <i class="fas fa-cogs text-white text-2xl"></i>
-          </div>
-          <h3 class="font-semibold mb-2 text-slate-800">Pengaturan Fleksibel</h3>
-          <p class="text-slate-600 text-sm">Customisasi sesuai risk tolerance Anda</p>
+
+          <p class="mt-6 tiny">Lisensi: harian • bulanan • premium • unlimited — Support PC & Android</p>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- TESTIMONI -->
-  <section class="py-16 bg-gradient-to-br from-violet-50 to-blue-50">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Testimoni Pengguna</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-slate-700">
-        
-        <!-- Testimoni Mingguan -->
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm">RN</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Rina M.</p>
-              <p class="text-xs text-violet-600">Paket Mingguan</p>
+    <!-- FEATURES -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Fitur Unggulan</h2>
+          <p class="mt-2 muted-sm">Sistem otomatis yang dirancang untuk performa M15 XAUUSD dengan manajemen risiko modern.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="glass reveal float">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-chart-line fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Analisa Multi Timeframe</h3>
+            <p class="mt-2 tiny">Menganalisa dari berbagai timeframe untuk akurasi tinggi</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="glass reveal float float-slow">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-shield-alt fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Trailing Stop Dinamis</h3>
+            <p class="mt-2 tiny">Melindungi profit dengan sistem trailing stop adaptif</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="glass reveal float float-fast">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-brain fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Teknologi AI Premium</h3>
+            <p class="mt-2 tiny">Algoritma pembelajaran mesin untuk prediksi akurat</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="glass reveal">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-laptop fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Support PC & Android</h3>
+            <p class="mt-2 tiny">Fleksibilitas trading di berbagai platform</p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="glass reveal float">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-clock fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Trading 24/5 Otomatis</h3>
+            <p class="mt-2 tiny">Bekerja mengikuti jam trading pasar global</p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="glass reveal float float-slow">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-cogs fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Pengaturan Fleksibel</h3>
+            <p class="mt-2 tiny">Customisasi sesuai risk tolerance Anda</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-8 reveal">
+          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Testimoni Pengguna</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rina -->
+          <div class="glass reveal">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">RN</div>
+              <div class="ml-3">
+                <p class="font-semibold">Rina M.</p>
+                <p class="tiny text-violet-300">Paket Mingguan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Paket mingguan cocok untuk pemula seperti saya. Bisa belajar dulu sebelum commit lebih besar."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+          </div>
+
+          <!-- Lutfi -->
+          <div class="glass reveal float">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">LT</div>
+              <div class="ml-3">
+                <p class="font-semibold">Lutfi A.</p>
+                <p class="tiny text-violet-300">Paket Mingguan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Bisa jalan di Android, jadi praktis monitoring sambil kerja. Instalasi juga mudah."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+
+          <!-- Sari -->
+          <div class="glass reveal float float-slow">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">SR</div>
+              <div class="ml-3">
+                <p class="font-semibold">Sari L.</p>
+                <p class="tiny text-blue-300">Paket Bulanan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"CS membantu remote install karena saya gaptek. Sekarang bisa trading otomatis."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+
+          <!-- Agus -->
+          <div class="glass reveal">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AS</div>
+              <div class="ml-3">
+                <p class="font-semibold">Agus S.</p>
+                <p class="tiny text-blue-300">Paket Bulanan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Fitur trailing stop dinamis memang bagus, floating minus jadi lebih terkontrol."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+          </div>
+
+          <!-- Andi -->
+          <div class="glass reveal float">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AW</div>
+              <div class="ml-3">
+                <p class="font-semibold">Andi W.</p>
+                <p class="tiny text-purple-300">Paket Premium</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Dengan bonus 3 bulan, bisa fokus trading jangka panjang. RDP gratis juga membantu."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+
+          <!-- Maya -->
+          <div class="glass reveal float float-slow">
+            <div class="flex items-center mb-3">
+              <div class="avatar bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">MR</div>
+              <div class="ml-3">
+                <p class="font-semibold">Maya R.</p>
+                <p class="tiny text-purple-300">Paket Premium</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Support 24 jam responsif banget. Jam 11 malam tanya masalah juga langsung dibantu."</p>
+            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8 reveal">
+          <a href="#pricing" class="btn-cta"><i class="fas fa-hand-holding-dollar"></i> Bergabung Sekarang</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Pilih Paket Anda</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Mingguan -->
+          <div class="price-card reveal flex flex-col">
+            <h3 class="text-xl font-bold mb-2">M15 MINGGUAN</h3>
+            <p class="text-3xl font-extrabold text-violet-300 mb-4">IDR 150,000</p>
+            <ul class="mb-6 space-y-2 tiny text-slate-300">
+              <li><i class="fas fa-check text-violet-400 mr-2"></i>7+ Indikator Premium</li>
+              <li><i class="fas fa-check text-violet-400 mr-2"></i>Keamanan Tinggi</li>
+              <li><i class="fas fa-check text-violet-400 mr-2"></i>Support PC & Android</li>
+              <li><i class="fas fa-check text-violet-400 mr-2"></i>Panduan Lengkap</li>
+            </ul>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Mingguan" class="mt-auto btn-cta">Beli via WhatsApp</a>
+          </div>
+
+          <!-- Bulanan -->
+          <div class="price-card reveal flex flex-col">
+            <h3 class="text-xl font-bold mb-2">M15 BULANAN</h3>
+            <p class="text-3xl font-extrabold text-blue-300 mb-4">IDR 500,000</p>
+            <ul class="mb-6 space-y-2 tiny text-slate-300">
+              <li><i class="fas fa-check text-blue-400 mr-2"></i>Semua fitur Mingguan</li>
+              <li><i class="fas fa-check text-blue-400 mr-2"></i>RDP terpisah (optional)</li>
+              <li><i class="fas fa-check text-blue-400 mr-2"></i>Priority Support</li>
+              <li><i class="fas fa-check text-blue-400 mr-2"></i>Update Otomatis</li>
+            </ul>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Bulanan" class="mt-auto btn-cta">Beli via WhatsApp</a>
+          </div>
+
+          <!-- Premium -->
+          <div class="price-card reveal relative" style="border:1px solid rgba(155,89,255,0.12); background: linear-gradient(180deg, rgba(155,89,255,0.03), rgba(111,66,193,0.02));">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold">POPULAR</div>
+            <h3 class="text-xl font-bold mb-2">M15 PREMIUM</h3>
+            <p class="text-3xl font-extrabold text-purple-300 mb-4">IDR 2,000,000</p>
+            <ul class="mb-6 space-y-2 tiny text-slate-300">
+              <li><i class="fas fa-check text-purple-400 mr-2"></i>Bonus Lisensi 3 bulan</li>
+              <li><i class="fas fa-check text-purple-400 mr-2"></i>RDP GRATIS 2 bulan</li>
+              <li><i class="fas fa-check text-purple-400 mr-2"></i>Perpanjangan Rp 100.000/bulan</li>
+              <li><i class="fas fa-check text-purple-400 mr-2"></i>VIP Support Group</li>
+            </ul>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Premium" class="mt-auto btn-cta">Beli via WhatsApp</a>
+          </div>
+
+          <!-- Ultimate -->
+          <div class="price-card reveal flex flex-col">
+            <h3 class="text-xl font-bold mb-2">M15 ULTIMATE</h3>
+            <p class="text-3xl font-extrabold text-indigo-300 mb-4">IDR 7,500,000</p>
+            <ul class="mb-6 space-y-2 tiny text-slate-300">
+              <li><i class="fas fa-check text-indigo-400 mr-2"></i>Lisensi GRATIS 6 bulan</li>
+              <li><i class="fas fa-check text-indigo-400 mr-2"></i>RDP GRATIS 6 bulan</li>
+              <li><i class="fas fa-check text-indigo-400 mr-2"></i>Perpanjangan Rp 50.000/bulan</li>
+              <li><i class="fas fa-check text-indigo-400 mr-2"></i>Personal Konsultasi</li>
+            </ul>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Ultimate" class="mt-auto btn-cta">Beli via WhatsApp</a>
+          </div>
+
+          <!-- Elit Unlimited -->
+          <div class="price-card reveal lg:col-span-3" style="background: linear-gradient(90deg,#071126,#041024); border:1px solid rgba(255,255,255,0.04);">
+            <div class="max-w-4xl mx-auto text-center py-6">
+              <h3 class="text-xl font-bold mb-2 neon-text">M15 ELIT UNLIMITED</h3>
+              <p class="text-4xl font-extrabold text-yellow-300 mb-4">IDR 25,000,000</p>
+              <ul class="mb-6 space-y-2 tiny">
+                <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>Lisensi UNLIMITED seumur hidup</li>
+                <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>RDP GRATIS 1 tahun</li>
+                <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>Semua update & fitur premium</li>
+                <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>Exclusive Benefits</li>
+              </ul>
+              <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Elit%20Unlimited" class="btn-cta">Beli via WhatsApp</a>
             </div>
           </div>
-          <p class="text-sm italic mb-2">"Paket mingguan cocok untuk pemula seperti saya. Bisa belajar dulu sebelum commit lebih besar."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm">LT</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Lutfi A.</p>
-              <p class="text-xs text-violet-600">Paket Mingguan</p>
-            </div>
-          </div>
-          <p class="text-sm italic mb-2">"Bisa jalan di Android, jadi praktis monitoring sambil kerja. Instalasi juga mudah."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-
-        <!-- Testimoni Bulanan -->
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">SR</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Sari L.</p>
-              <p class="text-xs text-blue-600">Paket Bulanan</p>
-            </div>
-          </div>
-          <p class="text-sm italic mb-2">"CS membantu remote install karena saya gaptek. Sekarang bisa trading otomatis."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AS</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Agus S.</p>
-              <p class="text-xs text-blue-600">Paket Bulanan</p>
-            </div>
-          </div>
-          <p class="text-sm italic mb-2">"Fitur trailing stop dinamis memang bagus, floating minus jadi lebih terkontrol."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-        </div>
-
-        <!-- Testimoni Premium -->
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AW</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Andi W.</p>
-              <p class="text-xs text-purple-600">Paket Premium</p>
-            </div>
-          </div>
-          <p class="text-sm italic mb-2">"Dengan bonus 3 bulan, bisa fokus trading jangka panjang. RDP gratis juga membantu."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <div class="flex items-center mb-3">
-            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">MR</div>
-            <div class="ml-3">
-              <p class="font-semibold text-slate-800">Maya R.</p>
-              <p class="text-xs text-purple-600">Paket Premium</p>
-            </div>
-          </div>
-          <p class="text-sm italic mb-2">"Support 24 jam responsif banget. Jam 11 malam tanya masalah juga langsung dibantu."</p>
-          <div class="flex text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        </div>
-        
-      </div>
-      <div class="text-center mt-10">
-        <a href="#pricing" class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition">Bergabung Sekarang</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Pilih Paket Anda</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- MINGGUAN -->
-        <div class="price-card bg-white rounded-xl shadow-lg p-6 flex flex-col border">
-          <h3 class="text-xl font-bold mb-2 text-slate-800">M15 MINGGUAN</h3>
-          <p class="text-3xl font-extrabold text-violet-600 mb-4">IDR 150,000</p>
-          <ul class="mb-6 space-y-2 text-sm text-slate-700">
-            <li><i class="fas fa-check text-violet-500 mr-2"></i>7+ Indikator Premium</li>
-            <li><i class="fas fa-check text-violet-500 mr-2"></i>Keamanan Tinggi</li>
-            <li><i class="fas fa-check text-violet-500 mr-2"></i>Support PC & Android</li>
-            <li><i class="fas fa-check text-violet-500 mr-2"></i>Panduan Lengkap</li>
-          </ul>
-          <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Mingguan" class="mt-auto bg-violet-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-violet-700 transition">Beli via WhatsApp</a>
-        </div>
-
-        <!-- BULANAN -->
-        <div class="price-card bg-white rounded-xl shadow-lg p-6 flex flex-col border">
-          <h3 class="text-xl font-bold mb-2 text-slate-800">M15 BULANAN</h3>
-          <p class="text-3xl font-extrabold text-blue-600 mb-4">IDR 500,000</p>
-          <ul class="mb-6 space-y-2 text-sm text-slate-700">
-            <li><i class="fas fa-check text-blue-500 mr-2"></i>Semua fitur Mingguan</li>
-            <li><i class="fas fa-check text-blue-500 mr-2"></i>RDP terpisah (optional)</li>
-            <li><i class="fas fa-check text-blue-500 mr-2"></i>Priority Support</li>
-            <li><i class="fas fa-check text-blue-500 mr-2"></i>Update Otomatis</li>
-          </ul>
-          <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Bulanan" class="mt-auto bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Beli via WhatsApp</a>
-        </div>
-
-        <!-- PREMIUM -->
-        <div class="price-card bg-gradient-to-br from-violet-100 to-blue-100 rounded-xl shadow-xl p-6 flex flex-col ring-2 ring-violet-500 relative">
-          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-violet-600 text-white px-4 py-1 rounded-full text-xs font-bold">POPULAR</div>
-          <h3 class="text-xl font-bold mb-2 text-slate-800">M15 PREMIUM</h3>
-          <p class="text-3xl font-extrabold text-purple-600 mb-4">IDR 2,000,000</p>
-          <ul class="mb-6 space-y-2 text-sm text-slate-700">
-            <li><i class="fas fa-check text-purple-500 mr-2"></i>Bonus Lisensi 3 bulan</li>
-            <li><i class="fas fa-check text-purple-500 mr-2"></i>RDP GRATIS 2 bulan</li>
-            <li><i class="fas fa-check text-purple-500 mr-2"></i>Perpanjangan Rp 100.000/bulan</li>
-            <li><i class="fas fa-check text-purple-500 mr-2"></i>VIP Support Group</li>
-          </ul>
-          <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Premium" class="mt-auto bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Beli via WhatsApp</a>
-        </div>
-
-        <!-- ULTIMATE -->
-        <div class="price-card bg-white rounded-xl shadow-lg p-6 flex flex-col border">
-          <h3 class="text-xl font-bold mb-2 text-slate-800">M15 ULTIMATE</h3>
-          <p class="text-3xl font-extrabold text-indigo-600 mb-4">IDR 7,500,000</p>
-          <ul class="mb-6 space-y-2 text-sm text-slate-700">
-            <li><i class="fas fa-check text-indigo-500 mr-2"></i>Lisensi GRATIS 6 bulan</li>
-            <li><i class="fas fa-check text-indigo-500 mr-2"></i>RDP GRATIS 6 bulan</li>
-            <li><i class="fas fa-check text-indigo-500 mr-2"></i>Perpanjangan Rp 50.000/bulan</li>
-            <li><i class="fas fa-check text-indigo-500 mr-2"></i>Personal Konsultasi</li>
-          </ul>
-          <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Ultimate" class="mt-auto bg-indigo-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Beli via WhatsApp</a>
-        </div>
-
-        <!-- ELIT UNLIMITED -->
-        <div class="price-card bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-xl shadow-xl p-6 flex flex-col col-span-full lg:col-span-1 lg:col-start-2">
-          <h3 class="text-xl font-bold mb-2">M15 ELIT UNLIMITED</h3>
-          <p class="text-3xl font-extrabold text-yellow-400 mb-4">IDR 25,000,000</p>
-          <ul class="mb-6 space-y-2 text-sm">
-            <li><i class="fas fa-check text-yellow-400 mr-2"></i>Lisensi UNLIMITED seumur hidup</li>
-            <li><i class="fas fa-check text-yellow-400 mr-2"></i>RDP GRATIS 1 tahun</li>
-            <li><i class="fas fa-check text-yellow-400 mr-2"></i>Semua update & fitur premium</li>
-            <li><i class="fas fa-check text-yellow-400 mr-2"></i>Exclusive Benefits</li>
-          </ul>
-          <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Elit%20Unlimited" class="mt-auto bg-yellow-400 text-slate-800 text-center py-3 rounded-lg font-bold hover:bg-yellow-300 transition">Beli via WhatsApp</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CARA PEMBELIAN -->
-  <section class="py-16 bg-gradient-to-br from-violet-50 to-blue-50">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-8 gradient-text">Cara Pembelian</h2>
-      <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl p-6 shadow">
-          <div class="w-12 h-12 mx-auto mb-4 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
-          <h3 class="font-bold text-slate-800 mb-2">Pilih Paket</h3>
-          <p class="text-slate-600 text-sm">Pilih paket sesuai kebutuhan dan klik "Beli via WhatsApp"</p>
+    <!-- CARA PEMBELIAN -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="reveal">
+          <h2 class="text-2xl font-bold gradient-text mb-6">Cara Pembelian</h2>
         </div>
-        <div class="bg-white rounded-xl p-6 shadow">
-          <div class="w-12 h-12 mx-auto mb-4 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
-          <h3 class="font-bold text-slate-800 mb-2">Konfirmasi</h3>
-          <p class="text-slate-600 text-sm">Kirim bukti pembayaran ke WhatsApp 0895-2831-1840</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow">
-          <div class="w-12 h-12 mx-auto mb-4 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
-          <h3 class="font-bold text-slate-800 mb-2">Terima Akses</h3>
-          <p class="text-slate-600 text-sm">Dapatkan file bot, panduan, lisensi & bonus</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass reveal text-center">
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">1</div>
+            <h3 class="font-bold">Pilih Paket</h3>
+            <p class="tiny mt-2">Pilih paket sesuai kebutuhan dan klik "Beli via WhatsApp".</p>
+          </div>
+
+          <div class="glass reveal text-center">
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">2</div>
+            <h3 class="font-bold">Konfirmasi</h3>
+            <p class="tiny mt-2">Kirim bukti pembayaran ke WhatsApp 0895-2831-1840.</p>
+          </div>
+
+          <div class="glass reveal text-center">
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">3</div>
+            <h3 class="font-bold">Terima Akses</h3>
+            <p class="tiny mt-2">Dapatkan file bot, panduan, lisensi & bonus.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- DISCLAIMER -->
-  <section class="py-10 bg-amber-50">
-    <div class="container mx-auto px-6 text-center text-sm text-amber-800">
-      <i class="fas fa-exclamation-triangle text-amber-500 text-2xl mb-2"></i><br>
-      Bot trading adalah alat bantu, <strong>bukan jaminan profit</strong>.  
-      Hasil tergantung pada kondisi pasar dan manajemen risiko pengguna.  
-      Produk digital tidak dapat dikembalikan setelah pembelian.
-      <strong>Trading mengandung risiko.</strong>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-300 py-8">
-    <div class="container mx-auto px-6 text-center">
-      <h3 class="text-xl font-bold gradient-text mb-4">EAGLETRADEAVL</h3>
-      <p class="mb-4">Bot Trading XAUUSD Terpercaya</p>
-      <a href="https://wa.me/6289528311840" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold transition inline-flex items-center">
-        <i class="fab fa-whatsapp mr-2"></i>
-        WhatsApp Support
-      </a>
-      <div class="border-t border-slate-700 mt-6 pt-6 text-sm text-slate-400">
-        <p>&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
-        <p class="mt-2">WhatsApp: 0895-2831-1840</p>
+    <!-- DISCLAIMER -->
+    <section class="py-8">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="glass flex items-center gap-4">
+          <i class="fas fa-exclamation-triangle text-amber-400 text-2xl"></i>
+          <div class="tiny text-amber-200">
+            Bot trading adalah alat bantu, <strong>bukan jaminan profit</strong>. Hasil tergantung pada kondisi pasar dan manajemen risiko pengguna. Produk digital tidak dapat dikembalikan setelah pembelian. <strong>Trading mengandung risiko.</strong>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h3 class="text-xl font-bold neon-text mb-3">EAGLETRADEAVL</h3>
+        <p class="tiny text-slate-300 mb-4">Bot Trading XAUUSD Terpercaya</p>
+
+        <div class="flex justify-center gap-4 mb-4">
+          <a href="https://wa.me/6289528311840" class="wa-btn" aria-label="WhatsApp Support"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
+        </div>
+
+        <div class="tiny text-slate-400">
+          <p>&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
+          <p class="mt-2">WhatsApp: 0895-2831-1840</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <!-- Scripts: particles (light), scroll reveal, smooth anchors -->
+  <script>
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href=a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el=document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // IntersectionObserver reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    reveals.forEach(r=>io.observe(r));
+
+    /* ---------- PARTICLE BACKGROUND (subtle purple neon) ---------- */
+    (function(){
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      let w=canvas.width=innerWidth;
+      let h=canvas.height=innerHeight;
+      const DPR = window.devicePixelRatio || 1;
+      canvas.width = w * DPR;
+      canvas.height = h * DPR;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(DPR, DPR);
+
+      // particles: small, subtle, slow
+      const particles = [];
+      const count = Math.max(12, Math.floor((w*h)/90000)); // relative density
+      for(let i=0;i<count;i++){
+        particles.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: 0.8 + Math.random()*2.2,
+          vx: (Math.random()-0.5)*0.2,
+          vy: (Math.random()-0.5)*0.2,
+          alpha: 0.08 + Math.random()*0.18,
+          phase: Math.random()*Math.PI*2
+        });
+      }
+
+      function resize(){
+        w = canvas.width = innerWidth * DPR;
+        h = canvas.height = innerHeight * DPR;
+        canvas.style.width = innerWidth + 'px';
+        canvas.style.height = innerHeight + 'px';
+        ctx.setTransform(DPR,0,0,DPR,0,0);
+      }
+      window.addEventListener('resize', () => {
+        resize();
+      });
+
+      let t = 0;
+      function draw(){
+        t += 0.01;
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+
+        // very subtle radial gradient for depth
+        const g = ctx.createRadialGradient(innerWidth*0.75, innerHeight*0.25, 50, innerWidth*0.5, innerHeight*0.5, Math.max(innerWidth, innerHeight));
+        g.addColorStop(0, 'rgba(120,70,190,0.03)');
+        g.addColorStop(1, 'rgba(5,7,12,0.0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0,0,innerWidth,innerHeight);
+
+        for(let p of particles){
+          p.x += p.vx + Math.sin(t + p.phase)*0.05;
+          p.y += p.vy + Math.cos(t + p.phase)*0.03;
+
+          // wrap
+          if(p.x > innerWidth + 20) p.x = -20;
+          if(p.x < -20) p.x = innerWidth + 20;
+          if(p.y > innerHeight + 20) p.y = -20;
+          if(p.y < -20) p.y = innerHeight + 20;
+
+          // draw soft glow
+          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r*12);
+          grd.addColorStop(0, `rgba(155,89,255, ${p.alpha})`);
+          grd.addColorStop(0.4, `rgba(155,89,255, ${p.alpha*0.35})`);
+          grd.addColorStop(1, `rgba(155,89,255, 0)`);
+          ctx.beginPath();
+          ctx.fillStyle = grd;
+          ctx.arc(p.x, p.y, p.r*6, 0, Math.PI*2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+  </script>
 
 </body>
 </html>
