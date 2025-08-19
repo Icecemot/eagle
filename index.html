@@ -2,326 +2,216 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EAGLETRADEAVL – Bot Trading XAUUSD Otomatis</title>
-  <meta name="description" content="Bot trading XAUUSD M15 otomatis 24/5. Profit saat Anda tidur, kerja, atau liburan. Lisensi harian, bulanan hingga unlimited.">
+  <meta name="description" content="Bot trading XAUUSD M15 otomatis 24/5. Profit saat Anda tidur, kerja, atau liburan. Lisensi harian, bulanan hingga unlimited." />
+
+  <!-- Open Graph / SEO dasar -->
+  <meta property="og:title" content="EAGLETRADEAVL – Bot Trading XAUUSD Otomatis" />
+  <meta property="og:description" content="Bot trading XAUUSD M15 otomatis 24/5. Profit saat Anda tidur, kerja, atau liburan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="id_ID" />
 
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{
-      --bg-1: #05050a;
-      --bg-2: #0b0f18;
-      --muted: #cbd5e1;
-      --panel: rgba(255,255,255,0.03);
-      --neonA: #9b59ff; /* purple neon */
-      --neonB: #6f42c1; /* deep purple */
-      --glass-border: rgba(255,255,255,0.06);
+      --bg-1:#05050a;        /* base */
+      --bg-2:#0b0f18;        /* deeper */
+      --panel:rgba(255,255,255,.03);
+      --ink:#e5e7eb;         /* text */
+      --muted:#cbd5e1;       /* secondary */
+      --line:rgba(255,255,255,.06);
+      --neonA:#9b59ff;       /* purple neon */
+      --neonB:#6f42c1;       /* deep purple */
+      --good:#22c55e;        /* green */
+      --warn:#f59e0b;        /* amber */
     }
 
-    /* Base */
     html,body{height:100%}
     body{
-      margin:0;
-      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
-      color:var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      overflow-x:hidden;
+      margin:0; color:var(--ink);
+      font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Canvas sits behind content */
-    #particle-canvas{
-      position:fixed;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-    }
+    /* Canvas background */
+    #particle-canvas{position:fixed; inset:0; z-index:0; pointer-events:none}
+    .page{position:relative; z-index:1}
 
-    /* Container sits above canvas */
-    .page {
-      position:relative;
-      z-index:1;
-    }
+    /* Type */
+    h1,h2,h3{font-family:"Orbitron", sans-serif; letter-spacing:.3px}
+    .neon-text{background:linear-gradient(90deg,var(--neonA),var(--neonB)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 12px rgba(155,89,255,.10)}
+    .muted{color:rgba(255,255,255,.72)}
 
-    /* Headings */
-    h1,h2,h3{ font-family: "Orbitron", sans-serif; color: #fff; letter-spacing: .6px; }
-    .neon-text {
-      background: linear-gradient(90deg, var(--neonA), var(--neonB));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 12px rgba(155,89,255,0.10);
-    }
+    /* Glass panel */
+    .glass{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:1.1rem; box-shadow:0 6px 30px rgba(2,6,23,.65); backdrop-filter:blur(8px); transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease}
+    .glass:hover{transform:translateY(-4px)}
 
-    /* glass panels */
-    .glass {
-      background: var(--panel);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 1.1rem;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.65);
-      backdrop-filter: blur(8px);
-      transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease;
-    }
+    /* Pricing card */
+    .price-card{border-radius:14px; padding:1.2rem; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.04); transition:transform .28s ease, box-shadow .28s ease}
+    .price-card:hover{transform:translateY(-8px) scale(1.01); box-shadow:0 30px 60px rgba(18,10,40,.7)}
 
-    /* floating (gentle) */
-    .float {
-      animation: floaty 6s ease-in-out infinite;
-    }
-    .float-slow { animation-duration: 9s; }
-    .float-fast { animation-duration: 4.5s; }
+    /* CTA */
+    .btn-cta{display:inline-flex; align-items:center; gap:.6rem; padding:.72rem 1.3rem; border-radius:999px; font-weight:700; font-family:"Orbitron", sans-serif; color:#0b0810; text-decoration:none; background:linear-gradient(90deg,var(--neonA),var(--neonB)); box-shadow:0 8px 28px rgba(155,89,255,.10),0 0 40px rgba(155,89,255,.08); transition:transform .16s ease, box-shadow .16s ease, filter .16s ease}
+    .btn-cta:hover{transform:translateY(-3px); filter:brightness(1.06); box-shadow:0 30px 80px rgba(155,89,255,.12)}
+    .btn-outline{padding:.62rem 1rem; border-radius:999px; border:1px solid var(--line); color:var(--ink); text-decoration:none; background:transparent; transition:all .18s ease}
+    .btn-outline:hover{color:var(--neonA); transform:translateY(-2px); background:rgba(255,255,255,.02)}
 
-    @keyframes floaty {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
+    .icon-circle{width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(155,89,255,.12), rgba(111,66,193,.06)); border:1px solid rgba(255,255,255,.05)}
+    .tiny{font-size:.94rem}
 
-    /* price card hover */
-    .price-card{ border-radius:12px; padding:1.2rem; transition: transform .28s ease, box-shadow .28s ease; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03);}
-    .price-card:hover{ transform: translateY(-8px) scale(1.01); box-shadow: 0 30px 60px rgba(18,10,40,0.7); }
-
-    /* CTA Button (purple neon) */
-    .btn-cta {
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      padding:.72rem 1.3rem;
-      border-radius:999px;
-      font-weight:700;
-      font-family: "Orbitron", sans-serif;
-      color:#0b0810;
-      background: linear-gradient(90deg,var(--neonA), var(--neonB));
-      box-shadow: 0 8px 28px rgba(155,89,255,0.08), 0 0 40px rgba(155,89,255,0.06);
-      text-decoration:none;
-      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
-    }
-    .btn-cta:hover{ transform: translateY(-4px); filter:brightness(1.06); box-shadow: 0 30px 80px rgba(155,89,255,0.12); }
-
-    .btn-outline {
-      padding:.58rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,0.06);
-      background:transparent; color:var(--muted); text-decoration:none; transition: all .16s ease;
-    }
-    .btn-outline:hover{ color:var(--neonA); transform: translateY(-2px); background: rgba(255,255,255,0.02); }
-
-    .icon-circle {
-      width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center;
-      background: linear-gradient(135deg, rgba(155,89,255,0.12), rgba(111,66,193,0.06));
-      border: 1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 8px 30px rgba(106,46,170,0.06);
-    }
-
-    /* tiny helpers */
-    .tiny { font-size:.92rem; color: rgba(255,255,255,0.72); }
-    .muted-sm { color: rgba(255,255,255,0.65); }
+    /* Floating (gentle) */
+    .float{animation:floaty 6s ease-in-out infinite}
+    .float-slow{animation-duration:9s}
+    .float-fast{animation-duration:4.5s}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
     /* Reveal */
-    .reveal { opacity:0; transform: translateY(18px) scale(.996); transition: all .7s cubic-bezier(.2,.9,.3,1); will-change: transform, opacity; }
-    .reveal.show { opacity:1; transform: none; }
+    .reveal{opacity:0; transform:translateY(18px) scale(.996); transition:all .7s cubic-bezier(.2,.9,.3,1)}
+    .reveal.show{opacity:1; transform:none}
 
-    /* subtle gradient text helper kept */
-    .gradient-text{
-      background:linear-gradient(135deg,var(--neonA),var(--neonB));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    /* Sticky nav glass */
+    .nav-glass{backdrop-filter:blur(10px); background:rgba(6,9,18,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-link{color:rgba(255,255,255,.78)}
+    .nav-link.active{color:#fff}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .float,.float-slow,.float-fast{animation:none}
+      .reveal{transition:none}
     }
-
-    /* footer whatsapp */
-    .wa-btn { display:inline-flex; gap:.5rem; align-items:center; background:#5BFFA6; color:#051121; padding:.6rem .9rem; border-radius:999px; text-decoration:none; font-weight:700; }
-    .wa-btn:hover{ transform: translateY(-2px); }
-
-    /* responsiveness */
-    @media (max-width:640px){
-      .icon-circle{width:56px;height:56px}
-    }
-
   </style>
 </head>
 <body>
-
-  <!-- particle canvas behind everything -->
+  <!-- Background Canvas -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <div class="page">
-
-    <!-- HERO -->
-    <header class="py-20">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <div class="reveal" id="heroTitle">
-          <h1 class="text-4xl md:text-6xl font-bold neon-text">EAGLETRADEAVL</h1>
-          <p class="mt-4 md:mt-6 text-lg md:text-2xl muted-sm">Bot Trading XAUUSD M15 Otomatis 24/5 — Profit saat Anda tidur, kerja, atau liburan.</p>
-
-          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#pricing" class="btn-cta float float-slow" aria-label="Lihat Paket"> <i class="fas fa-robot"></i> Lihat Paket</a>
-            <a href="https://wa.me/6289528311840" class="btn-outline float float-fast" aria-label="Konsultasi via WhatsApp"><i class="fab fa-whatsapp"></i> Konsultasi</a>
-          </div>
-
-          <p class="mt-6 tiny">Lisensi: harian • bulanan • premium • unlimited — Support PC & Android</p>
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-[100] nav-glass">
+      <nav class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-2" aria-label="Beranda">
+          <span class="text-xl md:text-2xl font-bold neon-text">EAGLETRADEAVL</span>
+        </a>
+        <button id="menuBtn" class="md:hidden text-slate-200" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+        <ul class="hidden md:flex items-center gap-6 text-sm">
+          <li><a class="nav-link hover:text-white" href="#fitur">Fitur</a></li>
+          <li><a class="nav-link hover:text-white" href="#pricing">Harga</a></li>
+          <li><a class="nav-link hover:text-white" href="#testimoni">Testimoni</a></li>
+          <li><a class="nav-link hover:text-white" href="#cara">Cara Beli</a></li>
+          <li><a class="nav-link hover:text-white" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="hidden md:block">
+          <a href="https://wa.me/6289528311840" class="btn-cta" aria-label="Konsultasi di WhatsApp"><i class="fab fa-whatsapp"></i> Konsultasi</a>
+        </div>
+      </nav>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+        <div class="px-6 py-3 flex flex-col gap-2 text-sm">
+          <a class="nav-link" href="#fitur">Fitur</a>
+          <a class="nav-link" href="#pricing">Harga</a>
+          <a class="nav-link" href="#testimoni">Testimoni</a>
+          <a class="nav-link" href="#cara">Cara Beli</a>
+          <a class="nav-link" href="#faq">FAQ</a>
+          <a href="https://wa.me/6289528311840" class="btn-cta mt-2 w-max"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
     </header>
 
-    <!-- FEATURES -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-10 reveal">
-          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Fitur Unggulan</h2>
-          <p class="mt-2 muted-sm">Sistem otomatis yang dirancang untuk performa M15 XAUUSD dengan manajemen risiko modern.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Feature 1 -->
-          <div class="glass reveal float">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-chart-line fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Analisa Multi Timeframe</h3>
-            <p class="mt-2 tiny">Menganalisa dari berbagai timeframe untuk akurasi tinggi</p>
+    <!-- HERO -->
+    <section id="home" class="relative pt-16 md:pt-24 pb-10">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <div class="reveal" id="heroTitle">
+          <h1 class="text-4xl md:text-6xl font-bold neon-text">Bot Trading XAUUSD M15 Otomatis</h1>
+          <p class="mt-4 md:mt-6 text-lg md:text-2xl muted">Profit saat Anda tidur, kerja, atau liburan. Lisensi harian • bulanan • premium • unlimited.</p>
+          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#pricing" class="btn-cta float float-slow" aria-label="Lihat Paket"><i class="fas fa-robot"></i> Lihat Paket</a>
+            <a href="https://wa.me/6289528311840" class="btn-outline float float-fast" aria-label="Konsultasi via WhatsApp"><i class="fab fa-whatsapp"></i> Konsultasi</a>
           </div>
-
-          <!-- Feature 2 -->
-          <div class="glass reveal float float-slow">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-shield-alt fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Trailing Stop Dinamis</h3>
-            <p class="mt-2 tiny">Melindungi profit dengan sistem trailing stop adaptif</p>
-          </div>
-
-          <!-- Feature 3 -->
-          <div class="glass reveal float float-fast">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-brain fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Teknologi AI Premium</h3>
-            <p class="mt-2 tiny">Algoritma pembelajaran mesin untuk prediksi akurat</p>
-          </div>
-
-          <!-- Feature 4 -->
-          <div class="glass reveal">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-laptop fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Support PC & Android</h3>
-            <p class="mt-2 tiny">Fleksibilitas trading di berbagai platform</p>
-          </div>
-
-          <!-- Feature 5 -->
-          <div class="glass reveal float">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-clock fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Trading 24/5 Otomatis</h3>
-            <p class="mt-2 tiny">Bekerja mengikuti jam trading pasar global</p>
-          </div>
-
-          <!-- Feature 6 -->
-          <div class="glass reveal float float-slow">
-            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-cogs fa-lg"></i></div></div>
-            <h3 class="text-lg font-semibold">Pengaturan Fleksibel</h3>
-            <p class="mt-2 tiny">Customisasi sesuai risk tolerance Anda</p>
-          </div>
+          <p class="mt-6 tiny muted">Support PC & Android • Update otomatis • Bantuan remote install</p>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONI -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-8 reveal">
-          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Testimoni Pengguna</h2>
+    <!-- TRUST STRIP -->
+    <section class="py-4">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="glass text-center tiny"><i class="fa-solid fa-shield-halved text-green-400"></i> Manajemen Risiko</div>
+          <div class="glass text-center tiny"><i class="fa-solid fa-gauge text-indigo-300"></i> Optimasi M15</div>
+          <div class="glass text-center tiny"><i class="fa-solid fa-headset text-purple-300"></i> Support 24/7</div>
+          <div class="glass text-center tiny"><i class="fa-solid fa-cloud-arrow-down text-blue-300"></i> Update Otomatis</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="fitur" class="py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-3xl font-bold neon-text">Fitur Unggulan</h2>
+          <p class="mt-2 muted">Sistem otomatis yang dirancang untuk performa XAUUSD timeframe M15 dengan risk management modern.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Rina -->
-          <div class="glass reveal">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">RN</div>
-              <div class="ml-3">
-                <p class="font-semibold">Rina M.</p>
-                <p class="tiny text-violet-300">Paket Mingguan</p>
-              </div>
-            </div>
-            <p class="italic tiny">"Paket mingguan cocok untuk pemula seperti saya. Bisa belajar dulu sebelum commit lebih besar."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-          </div>
-
-          <!-- Lutfi -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="glass reveal float">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">LT</div>
-              <div class="ml-3">
-                <p class="font-semibold">Lutfi A.</p>
-                <p class="tiny text-violet-300">Paket Mingguan</p>
-              </div>
-            </div>
-            <p class="italic tiny">"Bisa jalan di Android, jadi praktis monitoring sambil kerja. Instalasi juga mudah."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-chart-line fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Analisa Multi Timeframe</h3>
+            <p class="mt-2 tiny muted">Kombinasi sinyal untuk meningkatkan akurasi entri & exit.</p>
           </div>
 
-          <!-- Sari -->
           <div class="glass reveal float float-slow">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">SR</div>
-              <div class="ml-3">
-                <p class="font-semibold">Sari L.</p>
-                <p class="tiny text-blue-300">Paket Bulanan</p>
-              </div>
-            </div>
-            <p class="italic tiny">"CS membantu remote install karena saya gaptek. Sekarang bisa trading otomatis."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-shield-alt fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Trailing Stop Dinamis</h3>
+            <p class="mt-2 tiny muted">Mengunci profit dan mengurangi floating minus.</p>
           </div>
 
-          <!-- Agus -->
+          <div class="glass reveal float float-fast">
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-brain fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Algoritma AI</h3>
+            <p class="mt-2 tiny muted">Pembelajaran mesin untuk adaptasi kondisi pasar.</p>
+          </div>
+
           <div class="glass reveal">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AS</div>
-              <div class="ml-3">
-                <p class="font-semibold">Agus S.</p>
-                <p class="tiny text-blue-300">Paket Bulanan</p>
-              </div>
-            </div>
-            <p class="italic tiny">"Fitur trailing stop dinamis memang bagus, floating minus jadi lebih terkontrol."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-laptop fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">PC & Android</h3>
+            <p class="mt-2 tiny muted">Fleksibel dipantau dari mana saja.</p>
           </div>
 
-          <!-- Andi -->
           <div class="glass reveal float">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AW</div>
-              <div class="ml-3">
-                <p class="font-semibold">Andi W.</p>
-                <p class="tiny text-purple-300">Paket Premium</p>
-              </div>
-            </div>
-            <p class="italic tiny">"Dengan bonus 3 bulan, bisa fokus trading jangka panjang. RDP gratis juga membantu."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-clock fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Trading 24/5</h3>
+            <p class="mt-2 tiny muted">Otomatis mengikuti jam pasar global.</p>
           </div>
 
-          <!-- Maya -->
           <div class="glass reveal float float-slow">
-            <div class="flex items-center mb-3">
-              <div class="avatar bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">MR</div>
-              <div class="ml-3">
-                <p class="font-semibold">Maya R.</p>
-                <p class="tiny text-purple-300">Paket Premium</p>
-              </div>
-            </div>
-            <p class="italic tiny">"Support 24 jam responsif banget. Jam 11 malam tanya masalah juga langsung dibantu."</p>
-            <div class="mt-3 text-yellow-400 tiny"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="flex justify-center mb-4"><div class="icon-circle"><i class="fas fa-sliders-h fa-lg"></i></div></div>
+            <h3 class="text-lg font-semibold">Pengaturan Fleksibel</h3>
+            <p class="mt-2 tiny muted">Sesuaikan dengan risk tolerance Anda.</p>
           </div>
-        </div>
-
-        <div class="text-center mt-8 reveal">
-          <a href="#pricing" class="btn-cta"><i class="fas fa-hand-holding-dollar"></i> Bergabung Sekarang</a>
         </div>
       </div>
     </section>
 
     <!-- PRICING -->
     <section id="pricing" class="py-16">
-      <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-10 reveal">
-          <h2 class="text-2xl md:text-3xl font-bold gradient-text">Pilih Paket Anda</h2>
+          <h2 class="text-3xl font-bold neon-text">Pilih Paket</h2>
+          <p class="muted">Harga transparan. Semua paket termasuk panduan & support.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -329,57 +219,57 @@
           <div class="price-card reveal flex flex-col">
             <h3 class="text-xl font-bold mb-2">M15 MINGGUAN</h3>
             <p class="text-3xl font-extrabold text-violet-300 mb-4">IDR 150,000</p>
-            <ul class="mb-6 space-y-2 tiny text-slate-300">
+            <ul class="mb-6 space-y-2 tiny">
               <li><i class="fas fa-check text-violet-400 mr-2"></i>7+ Indikator Premium</li>
               <li><i class="fas fa-check text-violet-400 mr-2"></i>Keamanan Tinggi</li>
               <li><i class="fas fa-check text-violet-400 mr-2"></i>Support PC & Android</li>
               <li><i class="fas fa-check text-violet-400 mr-2"></i>Panduan Lengkap</li>
             </ul>
-            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Mingguan" class="mt-auto btn-cta">Beli via WhatsApp</a>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Mingguan" class="mt-auto btn-cta" aria-label="Beli Paket Mingguan">Beli via WhatsApp</a>
           </div>
 
           <!-- Bulanan -->
           <div class="price-card reveal flex flex-col">
             <h3 class="text-xl font-bold mb-2">M15 BULANAN</h3>
             <p class="text-3xl font-extrabold text-blue-300 mb-4">IDR 500,000</p>
-            <ul class="mb-6 space-y-2 tiny text-slate-300">
+            <ul class="mb-6 space-y-2 tiny">
               <li><i class="fas fa-check text-blue-400 mr-2"></i>Semua fitur Mingguan</li>
-              <li><i class="fas fa-check text-blue-400 mr-2"></i>RDP terpisah (optional)</li>
+              <li><i class="fas fa-check text-blue-400 mr-2"></i>RDP terpisah (opsional)</li>
               <li><i class="fas fa-check text-blue-400 mr-2"></i>Priority Support</li>
               <li><i class="fas fa-check text-blue-400 mr-2"></i>Update Otomatis</li>
             </ul>
-            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Bulanan" class="mt-auto btn-cta">Beli via WhatsApp</a>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Bulanan" class="mt-auto btn-cta" aria-label="Beli Paket Bulanan">Beli via WhatsApp</a>
           </div>
 
-          <!-- Premium -->
-          <div class="price-card reveal relative" style="border:1px solid rgba(155,89,255,0.12); background: linear-gradient(180deg, rgba(155,89,255,0.03), rgba(111,66,193,0.02));">
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold">POPULAR</div>
+          <!-- Premium Popular -->
+          <div class="price-card reveal relative" style="border:1px solid rgba(155,89,255,.12); background:linear-gradient(180deg,rgba(155,89,255,.03),rgba(111,66,193,.02))">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold">POPULAR</div>
             <h3 class="text-xl font-bold mb-2">M15 PREMIUM</h3>
             <p class="text-3xl font-extrabold text-purple-300 mb-4">IDR 2,000,000</p>
-            <ul class="mb-6 space-y-2 tiny text-slate-300">
+            <ul class="mb-6 space-y-2 tiny">
               <li><i class="fas fa-check text-purple-400 mr-2"></i>Bonus Lisensi 3 bulan</li>
               <li><i class="fas fa-check text-purple-400 mr-2"></i>RDP GRATIS 2 bulan</li>
               <li><i class="fas fa-check text-purple-400 mr-2"></i>Perpanjangan Rp 100.000/bulan</li>
               <li><i class="fas fa-check text-purple-400 mr-2"></i>VIP Support Group</li>
             </ul>
-            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Premium" class="mt-auto btn-cta">Beli via WhatsApp</a>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Premium" class="mt-auto btn-cta" aria-label="Beli Paket Premium">Beli via WhatsApp</a>
           </div>
 
           <!-- Ultimate -->
           <div class="price-card reveal flex flex-col">
             <h3 class="text-xl font-bold mb-2">M15 ULTIMATE</h3>
             <p class="text-3xl font-extrabold text-indigo-300 mb-4">IDR 7,500,000</p>
-            <ul class="mb-6 space-y-2 tiny text-slate-300">
+            <ul class="mb-6 space-y-2 tiny">
               <li><i class="fas fa-check text-indigo-400 mr-2"></i>Lisensi GRATIS 6 bulan</li>
               <li><i class="fas fa-check text-indigo-400 mr-2"></i>RDP GRATIS 6 bulan</li>
               <li><i class="fas fa-check text-indigo-400 mr-2"></i>Perpanjangan Rp 50.000/bulan</li>
               <li><i class="fas fa-check text-indigo-400 mr-2"></i>Personal Konsultasi</li>
             </ul>
-            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Ultimate" class="mt-auto btn-cta">Beli via WhatsApp</a>
+            <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Ultimate" class="mt-auto btn-cta" aria-label="Beli Paket Ultimate">Beli via WhatsApp</a>
           </div>
 
-          <!-- Elit Unlimited -->
-          <div class="price-card reveal lg:col-span-3" style="background: linear-gradient(90deg,#071126,#041024); border:1px solid rgba(255,255,255,0.04);">
+          <!-- Elit Unlimited (full width) -->
+          <div class="price-card reveal lg:col-span-3" style="background:linear-gradient(90deg,#071126,#041024); border:1px solid rgba(255,255,255,.06)">
             <div class="max-w-4xl mx-auto text-center py-6">
               <h3 class="text-xl font-bold mb-2 neon-text">M15 ELIT UNLIMITED</h3>
               <p class="text-4xl font-extrabold text-yellow-300 mb-4">IDR 25,000,000</p>
@@ -389,47 +279,161 @@
                 <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>Semua update & fitur premium</li>
                 <li class="text-slate-300"><i class="fas fa-check text-yellow-300 mr-2"></i>Exclusive Benefits</li>
               </ul>
-              <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Elit%20Unlimited" class="btn-cta">Beli via WhatsApp</a>
+              <a href="https://wa.me/6289528311840?text=Saya%20ingin%20beli%20paket%20M15%20Elit%20Unlimited" class="btn-cta" aria-label="Beli Paket Elit Unlimited">Beli via WhatsApp</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- TESTIMONI -->
+    <section id="testimoni" class="py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-8 reveal">
+          <h2 class="text-3xl font-bold neon-text">Testimoni Pengguna</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card -->
+          <article class="glass reveal" aria-label="Testimoni Rina">
+            <div class="flex items-center mb-3">
+              <div class="bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">RN</div>
+              <div class="ml-3">
+                <p class="font-semibold">Rina M.</p>
+                <p class="tiny text-violet-300">Paket Mingguan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Paket mingguan cocok untuk pemula seperti saya. Bisa belajar dulu sebelum commit lebih besar."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 4 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+          </article>
+
+          <article class="glass reveal float" aria-label="Testimoni Lutfi">
+            <div class="flex items-center mb-3">
+              <div class="bg-violet-600 text-white rounded-md w-10 h-10 flex items-center justify-center">LT</div>
+              <div class="ml-3">
+                <p class="font-semibold">Lutfi A.</p>
+                <p class="tiny text-violet-300">Paket Mingguan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Bisa jalan di Android, jadi praktis monitoring sambil kerja. Instalasi juga mudah."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 5 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </article>
+
+          <article class="glass reveal float float-slow" aria-label="Testimoni Sari">
+            <div class="flex items-center mb-3">
+              <div class="bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">SR</div>
+              <div class="ml-3">
+                <p class="font-semibold">Sari L.</p>
+                <p class="tiny text-blue-300">Paket Bulanan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"CS membantu remote install karena saya gaptek. Sekarang bisa trading otomatis."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 5 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </article>
+
+          <article class="glass reveal" aria-label="Testimoni Agus">
+            <div class="flex items-center mb-3">
+              <div class="bg-blue-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AS</div>
+              <div class="ml-3">
+                <p class="font-semibold">Agus S.</p>
+                <p class="tiny text-blue-300">Paket Bulanan</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Fitur trailing stop dinamis memang bagus, floating minus jadi lebih terkontrol."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 4 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+          </article>
+
+          <article class="glass reveal float" aria-label="Testimoni Andi">
+            <div class="flex items-center mb-3">
+              <div class="bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">AW</div>
+              <div class="ml-3">
+                <p class="font-semibold">Andi W.</p>
+                <p class="tiny text-purple-300">Paket Premium</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Dengan bonus 3 bulan, bisa fokus trading jangka panjang. RDP gratis juga membantu."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 5 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </article>
+
+          <article class="glass reveal float float-slow" aria-label="Testimoni Maya">
+            <div class="flex items-center mb-3">
+              <div class="bg-purple-600 text-white rounded-md w-10 h-10 flex items-center justify-center">MR</div>
+              <div class="ml-3">
+                <p class="font-semibold">Maya R.</p>
+                <p class="tiny text-purple-300">Paket Premium</p>
+              </div>
+            </div>
+            <p class="italic tiny">"Support 24 jam responsif banget. Jam 11 malam tanya masalah juga langsung dibantu."</p>
+            <div class="mt-3 text-yellow-400 tiny" aria-label="Rating 5 dari 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </article>
+        </div>
+
+        <div class="text-center mt-8 reveal">
+          <a href="#pricing" class="btn-cta"><i class="fas fa-hand-holding-dollar"></i> Bergabung Sekarang</a>
+        </div>
+      </div>
+    </section>
+
     <!-- CARA PEMBELIAN -->
-    <section class="py-16">
-      <div class="max-w-4xl mx-auto px-6 text-center">
+    <section id="cara" class="py-16">
+      <div class="max-w-5xl mx-auto px-6 text-center">
         <div class="reveal">
-          <h2 class="text-2xl font-bold gradient-text mb-6">Cara Pembelian</h2>
+          <h2 class="text-3xl font-bold neon-text mb-6">Cara Pembelian</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="glass reveal text-center">
-            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">1</div>
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,.12); width:48px;height:48px;border-radius:999px;">1</div>
             <h3 class="font-bold">Pilih Paket</h3>
-            <p class="tiny mt-2">Pilih paket sesuai kebutuhan dan klik "Beli via WhatsApp".</p>
+            <p class="tiny mt-2 muted">Pilih paket sesuai kebutuhan dan klik "Beli via WhatsApp".</p>
           </div>
 
           <div class="glass reveal text-center">
-            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">2</div>
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,.12); width:48px;height:48px;border-radius:999px;">2</div>
             <h3 class="font-bold">Konfirmasi</h3>
-            <p class="tiny mt-2">Kirim bukti pembayaran ke WhatsApp 0895-2831-1840.</p>
+            <p class="tiny mt-2 muted">Kirim bukti pembayaran ke WhatsApp 0895-2831-1840.</p>
           </div>
 
           <div class="glass reveal text-center">
-            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,0.12); width:48px;height:48px;border-radius:999px;">3</div>
+            <div class="w-12 h-12 mx-auto mb-4 neon-text rounded-full inline-flex items-center justify-center" style="background:rgba(155,89,255,.12); width:48px;height:48px;border-radius:999px;">3</div>
             <h3 class="font-bold">Terima Akses</h3>
-            <p class="tiny mt-2">Dapatkan file bot, panduan, lisensi & bonus.</p>
+            <p class="tiny mt-2 muted">Dapatkan file bot, panduan, lisensi & bonus.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-8 reveal">
+          <h2 class="text-3xl font-bold neon-text">Pertanyaan Umum</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="glass reveal">
+            <summary class="cursor-pointer font-semibold">Apakah bot menjamin profit?</summary>
+            <p class="tiny mt-2 muted">Tidak. Bot adalah alat bantu. Hasil dipengaruhi kondisi pasar dan manajemen risiko.</p>
+          </details>
+          <details class="glass reveal">
+            <summary class="cursor-pointer font-semibold">Butuh VPS/RDP?</summary>
+            <p class="tiny mt-2 muted">Direkomendasikan agar running stabil 24/5. Beberapa paket sudah termasuk bonus RDP.</p>
+          </details>
+          <details class="glass reveal">
+            <summary class="cursor-pointer font-semibold">Bisa di Android?</summary>
+            <p class="tiny mt-2 muted">Bisa. Monitoring & kontrol via Android, instalasi awal dibantu tim.</p>
+          </details>
+          <details class="glass reveal">
+            <summary class="cursor-pointer font-semibold">Bagaimana setelah membeli?</summary>
+            <p class="tiny mt-2 muted">Anda akan menerima file bot, panduan, lisensi, serta dukungan instalasi remote bila diperlukan.</p>
+          </details>
         </div>
       </div>
     </section>
 
     <!-- DISCLAIMER -->
     <section class="py-8">
-      <div class="max-w-4xl mx-auto px-6">
-        <div class="glass flex items-center gap-4">
-          <i class="fas fa-exclamation-triangle text-amber-400 text-2xl"></i>
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="glass flex items-start gap-4">
+          <i class="fas fa-exclamation-triangle text-amber-400 text-2xl mt-1"></i>
           <div class="tiny text-amber-200">
             Bot trading adalah alat bantu, <strong>bukan jaminan profit</strong>. Hasil tergantung pada kondisi pasar dan manajemen risiko pengguna. Produk digital tidak dapat dikembalikan setelah pembelian. <strong>Trading mengandung risiko.</strong>
           </div>
@@ -438,31 +442,26 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-8">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <h3 class="text-xl font-bold neon-text mb-3">EAGLETRADEAVL</h3>
-        <p class="tiny text-slate-300 mb-4">Bot Trading XAUUSD Terpercaya</p>
-
+    <footer class="pt-10 pb-8">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h3 class="text-xl font-bold neon-text mb-2">EAGLETRADEAVL</h3>
+        <p class="tiny muted mb-4">Bot Trading XAUUSD Terpercaya</p>
         <div class="flex justify-center gap-4 mb-4">
-          <a href="https://wa.me/6289528311840" class="wa-btn" aria-label="WhatsApp Support"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
+          <a href="https://wa.me/6289528311840" class="btn-cta" aria-label="WhatsApp Support"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
         </div>
-
-        <div class="tiny text-slate-400">
-          <p>&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
-          <p class="mt-2">WhatsApp: 0895-2831-1840</p>
-        </div>
+        <p class="tiny text-slate-400">&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
+        <p class="tiny text-slate-500 mt-1">WhatsApp: 0895-2831-1840</p>
       </div>
     </footer>
+  </div>
 
-  </div><!-- /.page -->
-
-  <!-- Scripts: particles (light), scroll reveal, smooth anchors -->
+  <!-- Scripts: particles, smooth anchors, intersection reveal, nav active, mobile menu -->
   <script>
-    // Smooth anchor scrolling
+    // Smooth anchor
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const href=a.getAttribute('href');
-        if(href.length>1){
+        if(href && href.length>1){
           e.preventDefault();
           const el=document.querySelector(href);
           if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
@@ -470,96 +469,80 @@
       });
     });
 
-    // IntersectionObserver reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
+    // Intersection reveal
+    const reveals=document.querySelectorAll('.reveal');
+    const io=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           entry.target.classList.add('show');
           io.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.12});
+    },{threshold:.12});
     reveals.forEach(r=>io.observe(r));
+
+    // Mobile menu toggle
+    const menuBtn=document.getElementById('menuBtn');
+    const mobileMenu=document.getElementById('mobileMenu');
+    if(menuBtn){
+      menuBtn.addEventListener('click',()=>{
+        const open=mobileMenu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // Active nav highlight on scroll
+    const sections=['#fitur','#pricing','#testimoni','#cara','#faq'];
+    const links=[...document.querySelectorAll('.nav-link')];
+    const so=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const id='#'+entry.target.id;
+        if(entry.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          const current=links.find(l=>l.getAttribute('href')===id);
+          if(current) current.classList.add('active');
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px', threshold:0});
+    sections.forEach(sel=>{ const el=document.querySelector(sel); if(el) so.observe(el); });
 
     /* ---------- PARTICLE BACKGROUND (subtle purple neon) ---------- */
     (function(){
-      const canvas = document.getElementById('particle-canvas');
-      const ctx = canvas.getContext('2d');
-      let w=canvas.width=innerWidth;
-      let h=canvas.height=innerHeight;
-      const DPR = window.devicePixelRatio || 1;
-      canvas.width = w * DPR;
-      canvas.height = h * DPR;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
-      ctx.scale(DPR, DPR);
+      const canvas=document.getElementById('particle-canvas');
+      if(!canvas) return;
+      const ctx=canvas.getContext('2d');
+      let w=canvas.width=innerWidth; let h=canvas.height=innerHeight; const DPR=window.devicePixelRatio||1;
+      function setSize(){
+        canvas.width=innerWidth*DPR; canvas.height=innerHeight*DPR; canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px'; ctx.setTransform(DPR,0,0,DPR,0,0);
+      }
+      setSize();
+      window.addEventListener('resize', setSize);
 
-      // particles: small, subtle, slow
-      const particles = [];
-      const count = Math.max(12, Math.floor((w*h)/90000)); // relative density
+      // Respect reduced motion
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const particles=[]; const count=Math.max(12, Math.floor((innerWidth*innerHeight)/90000));
       for(let i=0;i<count;i++){
-        particles.push({
-          x: Math.random()*w,
-          y: Math.random()*h,
-          r: 0.8 + Math.random()*2.2,
-          vx: (Math.random()-0.5)*0.2,
-          vy: (Math.random()-0.5)*0.2,
-          alpha: 0.08 + Math.random()*0.18,
-          phase: Math.random()*Math.PI*2
-        });
+        particles.push({ x:Math.random()*innerWidth, y:Math.random()*innerHeight, r:.8+Math.random()*2.2, vx:(Math.random()-.5)*.2, vy:(Math.random()-.5)*.2, alpha:.08+Math.random()*.18, phase:Math.random()*Math.PI*2 });
       }
-
-      function resize(){
-        w = canvas.width = innerWidth * DPR;
-        h = canvas.height = innerHeight * DPR;
-        canvas.style.width = innerWidth + 'px';
-        canvas.style.height = innerHeight + 'px';
-        ctx.setTransform(DPR,0,0,DPR,0,0);
-      }
-      window.addEventListener('resize', () => {
-        resize();
-      });
-
-      let t = 0;
+      let t=0;
       function draw(){
-        t += 0.01;
-        ctx.clearRect(0,0,innerWidth,innerHeight);
-
-        // very subtle radial gradient for depth
-        const g = ctx.createRadialGradient(innerWidth*0.75, innerHeight*0.25, 50, innerWidth*0.5, innerHeight*0.5, Math.max(innerWidth, innerHeight));
-        g.addColorStop(0, 'rgba(120,70,190,0.03)');
-        g.addColorStop(1, 'rgba(5,7,12,0.0)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0,0,innerWidth,innerHeight);
-
+        t+=.01; ctx.clearRect(0,0,innerWidth,innerHeight);
+        const g=ctx.createRadialGradient(innerWidth*.75, innerHeight*.25, 50, innerWidth*.5, innerHeight*.5, Math.max(innerWidth, innerHeight));
+        g.addColorStop(0,'rgba(120,70,190,.03)'); g.addColorStop(1,'rgba(5,7,12,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,innerWidth,innerHeight);
         for(let p of particles){
-          p.x += p.vx + Math.sin(t + p.phase)*0.05;
-          p.y += p.vy + Math.cos(t + p.phase)*0.03;
-
-          // wrap
-          if(p.x > innerWidth + 20) p.x = -20;
-          if(p.x < -20) p.x = innerWidth + 20;
-          if(p.y > innerHeight + 20) p.y = -20;
-          if(p.y < -20) p.y = innerHeight + 20;
-
-          // draw soft glow
-          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r*12);
-          grd.addColorStop(0, `rgba(155,89,255, ${p.alpha})`);
-          grd.addColorStop(0.4, `rgba(155,89,255, ${p.alpha*0.35})`);
-          grd.addColorStop(1, `rgba(155,89,255, 0)`);
-          ctx.beginPath();
-          ctx.fillStyle = grd;
-          ctx.arc(p.x, p.y, p.r*6, 0, Math.PI*2);
-          ctx.fill();
+          if(!reduce){ p.x+=p.vx+Math.sin(t+p.phase)*.05; p.y+=p.vy+Math.cos(t+p.phase)*.03; }
+          if(p.x>innerWidth+20) p.x=-20; if(p.x<-20) p.x=innerWidth+20; if(p.y>innerHeight+20) p.y=-20; if(p.y<-20) p.y=innerHeight+20;
+          const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*12);
+          grd.addColorStop(0,`rgba(155,89,255, ${p.alpha})`);
+          grd.addColorStop(.4,`rgba(155,89,255, ${p.alpha*.35})`);
+          grd.addColorStop(1,'rgba(155,89,255, 0)');
+          ctx.beginPath(); ctx.fillStyle=grd; ctx.arc(p.x,p.y,p.r*6,0,Math.PI*2); ctx.fill();
         }
-
         requestAnimationFrame(draw);
       }
-
       draw();
     })();
   </script>
-
 </body>
 </html>
