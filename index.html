@@ -1,241 +1,259 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EAGLETRADEAVL – Alat Bantu Trading XAUUSD Otomatis</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EAGLETRADEAVL – Alat Bantu Trading XAUUSD</title>
 
-    <!-- SEO SAFE -->
-    <meta
-      name="description"
-      content="EAGLETRADEAVL adalah alat bantu trading otomatis XAUUSD M15 berbasis rule & manajemen risiko. Bukan layanan investasi dan tidak menjamin profit."
-    />
-    <meta name="robots" content="index, follow" />
+  <!-- SEO SAFE -->
+  <meta name="description" content="EAGLETRADEAVL adalah alat bantu trading otomatis XAUUSD M15 berbasis rule dan manajemen risiko. Bukan layanan investasi dan tidak menjamin profit.">
+  <meta name="robots" content="index, follow">
 
-    <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="EAGLETRADEAVL – Alat Bantu Trading XAUUSD"
-    />
-    <meta
-      property="og:description"
-      content="Alat bantu trading otomatis berbasis parameter & manajemen risiko. Trading memiliki risiko."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="id_ID" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="EAGLETRADEAVL – Alat Bantu Trading XAUUSD">
+  <meta property="og:description" content="Alat bantu trading otomatis berbasis parameter dan manajemen risiko. Trading memiliki risiko.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <style>
-      body {
-        margin: 0;
-        font-family: Montserrat, system-ui;
-        background: linear-gradient(180deg, #05050a, #0b0f18);
-        color: #e5e7eb;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: Orbitron;
-      }
-      .neon {
-        background: linear-gradient(90deg, #9b59ff, #6f42c1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 14px;
-        padding: 1.2rem;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.7rem 1.4rem;
-        border-radius: 999px;
-        font-weight: 700;
-        background: linear-gradient(90deg, #9b59ff, #6f42c1);
-        color: #0b0810;
-        text-decoration: none;
-      }
-      footer a {
-        color: #cbd5e1;
-      }
-      footer a:hover {
-        color: white;
-      }
-    </style>
-  </head>
+  <style>
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui;
+      background:linear-gradient(180deg,#05050a,#0b0f18);
+      color:#e5e7eb;
+    }
+    h1,h2,h3{font-family:Orbitron}
+    .neon{
+      background:linear-gradient(90deg,#9b59ff,#6f42c1);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .glass{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px;
+      padding:1.2rem;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      padding:.7rem 1.4rem;
+      border-radius:999px;
+      font-weight:700;
+      background:linear-gradient(90deg,#9b59ff,#6f42c1);
+      color:#0b0810;
+      text-decoration:none;
+    }
+    footer a{color:#cbd5e1}
+    footer a:hover{color:white}
+  </style>
+</head>
 
-  <body>
-    <!-- NAV -->
-    <header
-      class="sticky top-0 bg-black/40 backdrop-blur border-b border-white/10 z-50"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center"
-      >
-        <span class="text-xl font-bold neon">EAGLETRADEAVL</span>
-        <a href="https://wa.me/6289528311840" class="btn"
-          ><i class="fab fa-whatsapp"></i> Konsultasi</a
-        >
-      </div>
-    </header>
+<body>
 
-    <!-- HERO -->
-    <section class="py-20 text-center">
-      <div class="max-w-4xl mx-auto px-6">
-        <h1 class="text-4xl md:text-6xl font-bold neon">
-          Alat Bantu Trading XAUUSD M15
-        </h1>
-        <p class="mt-6 text-lg text-slate-300">
-          Membantu otomatisasi eksekusi trading berbasis parameter dan manajemen
-          risiko.
-          <br />
-          <strong>Bukan layanan investasi dan tidak menjamin profit.</strong>
+<!-- NAV -->
+<header class="sticky top-0 bg-black/40 backdrop-blur border-b border-white/10 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <span class="text-xl font-bold neon">EAGLETRADEAVL</span>
+    <a href="https://wa.me/6289528311840" class="btn">
+      <i class="fab fa-whatsapp"></i> Konsultasi
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="py-20 text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h1 class="text-4xl md:text-6xl font-bold neon">
+      Alat Bantu Trading XAUUSD M15
+    </h1>
+    <p class="mt-6 text-lg text-slate-300">
+      Membantu otomatisasi eksekusi trading berbasis parameter
+      dan manajemen risiko.
+      <br>
+      <strong>Bukan layanan investasi dan tidak menjamin profit.</strong>
+    </p>
+
+    <div class="mt-8 flex justify-center gap-4 flex-wrap">
+      <a href="#paket" class="btn">
+        <i class="fas fa-box"></i> Lihat Paket
+      </a>
+      <a href="risk.html" class="border border-white/20 px-6 py-3 rounded-full text-sm">
+        Risk Disclosure
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold neon text-center mb-10">Fitur Utama</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass text-center">
+        <i class="fas fa-sliders-h text-2xl mb-3"></i>
+        <h3 class="font-semibold">Rule-Based System</h3>
+        <p class="text-sm text-slate-300 mt-2">
+          Sistem berbasis aturan dan parameter terukur.
         </p>
-
-        <div class="mt-8 flex justify-center gap-4 flex-wrap">
-          <a href="#paket" class="btn"
-            ><i class="fas fa-box"></i> Lihat Paket</a
-          >
-          <a
-            href="risk.html"
-            class="border border-white/20 px-6 py-3 rounded-full text-sm"
-          >
-            Risk Disclosure
-          </a>
-        </div>
       </div>
-    </section>
 
-    <!-- FEATURES -->
-    <section class="py-16">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold neon text-center mb-10">Fitur Utama</h2>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="glass text-center">
-            <i class="fas fa-sliders-h text-2xl mb-3"></i>
-            <h3 class="font-semibold">Rule-Based System</h3>
-            <p class="text-sm text-slate-300 mt-2">
-              Berbasis parameter & logika trading terukur.
-            </p>
-          </div>
-
-          <div class="glass text-center">
-            <i class="fas fa-shield-halved text-2xl mb-3"></i>
-            <h3 class="font-semibold">Manajemen Risiko</h3>
-            <p class="text-sm text-slate-300 mt-2">
-              Mendukung SL, TP, dan kontrol risiko pengguna.
-            </p>
-          </div>
-
-          <div class="glass text-center">
-            <i class="fas fa-desktop text-2xl mb-3"></i>
-            <h3 class="font-semibold">PC & Android</h3>
-            <p class="text-sm text-slate-300 mt-2">
-              Monitoring fleksibel melalui PC atau Android.
-            </p>
-          </div>
-        </div>
+      <div class="glass text-center">
+        <i class="fas fa-shield-halved text-2xl mb-3"></i>
+        <h3 class="font-semibold">Manajemen Risiko</h3>
+        <p class="text-sm text-slate-300 mt-2">
+          Mendukung kontrol risiko, SL, dan pengaturan lot.
+        </p>
       </div>
-    </section>
 
-    <!-- PRICING -->
-    <section id="paket" class="py-16 bg-black/20">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold neon text-center mb-10">Paket Lisensi</h2>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="glass">
-            <h3 class="font-bold text-xl">Mingguan</h3>
-            <p class="text-2xl mt-2">IDR 150.000</p>
-            <p class="text-sm text-slate-300 mt-3">
-              Lisensi 7 hari + panduan instalasi.
-            </p>
-            <a
-              href="https://wa.me/6289528311840"
-              class="btn mt-4 w-full justify-center"
-            >
-              Beli via WhatsApp
-            </a>
-          </div>
-
-          <div class="glass border-purple-500/30">
-            <h3 class="font-bold text-xl">Bulanan</h3>
-            <p class="text-2xl mt-2">IDR 500.000</p>
-            <p class="text-sm text-slate-300 mt-3">
-              Lisensi 30 hari + support prioritas.
-            </p>
-            <a
-              href="https://wa.me/6289528311840"
-              class="btn mt-4 w-full justify-center"
-            >
-              Beli via WhatsApp
-            </a>
-          </div>
-
-          <div class="glass">
-            <h3 class="font-bold text-xl">Premium</h3>
-            <p class="text-2xl mt-2">IDR 2.000.000</p>
-            <p class="text-sm text-slate-300 mt-3">
-              Lisensi panjang + bonus support.
-            </p>
-            <a
-              href="https://wa.me/6289528311840"
-              class="btn mt-4 w-full justify-center"
-            >
-              Beli via WhatsApp
-            </a>
-          </div>
-        </div>
+      <div class="glass text-center">
+        <i class="fas fa-desktop text-2xl mb-3"></i>
+        <h3 class="font-semibold">PC & Android</h3>
+        <p class="text-sm text-slate-300 mt-2">
+          Monitoring fleksibel dari PC maupun Android.
+        </p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- DISCLAIMER -->
-    <section class="py-10">
-      <div class="max-w-4xl mx-auto px-6">
-        <div class="glass text-sm text-amber-300">
-          ⚠️ Trading memiliki risiko tinggi. EAGLETRADEAVL adalah
-          <strong>alat bantu</strong>, bukan pengelola dana dan tidak memberikan
-          jaminan hasil.
-        </div>
+<!-- REPUTASI -->
+<section class="py-16 bg-black/20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold neon text-center mb-10">
+      Reputasi & Pengalaman Pengguna
+    </h2>
+
+    <p class="text-center text-slate-300 max-w-3xl mx-auto mb-12 text-sm">
+      Berikut merupakan <strong>contoh pengalaman penggunaan</strong> alat bantu EAGLETRADEAVL
+      berdasarkan konfigurasi, manajemen risiko, dan kondisi pasar.
+      <br><br>
+      <strong>Hasil setiap pengguna dapat berbeda dan tidak bersifat jaminan.</strong>
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Hasil Bertahap</h3>
+        <p class="text-sm text-slate-300">
+          Beberapa pengguna melaporkan hasil bertahap sekitar
+          <strong>2–5% per bulan</strong> dengan pengaturan konservatif.
+        </p>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="py-10 border-t border-white/10">
-      <div class="max-w-6xl mx-auto px-6 text-center text-sm text-slate-400">
-        <p class="font-bold neon mb-2">EAGLETRADEAVL</p>
-
-        <div class="space-x-4 mb-4">
-          <a href="about.html">About</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="risk.html">Risk Disclosure</a>
-        </div>
-
-        <p>&copy; 2025 EAGLETRADEAVL</p>
-        <p class="mt-1">WhatsApp: 0895-2831-1840</p>
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Fokus Disiplin</h3>
+        <p class="text-sm text-slate-300">
+          Sistem membantu menjaga disiplin dan mengurangi keputusan emosional.
+        </p>
       </div>
-    </footer>
-  </body>
+
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Timeframe M15</h3>
+        <p class="text-sm text-slate-300">
+          Digunakan untuk membantu eksekusi pada volatilitas XAUUSD M15.
+        </p>
+      </div>
+
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Kontrol Drawdown</h3>
+        <p class="text-sm text-slate-300">
+          Pengguna dengan risk management baik melaporkan drawdown lebih terkontrol.
+        </p>
+      </div>
+
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Efisiensi Waktu</h3>
+        <p class="text-sm text-slate-300">
+          Membantu efisiensi waktu dibanding trading manual penuh.
+        </p>
+      </div>
+
+      <div class="glass">
+        <h3 class="font-semibold mb-2">Bukan Sistem Cepat Kaya</h3>
+        <p class="text-sm text-slate-300">
+          Digunakan sebagai alat bantu bagi trader yang memahami risiko.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="paket" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold neon text-center mb-10">Paket Lisensi</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- BULANAN -->
+      <div class="glass">
+        <h3 class="font-bold text-xl mb-2">Paket Bulanan</h3>
+        <p class="text-3xl font-bold">Rp 150.000</p>
+        <p class="text-sm text-slate-300 mt-3">
+          Lisensi aktif per bulan. Cocok untuk pengguna yang ingin fleksibel.
+        </p>
+        <a href="https://wa.me/6289528311840" class="btn mt-5 w-full">
+          Beli via WhatsApp
+        </a>
+      </div>
+
+      <!-- TAHUNAN -->
+      <div class="glass border-purple-500/30">
+        <h3 class="font-bold text-xl mb-2">Paket Tahunan</h3>
+        <p class="text-3xl font-bold">Rp 500.000</p>
+        <p class="text-sm text-slate-300 mt-2">
+          Biaya registrasi awal.
+        </p>
+        <p class="text-sm text-slate-300 mt-1">
+          Lisensi berjalan: <strong>Rp 50.000 / bulan</strong>
+        </p>
+        <a href="https://wa.me/6289528311840" class="btn mt-5 w-full">
+          Beli via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="py-10">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="glass text-sm text-amber-300">
+      ⚠️ Trading memiliki risiko.  
+      EAGLETRADEAVL adalah alat bantu, bukan pengelola dana dan tidak menjamin hasil.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-6 text-center text-sm text-slate-400">
+    <p class="font-bold neon mb-2">EAGLETRADEAVL</p>
+
+    <div class="space-x-4 mb-4">
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="risk.html">Risk Disclosure</a>
+    </div>
+
+    <p>&copy; 2025 EAGLETRADEAVL</p>
+    <p class="mt-1">WhatsApp: 0895-2831-1840</p>
+  </div>
+</footer>
+
+</body>
 </html>
