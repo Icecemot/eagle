@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EAGLETRADEAVL – Alat Bantu Trading XAUUSD</title>
+  <title>EAGLETRADEAVL V3.1 – Alat Bantu Trading XAUUSD</title>
 
   <!-- SEO SAFE -->
-  <meta name="description" content="EAGLETRADEAVL adalah alat bantu trading XAUUSD M15 berbasis rule dan manajemen risiko. Bukan layanan investasi dan tidak menjamin hasil.">
+  <meta name="description" content="EA XAUUSD M1 dengan Price Action, Choppiness Index Filter, News Filter, dan Market Hours Guard. Bukan layanan investasi.">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="EAGLETRADEAVL – Alat Bantu Trading XAUUSD">
-  <meta property="og:description" content="Alat bantu trading berbasis parameter dan manajemen risiko. Trading memiliki risiko.">
+  <meta property="og:title" content="EAGLETRADEAVL V3.1 – EA XAUUSD M1 CI Filter">
+  <meta property="og:description" content="Bot trading XAUUSD dengan proteksi News, Sideways (CI), dan Manajemen Risiko Otomatis.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="id_ID">
 
@@ -21,238 +21,425 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    body{
-      margin:0;
-      font-family:Montserrat,system-ui;
-      background:linear-gradient(180deg,#05050a,#0b0f18);
-      color:#e5e7eb;
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', system-ui;
+      background: #05050a;
+      color: #e5e7eb;
+      overflow-x: hidden;
     }
-    h1,h2,h3{font-family:Orbitron}
-    .neon{
-      background:linear-gradient(90deg,#9b59ff,#6f42c1);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+
+    h1, h2, h3, h4 {
+      font-family: 'Orbitron', sans-serif;
     }
-    .glass{
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:14px;
-      padding:1.2rem;
+
+    /* Neon Gradient Text */
+    .neon-text {
+      background: linear-gradient(90deg, #a78bfa, #7c3aed, #a78bfa);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
     }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.5rem;
-      padding:.7rem 1.4rem;
-      border-radius:999px;
-      font-weight:700;
-      background:linear-gradient(90deg,#9b59ff,#6f42c1);
-      color:#0b0810;
-      text-decoration:none;
+
+    @keyframes shine {
+      to { background-position: 200% center; }
     }
-    footer a{color:#cbd5e1}
-    footer a:hover{color:white}
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(167, 139, 250, 0.2);
+      box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.2);
+    }
+
+    /* Pricing Card Specific Style (Clean Look) */
+    .pricing-card {
+      background: linear-gradient(145deg, rgba(20, 10, 30, 0.8), rgba(5, 5, 10, 0.9));
+      border: 1px solid rgba(167, 139, 250, 0.3); /* Solid Purple Border */
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
+    }
+    
+    .pricing-card:hover {
+      border-color: rgba(167, 139, 250, 0.6);
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+    }
+
+    /* Button */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #9b59ff, #6f42c1);
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(111, 66, 193, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 25px rgba(111, 66, 193, 0.6);
+    }
+
+    /* Background Animation Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
+      animation: float 10s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, -30px); }
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Feature List Custom Bullet */
+    .feature-list li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .feature-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #a78bfa;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #05050a; }
+    ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 10px; }
   </style>
 </head>
 
-<body>
+<body class="relative">
 
-<!-- NAV -->
-<header class="sticky top-0 bg-black/40 backdrop-blur border-b border-white/10 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-    <span class="text-xl font-bold neon">EAGLETRADEAVL</span>
-    <a href="https://wa.me/6289528311840" class="btn">
-      <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
-    </a>
-  </div>
-</header>
+  <!-- Background Orbs -->
+  <div class="orb w-96 h-96 bg-purple-800 top-0 left-0 fixed"></div>
+  <div class="orb w-80 h-80 bg-indigo-900 bottom-10 right-0 fixed" style="animation-delay: 2s;"></div>
 
-<!-- HERO -->
-<section class="py-20 text-center">
-  <div class="max-w-4xl mx-auto px-6">
-    <h1 class="text-4xl md:text-6xl font-bold neon">
-      Alat Bantu Trading XAUUSD M15
-    </h1>
-    <p class="mt-6 text-lg text-slate-300">
-      Membantu proses eksekusi trading berbasis parameter
-      dan manajemen risiko.
-      <br>
-      <strong>Bukan layanan investasi dan tidak menjamin hasil.</strong>
-    </p>
-
-    <div class="mt-8 flex justify-center gap-4 flex-wrap">
-      <a href="#paket" class="btn">
-        <i class="fas fa-box"></i> Lihat Paket
-      </a>
-      <a href="risk.html" class="border border-white/20 px-6 py-3 rounded-full text-sm">
-        Risk Disclosure
+  <!-- NAV -->
+  <header class="sticky top-0 bg-black/60 backdrop-blur-xl border-b border-white/5 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <span class="text-2xl font-bold neon-text tracking-widest">EAGLETRADEAVL</span>
+      <a href="https://wa.me/6289528311840" class="btn-primary text-sm">
+        <i class="fab fa-whatsapp text-lg"></i> Hubungi Admin
       </a>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- FEATURES -->
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold neon text-center mb-10">Fitur Utama</h2>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="glass text-center">
-        <i class="fas fa-sliders-h text-2xl mb-3"></i>
-        <h3 class="font-semibold">Rule-Based System</h3>
-        <p class="text-sm text-slate-300 mt-2">
-          Sistem berbasis aturan dan parameter terukur.
-        </p>
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
+    <!-- Decorative Lines -->
+    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#7c3aed 1px, transparent 1px), linear-gradient(90deg, #7c3aed 1px, transparent 1px); background-size: 50px 50px;"></div>
+    
+    <div class="relative z-10">
+      <!-- Version Badge -->
+      <div class="inline-block bg-purple-900/30 border border-purple-500/30 text-purple-300 text-xs font-bold px-4 py-1 rounded-full mb-6 uppercase tracking-widest">
+        Version 1.0 - CI Filter 
       </div>
+      
+      <h1 class="text-4xl md:text-6xl font-black neon-text mb-6 leading-tight tracking-wide">
+        XAUUSD SCALPING EA
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 font-light">
+        Price Action M1 dengan <span class="text-white font-semibold">Choppiness Index</span>, News Filter, & Market Hours Guard.
+      </p>
+      <p class="text-sm text-slate-400 mb-10 max-w-xl mx-auto">
+        Sistem trading otomatis dengan manajemen risiko ketat. <span class="text-amber-400 font-semibold">Bukan layanan investasi dan tidak menjamin profit.</span>
+      </p>
 
-      <div class="glass text-center">
-        <i class="fas fa-shield-halved text-2xl mb-3"></i>
-        <h3 class="font-semibold">Manajemen Risiko</h3>
-        <p class="text-sm text-slate-300 mt-2">
-          Mendukung kontrol risiko, SL, dan pengaturan lot.
-        </p>
-      </div>
-
-      <div class="glass text-center">
-        <i class="fas fa-desktop text-2xl mb-3"></i>
-        <h3 class="font-semibold">PC & Android</h3>
-        <p class="text-sm text-slate-300 mt-2">
-          Monitoring fleksibel dari PC maupun Android.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REPUTASI -->
-<section class="py-16 bg-black/20">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold neon text-center mb-10">
-      Pengalaman Penggunaan
-    </h2>
-
-    <p class="text-center text-slate-300 max-w-3xl mx-auto mb-12 text-sm">
-      Berikut merupakan <strong>contoh pengalaman penggunaan</strong> alat bantu EAGLETRADEAVL
-      berdasarkan konfigurasi, manajemen risiko, dan kondisi pasar.
-      <br><br>
-      <strong>Hasil setiap pengguna dapat berbeda.</strong>
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Pendekatan Bertahap</h3>
-        <p class="text-sm text-slate-300">
-          Digunakan dengan pengaturan konservatif dan fokus pada kestabilan penggunaan.
-        </p>
-      </div>
-
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Fokus Disiplin</h3>
-        <p class="text-sm text-slate-300">
-          Sistem membantu menjaga disiplin dan mengurangi keputusan emosional.
-        </p>
-      </div>
-
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Timeframe M15</h3>
-        <p class="text-sm text-slate-300">
-          Digunakan untuk membantu eksekusi pada volatilitas XAUUSD M15.
-        </p>
-      </div>
-
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Kontrol Risiko</h3>
-        <p class="text-sm text-slate-300">
-          Pengguna dengan manajemen risiko baik melaporkan penggunaan yang lebih terkontrol.
-        </p>
-      </div>
-
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Efisiensi Waktu</h3>
-        <p class="text-sm text-slate-300">
-          Membantu efisiensi waktu dibanding trading manual penuh.
-        </p>
-      </div>
-
-      <div class="glass">
-        <h3 class="font-semibold mb-2">Bukan Sistem Instan</h3>
-        <p class="text-sm text-slate-300">
-          Digunakan sebagai alat bantu bagi trader yang memahami risiko.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="paket" class="py-16">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold neon text-center mb-10">Paket Lisensi</h2>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="glass">
-        <h3 class="font-bold text-xl mb-2">Paket Bulanan</h3>
-        <p class="text-3xl font-bold">Rp 150.000</p>
-        <p class="text-sm text-slate-300 mt-3">
-          Lisensi aktif per bulan.
-        </p>
-        <a href="https://wa.me/6289528311840" class="btn mt-5 w-full">
-          Hubungi via WhatsApp
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#paket" class="btn-primary text-lg px-8 py-4 shadow-lg shadow-purple-500/30">
+          <i class="fas fa-rocket"></i> Dapatkan Sekarang
         </a>
-      </div>
-
-      <div class="glass border-purple-500/30">
-        <h3 class="font-bold text-xl mb-2">Paket Tahunan</h3>
-        <p class="text-3xl font-bold">Rp 500.000</p>
-        <p class="text-sm text-slate-300 mt-2">
-          Biaya registrasi awal.
-        </p>
-        <p class="text-sm text-slate-300 mt-1">
-          Lisensi berjalan: Rp 75.000 / bulan
-        </p>
-        <a href="https://wa.me/6289528311840" class="btn mt-5 w-full">
-          Hubungi via WhatsApp
+        <a href="#features" class="px-8 py-4 rounded-full border border-white/20 text-sm hover:bg-white/5 transition">
+          Lihat Fitur Lengkap
         </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- DISCLAIMER -->
-<section class="py-10">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="glass text-sm text-amber-300">
-      ⚠️ Trading memiliki risiko.  
-      EAGLETRADEAVL adalah alat bantu, bukan pengelola dana dan tidak menjamin hasil.
+  <!-- MAIN FEATURES (Based on EA Code) -->
+  <section id="features" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold neon-text mb-4">Sistem Proteksi Utama</h2>
+        <p class="text-slate-400">Didesain untuk menghindari kondisi pasar berisiko tinggi.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Price Action -->
+        <div class="glass-card p-8 reveal">
+          <div class="w-14 h-14 mb-5 rounded-lg bg-purple-900/20 flex items-center justify-center text-purple-400 border border-purple-500/10">
+            <i class="fas fa-chart-line text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 text-white">Price Action M1</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Entry berbasis analisa candle body & pola trend (HH/HL). Dilengkapi RSI Filter untuk menghindari area jenuh beli/jual.
+          </p>
+          <div class="text-xs text-purple-300 bg-purple-900/10 px-3 py-1 rounded-full inline-block">Strict Trend Option</div>
+        </div>
+
+        <!-- Card 2: Choppiness Index -->
+        <div class="glass-card p-8 reveal" style="transition-delay: 0.1s;">
+          <div class="w-14 h-14 mb-5 rounded-lg bg-purple-900/20 flex items-center justify-center text-purple-400 border border-purple-500/10">
+            <i class="fas fa-water text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 text-white">Sideways Filter (CI)</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Menggunakan <strong>Choppiness Index</strong> untuk mendeteksi kondisi pasar datar/sideways. EA otomatis berhenti entry jika market tidak memiliki arah jelas.
+          </p>
+          <div class="text-xs text-purple-300 bg-purple-900/10 px-3 py-1 rounded-full inline-block">Anti Whipsaw</div>
+        </div>
+
+        <!-- Card 3: News & Time Guard -->
+        <div class="glass-card p-8 reveal" style="transition-delay: 0.2s;">
+          <div class="w-14 h-14 mb-5 rounded-lg bg-purple-900/20 flex items-center justify-center text-purple-400 border border-purple-500/10">
+            <i class="fas fa-calendar-times text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 text-white">News & Time Guard</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Blokir eksekusi otomatis saat rilis berita High Impact. Proteksi tambahan saat market tutup & periode stabilisasi setelah buka.
+          </p>
+          <div class="text-xs text-purple-300 bg-purple-900/10 px-3 py-1 rounded-full inline-block">Auto WebRequest</div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="py-10 border-t border-white/10">
-  <div class="max-w-6xl mx-auto px-6 text-center text-sm text-slate-400">
-    <p class="font-bold neon mb-2">EAGLETRADEAVL</p>
+  <!-- TECHNICAL DETAILS -->
+  <section class="py-16 bg-black/20 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        
+        <div class="reveal">
+          <h2 class="text-2xl font-bold neon-text mb-6">Manajemen Risiko Presisi</h2>
+          <p class="text-slate-400 mb-6 text-sm">
+            EA ini tidak asal membuka posisi. Setiap entry dihitung berdasarkan parameter risiko yang ketat untuk menjaga equity.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center flex-shrink-0 text-purple-400">
+                <i class="fas fa-shield-alt text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white">Max Floating Loss</h4>
+                <p class="text-slate-400 text-xs">Otomatis cut jika kerugian mengambang mencapai batas USD yang ditentukan.</p>
+              </div>
+            </div>
 
-    <div class="space-x-4 mb-4">
-      <a href="about.html">About</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="risk.html">Risk Disclosure</a>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center flex-shrink-0 text-purple-400">
+                <i class="fas fa-bullseye text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white">Daily Target & Limit</h4>
+                <p class="text-slate-400 text-xs">Berhenti trading setelah mencapai profit harian atau batas maksimal entry.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center flex-shrink-0 text-purple-400">
+                <i class="fas fa-clock text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white">Session Filter</h4>
+                <p class="text-slate-400 text-xs">Pilih sesi trading spesifik: Asian, London, atau New York.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 reveal">
+          <h4 class="font-bold text-white mb-4 border-b border-white/10 pb-2">Spesifikasi Teknis</h4>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex justify-between">
+              <span class="text-slate-400">Pair Utama</span>
+              <span class="text-white font-medium">XAUUSD (Gold)</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-400">Timeframe</span>
+              <span class="text-white font-medium">M1 (Scalping)</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-400">Grid Strategy</span>
+              <span class="text-white font-medium">ATR Dynamic / Fixed</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-400">SL / TP</span>
+              <span class="text-white font-medium">USD Based (Money Mgmt)</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-400">Trailing Stop</span>
+              <span class="text-white font-medium">Ya (USD Step)</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-slate-400">Min Deposit</span>
+              <span class="text-white font-medium">Rekomendasi $100+</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <p>&copy; 2025 EAGLETRADEAVL</p>
-    <p class="mt-1">WhatsApp: 0895-2831-1840</p>
-  </div>
-</footer>
+  <!-- PRICING -->
+  <section id="paket" class="py-24 relative overflow-hidden">
+    
+    <div class="max-w-xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold neon-text mb-4">Paket  EA</h2>
+        <p class="text-slate-400">Akses penuh semua fitur tanpa batas waktu.</p>
+      </div>
+
+      <!-- Clean Pricing Card -->
+      <div class="pricing-card rounded-3xl p-10 text-center reveal active">
+        
+        <span class="inline-block bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold px-4 py-1 rounded-full mb-6 uppercase tracking-widest">
+          Lifetime License
+        </span>
+        
+        <h3 class="text-xl font-semibold text-white mb-2">EAGLETRADEAVL V1.0</h3>
+        
+        <div class="flex justify-center items-end gap-1 mb-8">
+          <span class="text-2xl text-slate-400 font-medium">Rp</span>
+          <span class="text-6xl font-bold text-white">300.000</span>
+        </div>
+        
+        <div class="border-t border-white/10 pt-8 mb-8">
+          <ul class="text-left text-slate-300 space-y-3 text-sm">
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-purple-400"></i> 
+              <span>1 Akun 1 License</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-purple-400"></i> 
+              <span>MT5</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-purple-400"></i> 
+              <span>Fitur Lengkap (News, CI, Grid)</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-purple-400"></i> 
+              <span>Support Instalasi via AnyDesk</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fas fa-check text-purple-400"></i> 
+              <span>Panduan Setting & Set File</span>
+            </li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20Bot%20EA%20XAUUSD%20Lifetime" class="btn-primary w-full text-center py-4 text-lg">
+          <i class="fab fa-whatsapp mr-2"></i> Hubungi via WhatsApp
+        </a>
+        <p class="text-slate-500 text-xs mt-4">Setting disesuaikan dengan karakteristik broker Anda.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="py-10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="glass-card p-6 text-sm text-amber-200 text-center border-amber-500/20 bg-amber-500/5">
+        <i class="fas fa-exclamation-triangle mr-2"></i>
+        <strong>PERINGATAN RISIKO:</strong> Trading memiliki risiko tinggi. EA adalah alat bantu teknis, bukan mesin uang. Kinerja masa lalu tidak menjamin hasil di masa depan. Gunakan dengan manajemen risiko yang bijak.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm text-slate-500">
+      <p class="font-bold neon-text text-xl mb-4 tracking-widest">EAGLETRADEAVL</p>
+
+      <div class="flex justify-center gap-6 mb-6 text-slate-400">
+        <a href="about.html" class="hover:text-white transition">About</a>
+        <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+        <a href="terms.html" class="hover:text-white transition">Terms</a>
+        <a href="risk.html" class="hover:text-white transition">Risk Disclosure</a>
+      </div>
+
+      <p class="mb-2">&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
+      <p class="flex items-center justify-center gap-2">
+        <i class="fab fa-whatsapp text-green-500"></i> 0895-2831-1840
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script for Scroll Animation -->
+  <script>
+    // Scroll Reveal
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Initial check
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
-
-
