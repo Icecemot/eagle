@@ -868,6 +868,52 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
+      /* POPUP MODAL */
+      .popup-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+      }
+
+      .popup-content {
+        background: #07071a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 600px;
+        width: 90%;
+        margin: 8% auto;
+        padding: 2rem;
+        border-radius: 16px;
+        position: relative;
+        animation: popupFade 0.3s ease;
+      }
+
+      @keyframes popupFade {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .popup-close {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #aaa;
+      }
+
+      .popup-close:hover {
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -2099,10 +2145,10 @@
           EAGLETRADEAVL
         </div>
         <div class="footer-links">
-          <a href="about.html">About</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="risk.html">Risk Disclosure</a>
+          <a href="#" onclick="openPopup('about')">About</a>
+          <a href="#" onclick="openPopup('privacy')">Privacy</a>
+          <a href="#" onclick="openPopup('terms')">Terms</a>
+          <a href="#" onclick="openPopup('risk')">Risk Disclosure</a>
         </div>
         <p style="color: var(--muted); font-size: 0.82rem; margin-top: 0.5rem">
           &copy; 2025 EAGLETRADEAVL. All rights reserved.
@@ -2143,6 +2189,67 @@
           if (t) t.scrollIntoView({ behavior: "smooth" });
         });
       });
+    </script>
+
+    <!-- POPUP MODAL -->
+    <div id="popupModal" class="popup-modal">
+      <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <div id="popupBody"></div>
+      </div>
+    </div>
+
+    <script>
+      function openPopup(type) {
+        const modal = document.getElementById("popupModal");
+        const body = document.getElementById("popupBody");
+
+        let content = "";
+
+        if (type === "about") {
+          content = `
+        <h2>About</h2>
+        <p>Website ini menyediakan EA trading XAUUSD dengan sistem filter berlapis untuk proteksi maksimal.</p>
+      `;
+        }
+
+        if (type === "privacy") {
+          content = `
+        <h2>Privacy Policy</h2>
+        <p>Kami tidak menyimpan data pribadi pengguna tanpa izin. Semua transaksi aman dan terenkripsi.</p>
+      `;
+        }
+
+        if (type === "terms") {
+          content = `
+        <h2>Terms & Conditions</h2>
+        <p>Penggunaan EA sepenuhnya menjadi tanggung jawab pengguna. Tidak ada jaminan profit.</p>
+      `;
+        }
+
+        if (type === "risk") {
+          content = `
+        <h2>Risk Disclosure</h2>
+        <p>Trading memiliki risiko tinggi. Gunakan money management dengan bijak.</p>
+      `;
+        }
+
+        body.innerHTML = content;
+        modal.style.display = "block";
+      }
+
+      // CLOSE
+      document.querySelector(".popup-close").onclick = function () {
+        document.getElementById("popupModal").style.display = "none";
+      };
+
+      // CLICK OUTSIDE CLOSE
+      window.onclick = function (e) {
+        const modal = document.getElementById("popupModal");
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      };
     </script>
   </body>
 </html>
