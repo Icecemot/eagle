@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EAGLETRADEAVL V4.3 – EA XAUUSD M1 Auto Trading</title>
-    <meta name="description" content="EA XAUUSD M1 scalping otomatis dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter." />
+    <title>EAGLETRADEAVL V4.4 – EA XAUUSD M1 Auto Trading</title>
+    <meta name="description" content="EA XAUUSD M1 scalping otomatis dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter. Dilengkapi Auto Risk Tier." />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="EAGLETRADEAVL V4.3 – EA XAUUSD M1" />
-    <meta property="og:description" content="Bot trading XAUUSD dengan 9 layer filter, News Protection, dan Risk Management otomatis." />
+    <meta property="og:title" content="EAGLETRADEAVL V4.4 – EA XAUUSD M1" />
+    <meta property="og:description" content="Bot trading XAUUSD dengan 9 layer filter, Auto Risk Tier, News Protection, dan Risk Management otomatis." />
     <meta property="og:type" content="website" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -78,48 +78,27 @@
         66% { transform: translate(-30px, 30px) scale(0.95); }
       }
 
-      /* ── LANGUAGE TOGGLE ── */
+      /* LANGUAGE TOGGLE */
       .lang-toggle {
-        display: flex;
-        align-items: center;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 99px;
-        padding: 3px;
-        gap: 2px;
+        display: flex; align-items: center;
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 99px; padding: 3px; gap: 2px;
       }
       .lang-btn {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        padding: 0.35rem 0.85rem;
-        border-radius: 99px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        font-family: "JetBrains Mono", monospace;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        border: none;
-        background: transparent;
-        color: var(--muted);
-        transition: all 0.25s;
+        display: flex; align-items: center; gap: 5px;
+        padding: 0.35rem 0.85rem; border-radius: 99px;
+        font-size: 0.72rem; font-weight: 700;
+        font-family: "JetBrains Mono", monospace; letter-spacing: 0.05em;
+        cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all 0.25s;
       }
-      .lang-btn.active {
-        background: linear-gradient(135deg, #7c3aed, #a855f7);
-        color: white;
-        box-shadow: 0 2px 12px rgba(124,58,237,0.4);
-      }
-      .lang-btn:hover:not(.active) {
-        color: white;
-        background: rgba(255,255,255,0.05);
-      }
+      .lang-btn.active { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; box-shadow: 0 2px 12px rgba(124,58,237,0.4); }
+      .lang-btn:hover:not(.active) { color: white; background: rgba(255,255,255,0.05); }
       .lang-flag { font-size: 1rem; }
 
-      /* ── NAVIGATION ── */
+      /* NAV */
       nav {
         position: sticky; top: 0; z-index: 100;
-        background: rgba(4, 4, 12, 0.8);
-        backdrop-filter: blur(20px);
+        background: rgba(4, 4, 12, 0.8); backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border);
       }
       .nav-inner {
@@ -129,8 +108,7 @@
       .logo {
         font-family: "Orbitron", monospace; font-weight: 900; font-size: 1.2rem;
         background: linear-gradient(90deg, #a78bfa, #f5c842);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        letter-spacing: 0.1em;
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.1em;
       }
       .nav-links { display: flex; gap: 2rem; list-style: none; }
       .nav-links a { color: var(--sub); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
@@ -139,13 +117,13 @@
       .btn-wa {
         display: inline-flex; align-items: center; gap: 0.5rem;
         padding: 0.6rem 1.4rem; border-radius: 99px; font-weight: 700;
-        background: linear-gradient(135deg, #22c55e, #16a34a);
-        color: white; text-decoration: none; font-size: 0.85rem;
-        transition: all 0.3s; box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        background: linear-gradient(135deg, #22c55e, #16a34a); color: white;
+        text-decoration: none; font-size: 0.85rem; transition: all 0.3s;
+        box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
       }
       .btn-wa:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(34, 197, 94, 0.5); }
 
-      /* ── HERO ── */
+      /* HERO */
       .hero {
         min-height: 100vh; display: flex; align-items: center;
         justify-content: center; text-align: center;
@@ -182,21 +160,21 @@
       }
       .btn-outline:hover { background: rgba(255, 255, 255, 0.05); color: white; }
 
-      /* ── STATS STRIP ── */
+      /* STATS STRIP */
       .stats-strip { background: rgba(245, 200, 66, 0.03); border-top: 1px solid rgba(245, 200, 66, 0.08); border-bottom: 1px solid rgba(245, 200, 66, 0.08); }
       .stats-inner { max-width: 1280px; margin: 0 auto; padding: 1.5rem 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
       .stat-item { padding: 1rem; }
       .stat-num { font-family: "Orbitron", monospace; font-size: 1.8rem; font-weight: 900; color: var(--gold); display: block; margin-bottom: 0.3rem; }
       .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-      /* ── SECTION BASE ── */
+      /* SECTION */
       .section { padding: 6rem 2rem; position: relative; }
       .container { max-width: 1280px; margin: 0 auto; }
       .section-label { font-family: "JetBrains Mono", monospace; font-size: 0.7rem; color: var(--purple-light); text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 0.8rem; }
       .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; }
       .section-desc { color: var(--sub); font-size: 1rem; max-width: 600px; line-height: 1.7; }
 
-      /* ── CARD BASE ── */
+      /* CARD */
       .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
       .card::before {
         content: ""; position: absolute; inset: 0; border-radius: 16px;
@@ -206,7 +184,7 @@
       .card:hover::before { opacity: 1; }
       .card:hover { border-color: rgba(124, 58, 237, 0.25); transform: translateY(-4px); }
 
-      /* ── ICON BADGE ── */
+      /* ICON BADGE */
       .icon-badge { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; flex-shrink: 0; }
       .ib-purple { background: rgba(124, 58, 237, 0.15); color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.2); }
       .ib-gold { background: rgba(245, 200, 66, 0.1); color: var(--gold); border: 1px solid rgba(245, 200, 66, 0.2); }
@@ -215,7 +193,7 @@
       .ib-red { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
       .ib-orange { background: rgba(249, 115, 22, 0.1); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.2); }
 
-      /* ── TAGS ── */
+      /* TAGS */
       .tag { display: inline-block; font-size: 0.65rem; font-family: "JetBrains Mono", monospace; padding: 0.25rem 0.7rem; border-radius: 99px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
       .tag-purple { background: rgba(124, 58, 237, 0.15); color: #c4b5fd; border: 1px solid rgba(124, 58, 237, 0.2); }
       .tag-gold { background: rgba(245, 200, 66, 0.1); color: var(--gold); border: 1px solid rgba(245, 200, 66, 0.2); }
@@ -223,7 +201,7 @@
       .tag-red { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
       .tag-cyan { background: rgba(34, 211, 238, 0.1); color: #67e8f9; border: 1px solid rgba(34, 211, 238, 0.2); }
 
-      /* ── FILTER SECTION ── */
+      /* FILTER SECTION */
       .filter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
       .filter-card { position: relative; }
       .filter-num { font-family: "Orbitron", monospace; font-size: 3rem; font-weight: 900; position: absolute; top: 1rem; right: 1.5rem; color: rgba(255, 255, 255, 0.04); line-height: 1; pointer-events: none; }
@@ -231,7 +209,7 @@
       .filter-card p { font-size: 0.85rem; color: var(--sub); line-height: 1.6; margin-bottom: 0.8rem; }
       .filter-param { font-family: "JetBrains Mono", monospace; font-size: 0.7rem; color: var(--purple-light); background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 6px; padding: 0.15rem 0.5rem; display: inline-block; margin: 0.15rem; }
 
-      /* ── NEWS FLOW ── */
+      /* NEWS FLOW */
       .news-flow { display: flex; gap: 0; position: relative; flex-direction: column; max-width: 680px; margin: 2.5rem auto 0; }
       .news-step { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; position: relative; }
       .news-step:not(:last-child)::after { content: ""; position: absolute; left: 2.3rem; top: 4.5rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgba(124, 58, 237, 0.4), transparent); }
@@ -243,7 +221,7 @@
       .ns-text h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
       .ns-text p { font-size: 0.82rem; color: var(--sub); line-height: 1.5; }
 
-      /* ── PANEL MOCKUP ── */
+      /* PANEL MOCKUP */
       .panel-mockup { background: #0a0c14; border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 12px; padding: 1.2rem; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; line-height: 1.9; width: 100%; box-shadow: 0 0 40px rgba(124, 58, 237, 0.1); }
       .panel-mockup .pm-title { color: #f5c842; font-weight: 700; font-size: 0.8rem; text-align: center; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 0.6rem; }
       .panel-mockup .pm-section { color: #6b7280; font-size: 0.65rem; margin: 0.6rem 0 0.2rem; }
@@ -252,9 +230,19 @@
       .pm-val { font-weight: 600; }
       .c-green { color: #22c55e; } .c-red { color: #ef4444; } .c-gold { color: #f5c842; }
       .c-purple { color: #a78bfa; } .c-cyan { color: #22d3ee; } .c-orange { color: #f97316; }
-      .c-white { color: #e2e8f0; } .c-gray { color: #6b7280; }
+      .c-white { color: #e2e8f0; } .c-gray { color: #6b7280; } .c-yellow { color: #eab308; }
 
-      /* ── SPEC TABLE ── */
+      /* AUTO RISK TIER TABLE */
+      .tier-table { width: 100%; border-collapse: collapse; font-family: "JetBrains Mono", monospace; font-size: 0.75rem; }
+      .tier-table thead tr { border-bottom: 1px solid rgba(124,58,237,0.3); }
+      .tier-table th { padding: 0.6rem 0.5rem; color: var(--purple-light); text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+      .tier-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--sub); font-size: 0.72rem; }
+      .tier-table td:first-child { color: var(--gold); font-weight: 600; }
+      .tier-table td:nth-child(2) { color: #4ade80; }
+      .tier-table tr:last-child td { border-bottom: none; }
+      .tier-table tr:hover td { background: rgba(124,58,237,0.04); }
+
+      /* SPEC TABLE */
       .spec-table { width: 100%; border-collapse: collapse; }
       .spec-table tr { border-bottom: 1px solid var(--border); }
       .spec-table tr:last-child { border-bottom: none; }
@@ -262,7 +250,7 @@
       .spec-table td:first-child { color: var(--sub); width: 45%; }
       .spec-table td:last-child { color: white; font-weight: 600; text-align: right; }
 
-      /* ── PRICING ── */
+      /* PRICING */
       .pricing-box { background: linear-gradient(145deg, rgba(15, 8, 35, 0.95), rgba(4, 4, 12, 0.95)); border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 24px; padding: 3rem; max-width: 520px; margin: 0 auto; box-shadow: 0 0 60px rgba(124, 58, 237, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
       .price-big { font-family: "Orbitron", monospace; font-size: 3.5rem; font-weight: 900; color: white; letter-spacing: -0.02em; }
       .price-currency { font-size: 1.5rem; color: var(--sub); vertical-align: super; }
@@ -272,52 +260,56 @@
       .btn-order { display: flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 30px rgba(34, 197, 94, 0.3); margin-top: 2rem; }
       .btn-order:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(34, 197, 94, 0.5); }
 
-      /* ── NO REFUND BOX ── */
+      /* NO REFUND */
       .no-refund-box { margin-top: 1.2rem; background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
       .no-refund-box .nr-icon { font-size: 1.1rem; color: #f87171; flex-shrink: 0; margin-top: 0.1rem; }
       .no-refund-box .nr-content { text-align: left; }
       .no-refund-box .nr-title { font-family: "Orbitron", monospace; font-size: 0.72rem; font-weight: 700; color: #f87171; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
       .no-refund-box .nr-desc { font-size: 0.78rem; color: #fca5a5; line-height: 1.55; }
 
-      /* ── CHECKLIST ── */
+      /* CHECKLIST */
       .checklist { list-style: none; }
       .checklist li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.4rem 0; font-size: 0.88rem; color: var(--sub); }
       .checklist li i { color: var(--purple-light); margin-top: 0.2rem; flex-shrink: 0; }
 
       .divider { width: 60px; height: 3px; border-radius: 99px; background: linear-gradient(90deg, var(--purple), var(--gold)); margin: 1rem 0 2rem; }
 
-      /* ── DISCLAIMER ── */
+      /* DISCLAIMER */
       .disclaimer { background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.15); border-radius: 12px; padding: 1.2rem 1.8rem; font-size: 0.82rem; color: #fbbf24; }
 
-      /* ── FOOTER ── */
+      /* NEW V4.4 BADGE */
+      .new-badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); border-radius: 4px; padding: 0.1rem 0.4rem; margin-left: 0.4rem; vertical-align: middle; }
+
+      /* FOOTER */
       footer { padding: 3rem 2rem; border-top: 1px solid var(--border); text-align: center; }
       .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0; flex-wrap: wrap; }
       .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
       .footer-links a:hover { color: white; }
 
-      /* ── LANGUAGE TRANSITION ── */
+      /* LANG TRANSITION */
       [data-id] { transition: opacity 0.2s ease; }
       .lang-switching [data-id] { opacity: 0; }
 
-      /* ── REVEAL ── */
+      /* REVEAL */
       .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
       .reveal-delay-1 { transition-delay: 0.1s; }
       .reveal-delay-2 { transition-delay: 0.2s; }
       .reveal-delay-3 { transition-delay: 0.3s; }
 
-      /* ── RESPONSIVE ── */
+      /* RESPONSIVE */
       @media (max-width: 768px) {
         .nav-links { display: none; }
         .stats-inner { grid-template-columns: repeat(2, 1fr); }
         .filter-grid { grid-template-columns: 1fr; }
+        .two-col { grid-template-columns: 1fr !important; }
       }
       @media (max-width: 480px) {
         .nav-right { gap: 0.4rem; }
         .btn-wa span { display: none; }
       }
 
-      /* POPUP MODAL */
+      /* POPUP */
       .popup-modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); }
       .popup-content { background: #07071a; border: 1px solid rgba(255, 255, 255, 0.1); max-width: 600px; width: 90%; margin: 8% auto; padding: 2rem; border-radius: 16px; position: relative; animation: popupFade 0.3s ease; }
       @keyframes popupFade { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -327,7 +319,6 @@
   </head>
   <body>
 
-    <!-- BG ORBS -->
     <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,0.18) 0%,transparent 70%);top:-200px;left:-200px;"></div>
     <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(245,200,66,0.08) 0%,transparent 70%);bottom:10%;right:-150px;animation-delay:4s;"></div>
     <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,0.1) 0%,transparent 70%);top:50%;left:40%;animation-delay:8s;"></div>
@@ -339,12 +330,12 @@
         <ul class="nav-links">
           <li><a href="#filters" data-id="nav-filters">9 Filter</a></li>
           <li><a href="#risk" data-id="nav-risk">Risk Mgmt</a></li>
+          <li><a href="#tier" data-id="nav-tier">Auto Tier</a></li>
           <li><a href="#news" data-id="nav-news">News Guard</a></li>
           <li><a href="#panel" data-id="nav-panel">Panel</a></li>
           <li><a href="#paket" data-id="nav-price">Harga</a></li>
         </ul>
         <div class="nav-right">
-          <!-- LANGUAGE TOGGLE -->
           <div class="lang-toggle">
             <button class="lang-btn active" id="btn-id" onclick="setLang('id')">
               <span class="lang-flag">🇮🇩</span> ID
@@ -365,7 +356,7 @@
       <div class="grid-bg"></div>
       <div style="position:relative;z-index:1">
         <div class="hero-badge">
-          <i class="fas fa-bolt"></i> VERSION 4.3 · XAUUSD ONLY · MT5
+          <i class="fas fa-bolt"></i> VERSION 4.4 · XAUUSD ONLY · MT5
         </div>
         <h1>
           <span class="grad-text">XAUUSD</span><br />
@@ -374,7 +365,8 @@
         <p class="hero-sub" data-id="hero-sub">
           Expert Advisor otomatis berbasis
           <strong style="color:white">Price Action M1</strong> dengan
-          <strong style="color:white">9 layer filter</strong> berlapis untuk
+          <strong style="color:white">9 layer filter</strong> berlapis +
+          <strong style="color:var(--gold)">Auto Risk Tier</strong> untuk
           proteksi maksimal di pasar Gold.
         </p>
         <div class="hero-warning" data-id="hero-warning">
@@ -392,7 +384,7 @@
       </div>
     </section>
 
-    <!-- STATS STRIP -->
+    <!-- STATS -->
     <div class="stats-strip">
       <div class="stats-inner">
         <div class="stat-item">
@@ -409,12 +401,12 @@
         </div>
         <div class="stat-item">
           <span class="stat-num">AUTO</span>
-          <span class="stat-label" data-id="stat-news">News Protection</span>
+          <span class="stat-label" data-id="stat-news">Risk Tier + News</span>
         </div>
       </div>
     </div>
 
-    <!-- ============= 9 FILTER LAYERS ============= -->
+    <!-- 9 FILTER LAYERS -->
     <section class="section" id="filters">
       <div class="container">
         <div class="reveal" style="margin-bottom:3.5rem">
@@ -425,60 +417,67 @@
         </div>
 
         <div class="filter-grid">
-          <!-- 1 -->
           <div class="card filter-card reveal">
             <div class="filter-num">01</div>
             <div class="icon-badge ib-purple"><i class="fas fa-chart-candlestick"></i></div>
             <h4 data-id="f1-title">Price Action M1</h4>
-            <p data-id="f1-desc">Deteksi pola candlestick: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong> dan pola <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong> berdasarkan dua candle terakhir.</p>
+            <p data-id="f1-desc">Deteksi pola candlestick: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong>, <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong>, dan <strong style="color:#c4b5fd">Pin Bar / Hammer / Shooting Star</strong> berdasarkan rasio wick dan body candle.</p>
             <div style="margin-top:0.8rem"><span class="tag tag-purple">Scalping M1</span></div>
           </div>
-          <!-- 2 -->
+
           <div class="card filter-card reveal reveal-delay-1">
             <div class="filter-num">02</div>
             <div class="icon-badge ib-gold"><i class="fas fa-wave-square"></i></div>
-            <h4 data-id="f2-title">EMA Trend Bias Filter</h4>
-            <p data-id="f2-desc">Filter arah trend pasar menggunakan <strong style="color:var(--gold)">EMA (Exponential Moving Average)</strong>. Buy hanya jika harga di atas EMA, Sell hanya jika di bawah EMA. Mencegah entry melawan trend besar.</p>
+            <h4 data-id="f2-title">M5 Trend Bias (Price Action)</h4>
+            <p data-id="f2-desc">Analisis bias trend menggunakan <strong style="color:var(--gold)">2 dari 3 candle M5 terakhir</strong>. Jika mayoritas bullish → trend UP, mayoritas bearish → trend DOWN. Entry hanya searah trend M5.</p>
             <div style="margin-top:0.8rem"><span class="tag tag-gold">Trend Confirmation</span></div>
           </div>
-          <!-- 3 -->
+
           <div class="card filter-card reveal reveal-delay-2">
             <div class="filter-num">03</div>
-            <div class="icon-badge ib-cyan"><i class="fas fa-signal"></i></div>
-            <h4 data-id="f3-title">MACD M5 Confirmation</h4>
-            <p data-id="f3-desc">Konfirmasi momentum menggunakan <strong style="color:#67e8f9">MACD histogram pada M5</strong>. Buy butuh histogram positif dan <em>naik</em>; Sell butuh histogram negatif dan <em>turun</em>. Jika momentum melemah, entry diblokir.</p>
-            <div style="margin-top:0.8rem"><span class="tag tag-cyan">Momentum Guard</span></div>
+            <div class="icon-badge ib-gold"><i class="fas fa-chart-line"></i></div>
+            <h4 data-id="f3-title">EMA Trend Bias Filter</h4>
+            <p data-id="f3-desc">Filter arah trend menggunakan <strong style="color:var(--gold)">EMA Fast & Slow</strong>. Buy hanya jika harga > EMA Fast > EMA Slow (bullish alignment). EMA otomatis digambar di chart (hijau & merah).</p>
+            <div style="margin-top:0.8rem"><span class="tag tag-gold">EMA Visual</span></div>
           </div>
-          <!-- 4 -->
+
           <div class="card filter-card reveal">
             <div class="filter-num">04</div>
-            <div class="icon-badge ib-red"><i class="fas fa-thermometer-three-quarters"></i></div>
-            <h4 data-id="f4-title">RSI Overbought/Oversold</h4>
-            <p data-id="f4-desc">Filter menggunakan <strong style="color:#f87171">RSI (Relative Strength Index)</strong> untuk menghindari entry di area jenuh beli/jual.</p>
-            <div style="margin-top:0.8rem"><span class="tag tag-red">Anti Reversal</span></div>
+            <div class="icon-badge ib-cyan"><i class="fas fa-signal"></i></div>
+            <h4 data-id="f4-title">MACD M5 Confirmation</h4>
+            <p data-id="f4-desc">Konfirmasi momentum via <strong style="color:#67e8f9">MACD histogram M5</strong>. Buy butuh histogram positif dan <em>naik</em>; Sell butuh histogram negatif dan <em>turun</em>. Entry diblokir jika momentum melemah.</p>
+            <div style="margin-top:0.8rem"><span class="tag tag-cyan">Momentum Guard</span></div>
           </div>
-          <!-- 5 -->
+
           <div class="card filter-card reveal reveal-delay-1">
             <div class="filter-num">05</div>
-            <div class="icon-badge ib-orange"><i class="fas fa-water"></i></div>
-            <h4 data-id="f5-title">Choppiness Index (Sideways)</h4>
-            <p data-id="f5-desc">Menghitung <strong style="color:#fb923c">Choppiness Index</strong> untuk mendeteksi kondisi pasar sideways/choppy. Jika CI > 61.8, pasar dianggap tidak terarah dan EA berhenti entry. Hanya trading saat pasar <em>trending</em>.</p>
-            <div style="margin-top:0.8rem"><span class="tag tag-red">Anti Whipsaw</span></div>
+            <div class="icon-badge ib-red"><i class="fas fa-thermometer-three-quarters"></i></div>
+            <h4 data-id="f5-title">RSI Overbought/Oversold</h4>
+            <p data-id="f5-desc">Filter menggunakan <strong style="color:#f87171">RSI (Relative Strength Index)</strong> pada M1. Buy diblokir jika RSI ≥ 80, Sell diblokir jika RSI ≤ 26. Menghindari entry di area jenuh.</p>
+            <div style="margin-top:0.8rem"><span class="tag tag-red">Anti Reversal</span></div>
           </div>
-          <!-- 6 -->
+
           <div class="card filter-card reveal reveal-delay-2">
             <div class="filter-num">06</div>
-            <div class="icon-badge ib-green"><i class="fas fa-layer-group"></i></div>
-            <h4 data-id="f6-title">Support & Resistance Zone</h4>
-            <p data-id="f6-desc">EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir. Buy diblokir dekat resistance, Sell diblokir dekat support. Ada opsi <em>Bounce Entry</em> untuk entry pantulan dari zona S/R.</p>
-            <div style="margin-top:0.8rem"><span class="tag tag-green">Zone Aware</span></div>
+            <div class="icon-badge ib-orange"><i class="fas fa-water"></i></div>
+            <h4 data-id="f6-title">Choppiness Index (Sideways)</h4>
+            <p data-id="f6-desc">Menghitung <strong style="color:#fb923c">Choppiness Index</strong> dari M1. Jika CI > 61.8, pasar dianggap sideways dan EA berhenti entry. Panel menampilkan nilai CI dan status SIDEWAYS/TRENDING secara real-time.</p>
+            <div style="margin-top:0.8rem"><span class="tag tag-red">Anti Whipsaw</span></div>
           </div>
-          <!-- 7 -->
+
           <div class="card filter-card reveal">
             <div class="filter-num">07</div>
+            <div class="icon-badge ib-green"><i class="fas fa-layer-group"></i></div>
+            <h4 data-id="f7-title">Support & Resistance Zone</h4>
+            <p data-id="f7-desc">EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50). Buy diblokir dekat resistance, Sell diblokir dekat support. Dengan buffer zona yang bisa dikonfigurasi.</p>
+            <div style="margin-top:0.8rem"><span class="tag tag-green">Zone Aware</span></div>
+          </div>
+
+          <div class="card filter-card reveal reveal-delay-1">
+            <div class="filter-num">08</div>
             <div class="icon-badge ib-red"><i class="fas fa-newspaper"></i></div>
-            <h4 data-id="f7-title">News Filter Auto</h4>
-            <p data-id="f7-desc">Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> secara otomatis. Blokir entry X menit sebelum dan sesudah berita <em>USD High Impact</em>. GMT offset terdeteksi otomatis.</p>
+            <h4 data-id="f8-title">News Filter Auto</h4>
+            <p data-id="f8-desc">Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah <em>USD High Impact</em>. GMT offset auto-detect (ManualGMTOffset=99) atau set manual.</p>
             <div>
               <span class="filter-param">StopBefore=10m</span>
               <span class="filter-param">WaitAfter=10m</span>
@@ -486,38 +485,81 @@
             </div>
             <div style="margin-top:0.8rem"><span class="tag tag-red">USD High Impact</span></div>
           </div>
-          <!-- 8 -->
-          <div class="card filter-card reveal reveal-delay-1">
-            <div class="filter-num">08</div>
-            <div class="icon-badge ib-orange"><i class="fas fa-clock"></i></div>
-            <h4 data-id="f8-title">Market Hours Guard</h4>
-            <p data-id="f8-desc">Proteksi sesi pasar: <strong style="color:#fb923c">blokir entry</strong> X menit sebelum market tutup, <strong style="color:#fb923c">force close semua posisi</strong> Y menit sebelum tutup, dan <strong style="color:#fb923c">tunggu stabilisasi</strong> Z menit setelah market buka.</p>
-            <div>
-              <span class="filter-param">BlockBefore=60m</span>
-              <span class="filter-param">ForceClose=30m</span>
-              <span class="filter-param">WaitOpen=120m</span>
-            </div>
-            <div style="margin-top:0.8rem"><span class="tag tag-red">Session Guard</span></div>
-          </div>
-          <!-- 9 -->
+
           <div class="card filter-card reveal reveal-delay-2">
             <div class="filter-num">09</div>
-            <div class="icon-badge ib-purple"><i class="fas fa-globe"></i></div>
-            <h4 data-id="f9-title">Trading Session Filter</h4>
-            <p data-id="f9-desc">Pilih sesi pasar yang diizinkan: <strong style="color:#a78bfa">Asian</strong>, <strong style="color:#a78bfa">London</strong>, <strong style="color:#a78bfa">New York</strong>. Masing-masing bisa diaktifkan/nonaktifkan sesuai strategi. Spread juga dicek setiap tick.</p>
+            <div class="icon-badge ib-orange"><i class="fas fa-clock"></i></div>
+            <h4 data-id="f9-title">Market Hours + Session Filter</h4>
+            <p data-id="f9-desc">Proteksi jam pasar: <strong style="color:#fb923c">blokir entry</strong> sebelum tutup, <strong style="color:#fb923c">force close</strong> saat mendekati tutup, <strong style="color:#fb923c">tunggu stabilisasi</strong> setelah buka. Pilih sesi Asian, London, atau NY.</p>
             <div>
               <span class="filter-param">Asian</span>
               <span class="filter-param">London</span>
               <span class="filter-param">New York</span>
             </div>
-            <div style="margin-top:0.8rem"><span class="tag tag-purple">Multi Session</span></div>
+            <div style="margin-top:0.8rem"><span class="tag tag-red">Session Guard</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============= RISK MANAGEMENT ============= -->
-    <section class="section" id="risk" style="background:rgba(0,0,0,0.3)">
+    <!-- AUTO RISK TIER — NEW V4.4 -->
+    <section class="section" id="tier" style="background:rgba(0,0,0,0.4)">
+      <div class="container">
+        <div class="reveal" style="margin-bottom:3rem;text-align:center">
+          <span class="section-label" data-id="tier-label">Fitur Baru V4.4</span>
+          <h2 class="section-title" style="color:white">
+            Auto Risk Tier <span class="new-badge">NEW</span>
+          </h2>
+          <div class="divider" style="margin:1rem auto 0"></div>
+          <p class="section-desc" style="margin:1.5rem auto 0;text-align:center" data-id="tier-desc">Lot size, SL, TP, Trailing, dan Break Even otomatis menyesuaikan berdasarkan balance akun. Aktifkan dengan <code style="color:var(--gold)">UseAutoRiskTier = true</code>.</p>
+        </div>
+
+        <div class="card reveal" style="overflow:auto">
+          <table class="tier-table">
+            <thead>
+              <tr>
+                <th data-id="th-balance">Balance</th>
+                <th>Lot</th>
+                <th>SL</th>
+                <th>TP</th>
+                <th data-id="th-trail">Trail Start</th>
+                <th data-id="th-step">Trail Step</th>
+                <th>BE</th>
+                <th data-id="th-lock">Profit Lock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>&lt; $600</td><td>0.01</td><td>$5</td><td>$15</td><td>$3</td><td>$2</td><td>$2</td><td>$0.20</td></tr>
+              <tr><td>$600 – $1.5K</td><td>0.02</td><td>$10</td><td>$25</td><td>$6</td><td>$4</td><td>$4</td><td>$0.50</td></tr>
+              <tr><td>$1.5K – $2K</td><td>0.03</td><td>$15</td><td>$30</td><td>$9</td><td>$6</td><td>$6</td><td>$1.00</td></tr>
+              <tr><td>$2K – $3K</td><td>0.04</td><td>$20</td><td>$40</td><td>$12</td><td>$8</td><td>$8</td><td>$2.00</td></tr>
+              <tr><td>$3K – $5K</td><td>0.05</td><td>$25</td><td>$50</td><td>$15</td><td>$10</td><td>$10</td><td>$3.00</td></tr>
+              <tr><td>$5K – $8K</td><td>0.07</td><td>$35</td><td>$70</td><td>$21</td><td>$14</td><td>$14</td><td>$5.00</td></tr>
+              <tr><td>$8K – $10K</td><td>0.08</td><td>$40</td><td>$80</td><td>$24</td><td>$16</td><td>$16</td><td>$6.00</td></tr>
+              <tr><td>&gt; $10K</td><td>0.10</td><td>$50</td><td>$100</td><td>$30</td><td>$20</td><td>$20</td><td>$7.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem">
+          <div class="card reveal" style="border-color:rgba(245,200,66,0.2);text-align:center;padding:1.2rem">
+            <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--gold);margin-bottom:0.5rem" data-id="tier-f1-label">Tier Otomatis</div>
+            <p style="font-size:0.82rem;color:var(--sub)" data-id="tier-f1-desc">Lot & parameter berubah otomatis saat balance naik. Tidak perlu ubah setting manual.</p>
+          </div>
+          <div class="card reveal reveal-delay-1" style="border-color:rgba(124,58,237,0.2);text-align:center;padding:1.2rem">
+            <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--purple-light);margin-bottom:0.5rem" data-id="tier-f2-label">Scalable Risk</div>
+            <p style="font-size:0.82rem;color:var(--sub)" data-id="tier-f2-desc">Risk per trade tetap proporsional terhadap balance. Lindungi akun kecil, optimalkan akun besar.</p>
+          </div>
+          <div class="card reveal reveal-delay-2" style="border-color:rgba(34,197,94,0.2);text-align:center;padding:1.2rem">
+            <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:#4ade80;margin-bottom:0.5rem" data-id="tier-f3-label">Panel Indicator</div>
+            <p style="font-size:0.82rem;color:var(--sub)" data-id="tier-f3-desc">Panel menampilkan tag <em>(AUTO)</em> pada Lot, SL/TP, Trailing, dan BE saat mode ini aktif.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISK MANAGEMENT -->
+    <section class="section" id="risk">
       <div class="container">
         <div class="reveal" style="margin-bottom:3.5rem;text-align:center">
           <span class="section-label" data-id="sec-label-risk">Manajemen Risiko</span>
@@ -527,8 +569,7 @@
           <div class="divider" style="margin:1rem auto 0"></div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start" class="reveal">
-          <!-- Left: Money Management -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start" class="reveal two-col">
           <div>
             <h3 style="font-size:1.2rem;color:var(--gold);margin-bottom:1.5rem" data-id="mm-title">💰 Money Management</h3>
             <div style="display:flex;flex-direction:column;gap:1rem">
@@ -536,33 +577,32 @@
                 <div class="icon-badge ib-gold" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-dollar-sign"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="mm1-title">SL & TP Berbasis USD</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm1-desc">Stop Loss dan Take Profit dihitung dalam USD (bukan poin), otomatis menyesuaikan lot size. Misal: SL $5, TP $10 — berlaku di kondisi apapun.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm1-desc">Stop Loss dan Take Profit dihitung dalam USD, otomatis menyesuaikan lot size via <code>GetPriceStep()</code>. SL/TP akurat di kondisi apapun.</p>
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
                 <div class="icon-badge ib-green" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-chart-line"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="mm2-title">Trailing Stop USD</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm2-desc">Trailing stop aktif setelah profit mencapai <em>TrailingStartUSD</em>. SL bergerak mengikuti harga dengan jarak <em>TrailingStepUSD</em>. Mengunci profit secara otomatis.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm2-desc">Aktif setelah profit ≥ <em>TrailingStartUSD</em>. SL bergerak mengikuti harga dengan step <em>TrailingStepUSD</em>. Auto-adjust sesuai tier jika UseAutoRiskTier aktif.</p>
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
                 <div class="icon-badge ib-cyan" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-lock"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="mm3-title">Break Even + Profit Lock</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm3-desc">Setelah profit mencapai <em>BreakEvenUSD</em>, SL dipindah ke harga buka + <em>BreakEvenProfitUSD</em>. Trade tidak bisa rugi jika BE aktif.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm3-desc">Setelah profit ≥ <em>BreakEvenUSD</em>, SL pindah ke harga buka + <em>BreakEvenProfitUSD</em>. Trade tidak bisa rugi setelah BE aktif.</p>
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
-                <div class="icon-badge ib-purple" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-percentage"></i></div>
+                <div class="icon-badge ib-purple" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-layer-group"></i></div>
                 <div>
-                  <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="mm4-title">Risk-Based Lot Sizing</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm4-desc">Opsional: lot dihitung otomatis berdasarkan % equity (mis. 1% per trade). Lot menyesuaikan saldo akun secara dinamis.</p>
+                  <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="mm4-title">Auto Risk Tier <span class="new-badge">NEW</span></h4>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="mm4-desc">Lot, SL, TP, Trailing, dan BE menyesuaikan otomatis berdasarkan balance. 8 tier dari &lt;$600 hingga &gt;$10K.</p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Right: Daily Limits -->
           <div>
             <h3 style="font-size:1.2rem;color:#f87171;margin-bottom:1.5rem" data-id="dl-title">🛡️ Daily Limits & Safety</h3>
             <div style="display:flex;flex-direction:column;gap:1rem">
@@ -570,63 +610,53 @@
                 <div class="icon-badge ib-red" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-bullseye"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl1-title">Target Profit Harian</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl1-desc">EA berhenti trading otomatis setelah profit harian mencapai target USD. Dilengkapi <em>Smart Close Buffer</em> — tutup posisi otomatis saat mendekati target.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl1-desc">EA berhenti otomatis setelah profit harian ≥ MaxProfitPerDay. Progress ditampilkan via progress bar di panel.</p>
+                </div>
+              </div>
+              <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
+                <div class="icon-badge ib-gold" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-magic"></i></div>
+                <div>
+                  <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl1b-title">Smart Close Buffer <span class="new-badge">V4.4</span></h4>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl1b-desc">Jika sisa target ≤ SmartCloseBuffer dan floating EA sudah mencukupi, semua posisi ditutup otomatis. Tidak perlu tunggu TP individual.</p>
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
                 <div class="icon-badge ib-red" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-ban"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl2-title">Batas Loss Harian</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl2-desc">Jika loss hari ini melebihi batas (MaxLossPerDay), EA berhenti entry. Melindungi modal dari drawdown beruntun dalam satu hari.</p>
-                </div>
-              </div>
-              <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
-                <div class="icon-badge ib-orange" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-list-ol"></i></div>
-                <div>
-                  <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl3-title">Batas Entry Per Hari</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl3-desc">Batasi jumlah total entry buy + sell dalam sehari (MaxEntryPerDay). Counter direset otomatis setiap hari baru.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl2-desc">Jika loss hari ini ≥ MaxLossPerDay, EA berhenti entry. Progress bar loss ditampilkan di panel real-time.</p>
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
                 <div class="icon-badge ib-red" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-shield-halved"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl4-title">Close All Emergency</h4>
-                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl4-desc">Tutup semua posisi jika floating loss/profit melampaui batas global (MaxLossUSD / TargetProfitUSD). Proteksi akun keseluruhan.</p>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl4-desc">Tutup semua posisi jika floating loss/profit melampaui batas global MaxLossUSD / TargetProfitUSD. Proteksi akun keseluruhan.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Smart Close Banner -->
-        <div class="card reveal" style="margin-top:2rem;background:rgba(245,200,66,0.04);border-color:rgba(245,200,66,0.15);display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
-          <div class="icon-badge ib-gold" style="flex-shrink:0"><i class="fas fa-magic"></i></div>
-          <div>
-            <h4 style="color:var(--gold);margin-bottom:0.3rem" data-id="sc-title">Smart Target Close</h4>
-            <p style="font-size:0.85rem;color:var(--sub);line-height:1.6" data-id="sc-desc">Fitur eksklusif: jika sisa target harian ≤ <em>SmartCloseBuffer</em> (misal $2) dan floating profit EA sudah memenuhi sisa tersebut, semua posisi ditutup otomatis. Tidak perlu nunggu TP individual — langsung <em>book profit</em>.</p>
-          </div>
-          <span class="tag tag-gold" style="flex-shrink:0">Eksklusif V4.3</span>
-        </div>
       </div>
     </section>
 
-    <!-- ============= GRID / MULTI ENTRY ============= -->
-    <section class="section">
+    <!-- GRID SECTION -->
+    <section class="section" style="background:rgba(0,0,0,0.3)">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center" class="two-col">
           <div class="reveal">
             <span class="section-label" data-id="grid-label">Grid System</span>
             <h2 class="section-title" style="color:white">
               Multi Entry <span class="grad-text-purple">& Grid</span>
             </h2>
             <div class="divider"></div>
-            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="grid-desc">EA mendukung strategi multi-entry dengan jarak antar posisi yang terkontrol. Ada dua mode grid: <strong style="color:white">Fixed Points</strong> dan <strong style="color:white">ATR Dynamic</strong> yang menyesuaikan jarak berdasarkan volatilitas saat ini.</p>
+            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="grid-desc">EA mendukung multi-entry dengan jarak terkontrol. Mode <strong style="color:white">Fixed Points</strong> atau <strong style="color:white">ATR Dynamic</strong>. Grid hanya tambah posisi searah posisi terakhir.</p>
             <ul class="checklist">
               <li><i class="fas fa-check-circle"></i> <span data-id="grid-li1">MaxMultiEntry — batas jumlah posisi terbuka bersamaan</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li2">GridDistance_Points — jarak entry berikutnya (fixed)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li3">UseATRGrid — jarak dinamis berdasarkan ATR periode tertentu</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li2">GridDistance_Points — jarak entry berikutnya (fixed, default 300)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li3">UseATRGrid — jarak dinamis berdasarkan ATR × Multiplier</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="grid-li4">Grid hanya tambah posisi searah dengan posisi terakhir</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li5">MultiEntryEnable — bisa dimatikan untuk mode single position</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="grid-li5">MultiEntryEnable — nonaktifkan untuk mode single position</span></li>
             </ul>
           </div>
           <div class="reveal reveal-delay-1">
@@ -646,8 +676,8 @@
       </div>
     </section>
 
-    <!-- ============= NEWS FILTER ============= -->
-    <section class="section" id="news" style="background:rgba(0,0,0,0.3)">
+    <!-- NEWS FILTER -->
+    <section class="section" id="news">
       <div class="container">
         <div class="reveal" style="text-align:center;margin-bottom:1rem">
           <span class="section-label" data-id="news-label">News Protection</span>
@@ -661,120 +691,123 @@
             <div class="ns-circle info">01</div>
             <div class="ns-text">
               <h4 data-id="ns1-title">Fetch Kalender Ekonomi Otomatis</h4>
-              <p data-id="ns1-desc">EA mengambil data XML dari ForexFactory setiap jam via <em>WebRequest</em>. Tidak perlu input manual — semua berita USD High Impact terdeteksi otomatis.</p>
+              <p data-id="ns1-desc">EA mengambil data XML dari ForexFactory tiap jam via <em>WebRequest</em>. Semua berita USD High Impact terdeteksi otomatis. Jika koneksi gagal, ada retry cooldown 5 menit.</p>
             </div>
           </div>
           <div class="news-step">
             <div class="ns-circle info">02</div>
             <div class="ns-text">
-              <h4 data-id="ns2-title">Deteksi GMT Otomatis</h4>
-              <p data-id="ns2-desc">Offset GMT broker terdeteksi otomatis (atau bisa diset manual). Waktu berita dikonversi ke waktu broker secara akurat tanpa perlu setting timezone.</p>
+              <h4 data-id="ns2-title">Auto GMT Detection (ManualGMTOffset=99)</h4>
+              <p data-id="ns2-desc">Default: offset GMT broker terdeteksi otomatis dari selisih <code>TimeCurrent() - TimeGMT()</code>. Bisa diset manual jika deteksi tidak akurat.</p>
             </div>
           </div>
           <div class="news-step">
             <div class="ns-circle blocked">⛔</div>
             <div class="ns-text">
               <h4 data-id="ns3-title">Blokir X Menit Sebelum Berita</h4>
-              <p data-id="ns3-desc">Entry diblokir <em>NewsStopMinutesBefore</em> (default 10 menit) sebelum berita rilis. Panel menampilkan countdown "Before: Xm Xs" secara real-time.</p>
+              <p data-id="ns3-desc">Entry diblokir <em>NewsStopMinutesBefore</em> (default 10 menit) sebelum rilis. Panel menampilkan countdown "Before: Xm Xs" secara real-time.</p>
             </div>
           </div>
           <div class="news-step">
             <div class="ns-circle wait">⏳</div>
             <div class="ns-text">
               <h4 data-id="ns4-title">Tunggu X Menit Setelah Berita</h4>
-              <p data-id="ns4-desc">Setelah berita rilis, EA menunggu <em>NewsWaitMinutesAfter</em> (default 10 menit) untuk pasar stabil. Panel menampilkan countdown "After: Xm Xs".</p>
+              <p data-id="ns4-desc">Setelah rilis, EA tunggu <em>NewsWaitMinutesAfter</em> (default 10 menit). Panel menampilkan countdown "After: Xm Xs" terpisah dari Before.</p>
             </div>
           </div>
           <div class="news-step">
             <div class="ns-circle ok">✓</div>
             <div class="ns-text">
               <h4 data-id="ns5-title">Resume Trading Normal</h4>
-              <p data-id="ns5-desc">Setelah periode tunggu selesai, EA kembali mengizinkan entry secara otomatis. Semua 9 filter tetap aktif seperti biasa.</p>
+              <p data-id="ns5-desc">Setelah periode tunggu selesai, EA kembali mengizinkan entry. Panel menampilkan berita berikutnya: waktu, currency, impact, dan judul.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============= LIVE PANEL ============= -->
-    <section class="section" id="panel">
+    <!-- PANEL -->
+    <section class="section" id="panel" style="background:rgba(0,0,0,0.3)">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start">
+        <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start" class="two-col">
           <div class="reveal">
             <span class="section-label" data-id="panel-label">Live Dashboard</span>
             <h2 class="section-title" style="color:white">
               Panel <span class="grad-text-purple">Real-Time</span>
             </h2>
             <div class="divider"></div>
-            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="panel-desc">Panel informasi langsung di chart MT5. Semua status terpantau tanpa buka jendela lain.</p>
+            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="panel-desc">Panel informasi langsung di chart MT5 (pojok kanan atas). Semua status terpantau tanpa buka jendela lain.</p>
             <ul class="checklist">
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li1">Balance, Equity, P/L hari ini, Floating</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li2">Progress bar profit & loss harian</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li3">Status pasar: Open / Closed / Stabilizing</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li4">Choppiness Index: Sideways / Trending</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li5">Countdown news: Before / After</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li6">Nama & impact berita berikutnya</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li7">Status koneksi news (OK / ERR)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li8">EMA Filter: Above / Below + nilai EMA</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li9">Level SR: Resistance & Support</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li10">Sesi, Spread, Trend PA, Posisi aktif</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li2">Progress bar profit & loss harian (dengan %)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li3">Status pasar: Open / Closed / Stabilizing / Pre-Close Lock</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li4">Choppiness Index: SIDEWAYS / TRENDING (+ nilai CI)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li5">Countdown news: Before & After (terpisah)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li6">Nama, currency, impact berita berikutnya</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li7">Status koneksi news (OK / ERR NET / ERR: Add URL)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li8">M5 Trend: BULLISH / BEARISH / FLAT</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li9">M1 Pattern: BUY SIG / SELL SIG / NONE</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li10">Lot/SL/TP/Trailing/BE dengan tag (AUTO) jika AutoTier aktif</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li11">Posisi aktif vs MaxMultiEntry</span></li>
             </ul>
           </div>
           <div class="panel-mockup reveal reveal-delay-1">
-            <div class="pm-title">⚡ EAGLE V4.3 AUTO ⚡</div>
+            <div class="pm-title">⚡ EAGLE V4.4 AUTO ⚡</div>
             <div class="pm-section">── ACCOUNT ──</div>
             <div class="pm-row"><span class="pm-key">Balance</span><span class="pm-val c-white">$ 1,250.00</span></div>
             <div class="pm-row"><span class="pm-key">Equity</span><span class="pm-val c-cyan">$ 1,262.50</span></div>
             <div class="pm-row"><span class="pm-key">P/L Day</span><span class="pm-val c-green">$ +12.40</span></div>
             <div class="pm-row"><span class="pm-key">Floating</span><span class="pm-val c-green">$ +12.50</span></div>
             <div class="pm-section">── PROGRESS ──</div>
-            <div class="pm-row"><span class="pm-key">Profit</span><span class="pm-val c-green">[████████░░░░] 83%</span></div>
+            <div class="pm-row"><span class="pm-key">Profit</span><span class="pm-val c-green">[████████░░░░] 83% $15</span></div>
+            <div class="pm-row"><span class="pm-key">Max Loss</span><span class="pm-val c-gray">OFF</span></div>
             <div class="pm-row"><span class="pm-key">Entry</span><span class="pm-val c-white">[██░░░░░░░░░░] 8/100</span></div>
             <div class="pm-section">── MARKET STATUS ──</div>
             <div class="pm-row"><span class="pm-key">Time</span><span class="pm-val c-green">OPEN (In 4h 22m)</span></div>
             <div class="pm-row"><span class="pm-key">State</span><span class="pm-val c-green">TRENDING (CI: 38.2)</span></div>
-            <div class="pm-section">── NEWS FILTER ──</div>
+            <div class="pm-row"><span class="pm-key">Session</span><span class="pm-val c-green">● OPEN</span></div>
+            <div class="pm-section">── NEWS FILTER (AUTO) ──</div>
             <div class="pm-row"><span class="pm-key">Status</span><span class="pm-val c-green">● CLEAR</span></div>
             <div class="pm-row"><span class="pm-key">Before</span><span class="pm-val c-orange">24m 15s</span></div>
             <div class="pm-row"><span class="pm-key">After</span><span class="pm-val c-gray">--</span></div>
             <div class="pm-row"><span class="pm-key">Next</span><span class="pm-val c-cyan">21:30 (GMT+3)</span></div>
             <div class="pm-row"><span class="pm-key"></span><span class="pm-val c-red">USD High - Non-Farm</span></div>
-            <div class="pm-section">── FILTERS ──</div>
-            <div class="pm-row"><span class="pm-key">Session</span><span class="pm-val c-green">● NY OPEN</span></div>
-            <div class="pm-row"><span class="pm-key">Spread</span><span class="pm-val c-green">120 pts</span></div>
-            <div class="pm-row"><span class="pm-key">PA Trend</span><span class="pm-val c-green">▲ BULLISH</span></div>
-            <div class="pm-row"><span class="pm-key">EMA(50)</span><span class="pm-val c-green">▲ ABOVE 2345.12</span></div>
-            <div class="pm-section">── SR LEVELS ──</div>
-            <div class="pm-row"><span class="pm-key">Resist</span><span class="pm-val c-red">2387.450</span></div>
-            <div class="pm-row"><span class="pm-key">Support</span><span class="pm-val c-green">2310.200</span></div>
+            <div class="pm-section">── ─────────────────── ──</div>
+            <div class="pm-row"><span class="pm-key">M5 Trend</span><span class="pm-val c-green">▲ BULLISH</span></div>
+            <div class="pm-row"><span class="pm-key">M1 Pattern</span><span class="pm-val c-green">▲ BUY SIG</span></div>
             <div class="pm-section">── SETTINGS ──</div>
-            <div class="pm-row"><span class="pm-key">Lot</span><span class="pm-val c-cyan">0.01</span></div>
-            <div class="pm-row"><span class="pm-key">SL / TP</span><span class="pm-val c-white">$5.00 / $10.00</span></div>
-            <div class="pm-row"><span class="pm-key">Trailing</span><span class="pm-val c-white">$5 → $3</span></div>
-            <div class="pm-row"><span class="pm-key">B.Even</span><span class="pm-val c-white">$2 → $0.20</span></div>
-            <div class="pm-row"><span class="pm-key">Positions</span><span class="pm-val c-gold">1 / 3</span></div>
+            <div class="pm-row"><span class="pm-key">Lot (AUTO)</span><span class="pm-val c-cyan">0.02</span></div>
+            <div class="pm-row"><span class="pm-key">SL/TP (AUTO)</span><span class="pm-val c-white">$10 / $25</span></div>
+            <div class="pm-row"><span class="pm-key">Trailing</span><span class="pm-val c-white">$6 → $4</span></div>
+            <div class="pm-row"><span class="pm-key">B.Even</span><span class="pm-val c-white">$4 → $0.50</span></div>
+            <div class="pm-section">── ─────────────────── ──</div>
+            <div class="pm-row"><span class="pm-key">Positions</span><span class="pm-val c-yellow">1 / 3</span></div>
+            <div class="pm-section">AUTO TRADE · EAGLETRADEAVL</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============= SPECS ============= -->
-    <section class="section" style="background:rgba(0,0,0,0.3)">
+    <!-- SPECS -->
+    <section class="section">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem" class="two-col">
           <div class="reveal">
             <h3 style="font-size:1.2rem;margin-bottom:1.2rem;color:white" data-id="spec-title">Spesifikasi Teknis</h3>
             <table class="spec-table">
               <tr><td data-id="spec-platform">Platform</td><td>MetaTrader 5 (MT5)</td></tr>
               <tr><td>Pair</td><td>XAUUSD / Gold</td></tr>
               <tr><td data-id="spec-tf">Timeframe Eksekusi</td><td>M1 (Scalping)</td></tr>
-              <tr><td data-id="spec-ema-tf">TF Indikator EMA</td><td>M5 (bisa diubah)</td></tr>
-              <tr><td data-id="spec-macd-tf">TF Indikator MACD</td><td>M5</td></tr>
-              <tr><td>SL / TP</td><td data-id="spec-sltp">USD Based (Money Mgmt)</td></tr>
+              <tr><td data-id="spec-trend-tf">TF Trend Filter</td><td>M5 (Price Action)</td></tr>
+              <tr><td data-id="spec-ema-tf">TF EMA Filter</td><td>M5 (bisa diubah)</td></tr>
+              <tr><td data-id="spec-macd-tf">TF MACD Filter</td><td>M5</td></tr>
+              <tr><td>SL / TP</td><td data-id="spec-sltp">USD Based</td></tr>
               <tr><td data-id="spec-trailing">Trailing Stop</td><td data-id="spec-trailing-val">Ya, USD-based step</td></tr>
               <tr><td data-id="spec-be">Break Even</td><td data-id="spec-be-val">Ya, dengan profit lock</td></tr>
+              <tr><td>Auto Risk Tier</td><td data-id="spec-tier-val">8 tier (opsional)</td></tr>
               <tr><td data-id="spec-grid">Grid / Multi Entry</td><td data-id="spec-grid-val">Opsional (off by default)</td></tr>
-              <tr><td data-id="spec-news">News Source</td><td>XML</td></tr>
+              <tr><td data-id="spec-news">News Source</td><td>XML (ForexFactory)</td></tr>
+              <tr><td>MagicNumber</td><td>777 (default)</td></tr>
               <tr><td data-id="spec-deposit">Min Deposit</td><td data-id="spec-deposit-val">Rekomendasi $100+</td></tr>
               <tr><td data-id="spec-state">State Persistence</td><td>GlobalVariables MT5</td></tr>
             </table>
@@ -782,24 +815,26 @@
           <div class="reveal reveal-delay-1">
             <h3 style="font-size:1.2rem;margin-bottom:1.2rem;color:white" data-id="sys-title">Fitur Sistem</h3>
             <ul class="checklist">
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li1">Order retry otomatis (3x dengan backoff)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li2">Slippage control per eksekusi</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li1">Order retry otomatis (3x dengan exponential backoff)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li2">Slippage control per eksekusi order</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li3">Spread check sebelum setiap entry</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li4">Filling mode otomatis (IOC/FOK/Return)</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li5">Daily counter reset otomatis tiap hari baru</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li6">History-based P/L tracker (akurat)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li7">License lock per nomor akun</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li8">News cooldown retry saat koneksi gagal</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li9">Weekend & market close detection</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li10">Semua parameter input dapat dikustomisasi</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li6">History-based P/L tracker dari deal history</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li7">License lock per nomor akun MT5</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li8">News cooldown retry 5 menit saat koneksi gagal</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li9">Weekend & market close detection otomatis</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li10">EMA digambar otomatis di chart (hijau/merah)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li11">Auto Risk Tier update tiap tick</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li12">Semua parameter input dapat dikustomisasi</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============= PRICING ============= -->
-    <section class="section" id="paket">
+    <!-- PRICING -->
+    <section class="section" id="paket" style="background:rgba(0,0,0,0.3)">
       <div class="container" style="text-align:center">
         <div class="reveal">
           <span class="section-label" data-id="price-label">Dapatkan Akses</span>
@@ -810,27 +845,28 @@
         </div>
 
         <div class="pricing-box reveal">
-          <div><span class="tag tag-gold" style="font-size:0.7rem">LIFETIME LICENSE · 1 AKUN</span></div>
-          <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem">EAGLETRADEAVL V4.3</h3>
+          <div><span class="tag tag-gold" style="font-size:0.7rem">LIFETIME LICENSE · 1 AKUN · V4.4</span></div>
+          <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem">EAGLETRADEAVL V4.4</h3>
           <div style="margin-bottom:2rem">
             <span class="price-currency">Rp</span>
             <span class="price-big">300.000</span>
-            <span class="price-big"> / 25$</span>
+            <span style="font-family:'Orbitron',monospace;font-size:1.5rem;color:var(--sub)"> / 25$</span>
           </div>
 
           <div style="margin-bottom:1.5rem">
             <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc1">1 License untuk 1 akun MT5</span></div>
-            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc2">Semua fitur 9 filter aktif</span></div>
-            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc3">News Filter otomatis</span></div>
-            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc4">Market Hours Guard + Smart Close</span></div>
-            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc5">Panel real-time di chart</span></div>
+            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc2">Semua fitur 9 layer filter aktif</span></div>
+            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc2b">Auto Risk Tier (8 tier otomatis) <span class="new-badge">NEW</span></span></div>
+            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc3">News Filter otomatis + countdown panel</span></div>
+            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc4">Market Hours Guard + Smart Close Buffer</span></div>
+            <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc5">Panel real-time lengkap di chart</span></div>
             <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc6">Set File rekomendasi dari developer</span></div>
             <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc7">Panduan setting & instalasi</span></div>
             <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc8">Support instalasi via AnyDesk</span></div>
             <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="fc9">Update versi minor gratis</span></div>
           </div>
 
-          <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V4.3%20XAUUSD%20Lifetime" class="btn-order">
+          <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V4.4%20XAUUSD%20Lifetime" class="btn-order">
             <i class="fab fa-whatsapp text-xl"></i>
             <span data-id="btn-order">Pesan via WhatsApp</span>
           </a>
@@ -868,12 +904,12 @@
           <a href="#" onclick="openPopup('terms')" data-id="footer-terms">Terms</a>
           <a href="#" onclick="openPopup('risk')" data-id="footer-risk">Risk Disclosure</a>
         </div>
-        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved.</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved. · V4.4</p>
         <p style="color:var(--muted);font-size:0.82rem;margin-top:0.3rem"><i class="fab fa-whatsapp" style="color:#22c55e"></i> 0895-2831-1840</p>
       </div>
     </footer>
 
-    <!-- POPUP MODAL -->
+    <!-- POPUP -->
     <div id="popupModal" class="popup-modal">
       <div class="popup-content">
         <span class="popup-close">&times;</span>
@@ -882,124 +918,126 @@
     </div>
 
     <script>
-      // ══════════════════════════════════════════════════
-      // TRANSLATION DICTIONARY
-      // ══════════════════════════════════════════════════
       const translations = {
         id: {
-          // NAV
           "nav-filters": "9 Filter",
           "nav-risk": "Risk Mgmt",
+          "nav-tier": "Auto Tier",
           "nav-news": "News Guard",
           "nav-panel": "Panel",
           "nav-price": "Harga",
-          // HERO
-          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis untuk proteksi maksimal di pasar Gold.',
+          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis + <strong style="color:var(--gold)">Auto Risk Tier</strong> untuk proteksi maksimal di pasar Gold.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading memiliki risiko tinggi. EA adalah alat bantu teknis, bukan mesin uang.',
           "btn-get": "Dapatkan Sekarang",
           "btn-see-filter": "Lihat 9 Filter",
-          // STATS
           "stat-filter": "Layer Filter",
           "stat-sl": "Based SL / TP",
           "stat-tf": "Scalping TF",
-          "stat-news": "News Protection",
-          // FILTER SECTION
+          "stat-news": "Risk Tier + News",
           "sec-label-filter": "Sistem Proteksi",
           "sec-title-filter": "9 Layer Filter Entry",
           "sec-desc-filter": "Setiap entry melewati 9 filter berlapis secara berurutan. Semua harus lolos baru order dikirim.",
           "f1-title": "Price Action M1",
-          "f1-desc": 'Deteksi pola candlestick: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong> dan pola <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong> berdasarkan dua candle terakhir.',
-          "f2-title": "EMA Trend Bias Filter",
-          "f2-desc": 'Filter arah trend pasar menggunakan <strong style="color:var(--gold)">EMA (Exponential Moving Average)</strong>. Buy hanya jika harga di atas EMA, Sell hanya jika di bawah EMA. Mencegah entry melawan trend besar.',
-          "f3-title": "MACD M5 Confirmation",
-          "f3-desc": 'Konfirmasi momentum menggunakan <strong style="color:#67e8f9">MACD histogram pada M5</strong>. Buy butuh histogram positif dan <em>naik</em>; Sell butuh histogram negatif dan <em>turun</em>. Jika momentum melemah, entry diblokir.',
-          "f4-title": "RSI Overbought/Oversold",
-          "f4-desc": 'Filter menggunakan <strong style="color:#f87171">RSI (Relative Strength Index)</strong> untuk menghindari entry di area jenuh beli/jual.',
-          "f5-title": "Choppiness Index (Sideways)",
-          "f5-desc": 'Menghitung <strong style="color:#fb923c">Choppiness Index</strong> untuk mendeteksi kondisi pasar sideways/choppy. Jika CI > 61.8, pasar dianggap tidak terarah dan EA berhenti entry. Hanya trading saat pasar <em>trending</em>.',
-          "f6-title": "Support & Resistance Zone",
-          "f6-desc": 'EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir. Buy diblokir dekat resistance, Sell diblokir dekat support. Ada opsi <em>Bounce Entry</em> untuk entry pantulan dari zona S/R.',
-          "f7-title": "News Filter Auto",
-          "f7-desc": 'Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> secara otomatis. Blokir entry X menit sebelum dan sesudah berita <em>USD High Impact</em>. GMT offset terdeteksi otomatis.',
-          "f8-title": "Market Hours Guard",
-          "f8-desc": 'Proteksi sesi pasar: <strong style="color:#fb923c">blokir entry</strong> X menit sebelum market tutup, <strong style="color:#fb923c">force close semua posisi</strong> Y menit sebelum tutup, dan <strong style="color:#fb923c">tunggu stabilisasi</strong> Z menit setelah market buka.',
-          "f9-title": "Trading Session Filter",
-          "f9-desc": 'Pilih sesi pasar yang diizinkan: <strong style="color:#a78bfa">Asian</strong>, <strong style="color:#a78bfa">London</strong>, <strong style="color:#a78bfa">New York</strong>. Masing-masing bisa diaktifkan/nonaktifkan sesuai strategi. Spread juga dicek setiap tick.',
-          // RISK
+          "f1-desc": 'Deteksi pola candlestick: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong>, <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong>, dan <strong style="color:#c4b5fd">Pin Bar / Hammer / Shooting Star</strong> berdasarkan rasio wick dan body candle.',
+          "f2-title": "M5 Trend Bias (Price Action)",
+          "f2-desc": 'Analisis bias trend menggunakan <strong style="color:var(--gold)">2 dari 3 candle M5 terakhir</strong>. Jika mayoritas bullish → trend UP, mayoritas bearish → trend DOWN. Entry hanya searah trend M5.',
+          "f3-title": "EMA Trend Bias Filter",
+          "f3-desc": 'Filter arah trend menggunakan <strong style="color:var(--gold)">EMA Fast & Slow</strong>. Buy hanya jika harga > EMA Fast > EMA Slow (bullish alignment). EMA otomatis digambar di chart (hijau & merah).',
+          "f4-title": "MACD M5 Confirmation",
+          "f4-desc": 'Konfirmasi momentum via <strong style="color:#67e8f9">MACD histogram M5</strong>. Buy butuh histogram positif dan <em>naik</em>; Sell butuh histogram negatif dan <em>turun</em>. Entry diblokir jika momentum melemah.',
+          "f5-title": "RSI Overbought/Oversold",
+          "f5-desc": 'Filter menggunakan <strong style="color:#f87171">RSI (Relative Strength Index)</strong> pada M1. Buy diblokir jika RSI ≥ 80, Sell diblokir jika RSI ≤ 26. Menghindari entry di area jenuh.',
+          "f6-title": "Choppiness Index (Sideways)",
+          "f6-desc": 'Menghitung <strong style="color:#fb923c">Choppiness Index</strong> dari M1. Jika CI > 61.8, pasar dianggap sideways dan EA berhenti entry. Panel menampilkan nilai CI dan status SIDEWAYS/TRENDING secara real-time.',
+          "f7-title": "Support & Resistance Zone",
+          "f7-desc": 'EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50). Buy diblokir dekat resistance, Sell diblokir dekat support. Dengan buffer zona yang bisa dikonfigurasi.',
+          "f8-title": "News Filter Auto",
+          "f8-desc": 'Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah <em>USD High Impact</em>. GMT offset auto-detect (ManualGMTOffset=99) atau set manual.',
+          "f9-title": "Market Hours + Session Filter",
+          "f9-desc": 'Proteksi jam pasar: <strong style="color:#fb923c">blokir entry</strong> sebelum tutup, <strong style="color:#fb923c">force close</strong> saat mendekati tutup, <strong style="color:#fb923c">tunggu stabilisasi</strong> setelah buka. Pilih sesi Asian, London, atau NY.',
+          "tier-label": "Fitur Baru V4.4",
+          "tier-desc": 'Lot size, SL, TP, Trailing, dan Break Even otomatis menyesuaikan berdasarkan balance akun. Aktifkan dengan <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
+          "th-balance": "Balance",
+          "th-trail": "Trail Start",
+          "th-step": "Trail Step",
+          "th-lock": "Profit Lock",
+          "tier-f1-label": "Tier Otomatis",
+          "tier-f1-desc": "Lot & parameter berubah otomatis saat balance naik. Tidak perlu ubah setting manual.",
+          "tier-f2-label": "Scalable Risk",
+          "tier-f2-desc": "Risk per trade tetap proporsional terhadap balance. Lindungi akun kecil, optimalkan akun besar.",
+          "tier-f3-label": "Panel Indicator",
+          "tier-f3-desc": "Panel menampilkan tag (AUTO) pada Lot, SL/TP, Trailing, dan BE saat mode ini aktif.",
           "sec-label-risk": "Manajemen Risiko",
           "sec-title-risk1": "Proteksi Modal",
           "sec-title-risk2": "Berlapis",
           "mm-title": "💰 Money Management",
           "mm1-title": "SL & TP Berbasis USD",
-          "mm1-desc": "Stop Loss dan Take Profit dihitung dalam USD (bukan poin), otomatis menyesuaikan lot size. Misal: SL $5, TP $10 — berlaku di kondisi apapun.",
+          "mm1-desc": "Stop Loss dan Take Profit dihitung dalam USD, otomatis menyesuaikan lot size via GetPriceStep(). SL/TP akurat di kondisi apapun.",
           "mm2-title": "Trailing Stop USD",
-          "mm2-desc": "Trailing stop aktif setelah profit mencapai <em>TrailingStartUSD</em>. SL bergerak mengikuti harga dengan jarak <em>TrailingStepUSD</em>. Mengunci profit secara otomatis.",
+          "mm2-desc": "Aktif setelah profit ≥ TrailingStartUSD. SL bergerak mengikuti harga dengan step TrailingStepUSD. Auto-adjust sesuai tier jika UseAutoRiskTier aktif.",
           "mm3-title": "Break Even + Profit Lock",
-          "mm3-desc": "Setelah profit mencapai <em>BreakEvenUSD</em>, SL dipindah ke harga buka + <em>BreakEvenProfitUSD</em>. Trade tidak bisa rugi jika BE aktif.",
-          "mm4-title": "Risk-Based Lot Sizing",
-          "mm4-desc": "Opsional: lot dihitung otomatis berdasarkan % equity (mis. 1% per trade). Lot menyesuaikan saldo akun secara dinamis.",
+          "mm3-desc": "Setelah profit ≥ BreakEvenUSD, SL pindah ke harga buka + BreakEvenProfitUSD. Trade tidak bisa rugi setelah BE aktif.",
+          "mm4-title": "Auto Risk Tier",
+          "mm4-desc": "Lot, SL, TP, Trailing, dan BE menyesuaikan otomatis berdasarkan balance. 8 tier dari <$600 hingga >$10K.",
           "dl-title": "🛡️ Daily Limits & Safety",
           "dl1-title": "Target Profit Harian",
-          "dl1-desc": "EA berhenti trading otomatis setelah profit harian mencapai target USD. Dilengkapi <em>Smart Close Buffer</em> — tutup posisi otomatis saat mendekati target.",
+          "dl1-desc": "EA berhenti otomatis setelah profit harian ≥ MaxProfitPerDay. Progress ditampilkan via progress bar di panel.",
+          "dl1b-title": "Smart Close Buffer",
+          "dl1b-desc": "Jika sisa target ≤ SmartCloseBuffer dan floating EA sudah mencukupi, semua posisi ditutup otomatis. Tidak perlu tunggu TP individual.",
           "dl2-title": "Batas Loss Harian",
-          "dl2-desc": "Jika loss hari ini melebihi batas (MaxLossPerDay), EA berhenti entry. Melindungi modal dari drawdown beruntun dalam satu hari.",
-          "dl3-title": "Batas Entry Per Hari",
-          "dl3-desc": "Batasi jumlah total entry buy + sell dalam sehari (MaxEntryPerDay). Counter direset otomatis setiap hari baru.",
+          "dl2-desc": "Jika loss hari ini ≥ MaxLossPerDay, EA berhenti entry. Progress bar loss ditampilkan di panel real-time.",
           "dl4-title": "Close All Emergency",
-          "dl4-desc": "Tutup semua posisi jika floating loss/profit melampaui batas global (MaxLossUSD / TargetProfitUSD). Proteksi akun keseluruhan.",
-          "sc-title": "Smart Target Close",
-          "sc-desc": "Fitur eksklusif: jika sisa target harian ≤ <em>SmartCloseBuffer</em> (misal $2) dan floating profit EA sudah memenuhi sisa tersebut, semua posisi ditutup otomatis. Tidak perlu nunggu TP individual — langsung <em>book profit</em>.",
-          // GRID
+          "dl4-desc": "Tutup semua posisi jika floating loss/profit melampaui batas global MaxLossUSD / TargetProfitUSD.",
           "grid-label": "Grid System",
-          "grid-desc": 'EA mendukung strategi multi-entry dengan jarak antar posisi yang terkontrol. Ada dua mode grid: <strong style="color:white">Fixed Points</strong> dan <strong style="color:white">ATR Dynamic</strong> yang menyesuaikan jarak berdasarkan volatilitas saat ini.',
+          "grid-desc": 'EA mendukung multi-entry dengan jarak terkontrol. Mode <strong style="color:white">Fixed Points</strong> atau <strong style="color:white">ATR Dynamic</strong>. Grid hanya tambah posisi searah posisi terakhir.',
           "grid-li1": "MaxMultiEntry — batas jumlah posisi terbuka bersamaan",
-          "grid-li2": "GridDistance_Points — jarak entry berikutnya (fixed)",
-          "grid-li3": "UseATRGrid — jarak dinamis berdasarkan ATR periode tertentu",
+          "grid-li2": "GridDistance_Points — jarak entry berikutnya (fixed, default 300)",
+          "grid-li3": "UseATRGrid — jarak dinamis berdasarkan ATR × Multiplier",
           "grid-li4": "Grid hanya tambah posisi searah dengan posisi terakhir",
-          "grid-li5": "MultiEntryEnable — bisa dimatikan untuk mode single position",
+          "grid-li5": "MultiEntryEnable — nonaktifkan untuk mode single position",
           "grid-param-title": "Parameter Grid",
           "grid-p1": "false (default off)",
           "grid-p2": "3 posisi maks",
           "grid-p3": "300 poin",
           "grid-p4": "false (opsional)",
-          // NEWS
           "news-label": "News Protection",
           "news-title1": "Proteksi Berita",
           "news-title2": "High Impact",
           "ns1-title": "Fetch Kalender Ekonomi Otomatis",
-          "ns1-desc": "EA mengambil data XML dari ForexFactory setiap jam via <em>WebRequest</em>. Tidak perlu input manual — semua berita USD High Impact terdeteksi otomatis.",
-          "ns2-title": "Deteksi GMT Otomatis",
-          "ns2-desc": "Offset GMT broker terdeteksi otomatis (atau bisa diset manual). Waktu berita dikonversi ke waktu broker secara akurat tanpa perlu setting timezone.",
+          "ns1-desc": "EA mengambil data XML dari ForexFactory tiap jam via WebRequest. Semua berita USD High Impact terdeteksi otomatis. Jika koneksi gagal, ada retry cooldown 5 menit.",
+          "ns2-title": "Auto GMT Detection (ManualGMTOffset=99)",
+          "ns2-desc": "Default: offset GMT broker terdeteksi otomatis dari selisih TimeCurrent() - TimeGMT(). Bisa diset manual jika deteksi tidak akurat.",
           "ns3-title": "Blokir X Menit Sebelum Berita",
-          "ns3-desc": 'Entry diblokir <em>NewsStopMinutesBefore</em> (default 10 menit) sebelum berita rilis. Panel menampilkan countdown "Before: Xm Xs" secara real-time.',
+          "ns3-desc": "Entry diblokir NewsStopMinutesBefore (default 10 menit) sebelum rilis. Panel menampilkan countdown Before: Xm Xs secara real-time.",
           "ns4-title": "Tunggu X Menit Setelah Berita",
-          "ns4-desc": 'Setelah berita rilis, EA menunggu <em>NewsWaitMinutesAfter</em> (default 10 menit) untuk pasar stabil. Panel menampilkan countdown "After: Xm Xs".',
+          "ns4-desc": "Setelah rilis, EA tunggu NewsWaitMinutesAfter (default 10 menit). Panel menampilkan countdown After: Xm Xs terpisah dari Before.",
           "ns5-title": "Resume Trading Normal",
-          "ns5-desc": "Setelah periode tunggu selesai, EA kembali mengizinkan entry secara otomatis. Semua 9 filter tetap aktif seperti biasa.",
-          // PANEL
+          "ns5-desc": "Setelah periode tunggu selesai, EA kembali mengizinkan entry. Panel menampilkan berita berikutnya: waktu, currency, impact, dan judul.",
           "panel-label": "Live Dashboard",
-          "panel-desc": "Panel informasi langsung di chart MT5. Semua status terpantau tanpa buka jendela lain.",
+          "panel-desc": "Panel informasi langsung di chart MT5 (pojok kanan atas). Semua status terpantau tanpa buka jendela lain.",
           "panel-li1": "Balance, Equity, P/L hari ini, Floating",
-          "panel-li2": "Progress bar profit & loss harian",
-          "panel-li3": "Status pasar: Open / Closed / Stabilizing",
-          "panel-li4": "Choppiness Index: Sideways / Trending",
-          "panel-li5": "Countdown news: Before / After",
-          "panel-li6": "Nama & impact berita berikutnya",
-          "panel-li7": "Status koneksi news (OK / ERR)",
-          "panel-li8": "EMA Filter: Above / Below + nilai EMA",
-          "panel-li9": "Level SR: Resistance & Support",
-          "panel-li10": "Sesi, Spread, Trend PA, Posisi aktif",
-          // SPECS
+          "panel-li2": "Progress bar profit & loss harian (dengan %)",
+          "panel-li3": "Status pasar: Open / Closed / Stabilizing / Pre-Close Lock",
+          "panel-li4": "Choppiness Index: SIDEWAYS / TRENDING (+ nilai CI)",
+          "panel-li5": "Countdown news: Before & After (terpisah)",
+          "panel-li6": "Nama, currency, impact berita berikutnya",
+          "panel-li7": "Status koneksi news (OK / ERR NET / ERR: Add URL)",
+          "panel-li8": "M5 Trend: BULLISH / BEARISH / FLAT",
+          "panel-li9": "M1 Pattern: BUY SIG / SELL SIG / NONE",
+          "panel-li10": "Lot/SL/TP/Trailing/BE dengan tag (AUTO) jika AutoTier aktif",
+          "panel-li11": "Posisi aktif vs MaxMultiEntry",
           "spec-title": "Spesifikasi Teknis",
           "spec-platform": "Platform",
           "spec-tf": "Timeframe Eksekusi",
-          "spec-ema-tf": "TF Indikator EMA",
-          "spec-macd-tf": "TF Indikator MACD",
-          "spec-sltp": "USD Based (Money Mgmt)",
+          "spec-trend-tf": "TF Trend Filter",
+          "spec-ema-tf": "TF EMA Filter",
+          "spec-macd-tf": "TF MACD Filter",
+          "spec-sltp": "USD Based",
           "spec-trailing": "Trailing Stop",
           "spec-trailing-val": "Ya, USD-based step",
           "spec-be": "Break Even",
           "spec-be-val": "Ya, dengan profit lock",
+          "spec-tier-val": "8 tier (opsional)",
           "spec-grid": "Grid / Multi Entry",
           "spec-grid-val": "Opsional (off by default)",
           "spec-news": "News Source",
@@ -1007,24 +1045,26 @@
           "spec-deposit-val": "Rekomendasi $100+",
           "spec-state": "State Persistence",
           "sys-title": "Fitur Sistem",
-          "sys-li1": "Order retry otomatis (3x dengan backoff)",
-          "sys-li2": "Slippage control per eksekusi",
+          "sys-li1": "Order retry otomatis (3x dengan exponential backoff)",
+          "sys-li2": "Slippage control per eksekusi order",
           "sys-li3": "Spread check sebelum setiap entry",
           "sys-li4": "Filling mode otomatis (IOC/FOK/Return)",
           "sys-li5": "Daily counter reset otomatis tiap hari baru",
-          "sys-li6": "History-based P/L tracker (akurat)",
-          "sys-li7": "License lock per nomor akun",
-          "sys-li8": "News cooldown retry saat koneksi gagal",
-          "sys-li9": "Weekend & market close detection",
-          "sys-li10": "Semua parameter input dapat dikustomisasi",
-          // PRICING
+          "sys-li6": "History-based P/L tracker dari deal history",
+          "sys-li7": "License lock per nomor akun MT5",
+          "sys-li8": "News cooldown retry 5 menit saat koneksi gagal",
+          "sys-li9": "Weekend & market close detection otomatis",
+          "sys-li10": "EMA digambar otomatis di chart (hijau/merah)",
+          "sys-li11": "Auto Risk Tier update tiap tick",
+          "sys-li12": "Semua parameter input dapat dikustomisasi",
           "price-label": "Dapatkan Akses",
           "price-title1": "Paket",
           "fc1": "1 License untuk 1 akun MT5",
-          "fc2": "Semua fitur 9 filter aktif",
-          "fc3": "News Filter otomatis",
-          "fc4": "Market Hours Guard + Smart Close",
-          "fc5": "Panel real-time di chart",
+          "fc2": "Semua fitur 9 layer filter aktif",
+          "fc2b": 'Auto Risk Tier (8 tier otomatis) <span class="new-badge">NEW</span>',
+          "fc3": "News Filter otomatis + countdown panel",
+          "fc4": "Market Hours Guard + Smart Close Buffer",
+          "fc5": "Panel real-time lengkap di chart",
           "fc6": "Set File rekomendasi dari developer",
           "fc7": "Panduan setting & instalasi",
           "fc8": "Support instalasi via AnyDesk",
@@ -1033,16 +1073,10 @@
           "nr-title": "⚠ KEBIJAKAN TIDAK ADA PENGEMBALIAN DANA",
           "nr-desc": "Pembelian bersifat <strong>final dan tidak dapat dikembalikan</strong>. Karena produk ini adalah perangkat lunak digital (EA/file .ex5) yang langsung dikirim setelah pembayaran, kami <strong>tidak menerima refund</strong> dalam kondisi apapun. Pastikan Anda membaca seluruh deskripsi produk dan memahami cara kerja EA sebelum melakukan pembelian.",
           "price-note": "Setting disesuaikan dengan karakteristik broker Anda.",
-          // DISCLAIMER
           "disclaimer": '<i class="fas fa-triangle-exclamation"></i> <strong>PERINGATAN RISIKO:</strong> Trading instrumen keuangan memiliki risiko tinggi dan tidak cocok untuk semua orang. EA adalah alat bantu teknis, bukan mesin uang dan tidak menjamin profit. Kinerja historis tidak mencerminkan hasil masa depan. Gunakan modal yang siap Anda risikokan. Keputusan trading sepenuhnya tanggung jawab Anda.',
-          // FOOTER
-          "footer-about": "About",
-          "footer-privacy": "Privacy",
-          "footer-terms": "Terms",
-          "footer-risk": "Risk Disclosure",
-          // POPUP
+          "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "Website ini menyediakan EA trading XAUUSD dengan sistem filter berlapis untuk proteksi maksimal.",
+          popup_about_body: "Website ini menyediakan EA trading XAUUSD dengan sistem filter berlapis dan Auto Risk Tier untuk proteksi maksimal.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "Kami tidak menyimpan data pribadi pengguna tanpa izin. Semua transaksi aman dan terenkripsi.",
           popup_terms_title: "Terms & Conditions",
@@ -1050,121 +1084,125 @@
           popup_risk_title: "Risk Disclosure",
           popup_risk_body: "Trading memiliki risiko tinggi. Gunakan money management dengan bijak.",
         },
-
         en: {
-          // NAV
           "nav-filters": "9 Filters",
           "nav-risk": "Risk Mgmt",
+          "nav-tier": "Auto Tier",
           "nav-news": "News Guard",
           "nav-panel": "Panel",
           "nav-price": "Pricing",
-          // HERO
-          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> for maximum protection in the Gold market.',
+          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> + <strong style="color:var(--gold)">Auto Risk Tier</strong> for maximum protection in the Gold market.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading carries high risk. The EA is a technical tool, not a money machine.',
           "btn-get": "Get It Now",
           "btn-see-filter": "View 9 Filters",
-          // STATS
           "stat-filter": "Layer Filters",
           "stat-sl": "Based SL / TP",
           "stat-tf": "Scalping TF",
-          "stat-news": "News Protection",
-          // FILTER SECTION
+          "stat-news": "Risk Tier + News",
           "sec-label-filter": "Protection System",
           "sec-title-filter": "9 Layer Filter Entry",
           "sec-desc-filter": "Every entry passes through 9 sequential filters. All must pass before an order is sent.",
           "f1-title": "Price Action M1",
-          "f1-desc": 'Detects candlestick patterns: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong> and <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong> patterns based on the last two candles.',
-          "f2-title": "EMA Trend Bias Filter",
-          "f2-desc": 'Filters market trend direction using <strong style="color:var(--gold)">EMA (Exponential Moving Average)</strong>. Buy only if price is above EMA, Sell only if below EMA. Prevents counter-trend entries.',
-          "f3-title": "MACD M5 Confirmation",
-          "f3-desc": 'Confirms momentum using <strong style="color:#67e8f9">MACD histogram on M5</strong>. Buy requires positive and <em>rising</em> histogram; Sell requires negative and <em>falling</em> histogram. Entry is blocked if momentum weakens.',
-          "f4-title": "RSI Overbought/Oversold",
-          "f4-desc": 'Filter using <strong style="color:#f87171">RSI (Relative Strength Index)</strong> to avoid entries in overbought/oversold zones.',
-          "f5-title": "Choppiness Index (Sideways)",
-          "f5-desc": 'Calculates <strong style="color:#fb923c">Choppiness Index</strong> to detect sideways/choppy market conditions. If CI > 61.8, market is considered directionless and EA stops entering. Only trades during <em>trending</em> markets.',
-          "f6-title": "Support & Resistance Zone",
-          "f6-desc": 'EA automatically calculates <strong style="color:#4ade80">S/R levels</strong> from the high/low of the last N candles. Buy blocked near resistance, Sell blocked near support. Optional <em>Bounce Entry</em> mode for S/R zone reversals.',
-          "f7-title": "News Filter Auto",
-          "f7-desc": 'Automatically fetches economic calendar data via <strong style="color:#f87171">WebRequest</strong>. Blocks entries X minutes before and after <em>USD High Impact</em> news. GMT offset auto-detected.',
-          "f8-title": "Market Hours Guard",
-          "f8-desc": 'Market session protection: <strong style="color:#fb923c">blocks entries</strong> X minutes before market close, <strong style="color:#fb923c">force closes all positions</strong> Y minutes before close, and <strong style="color:#fb923c">waits for stabilization</strong> Z minutes after market open.',
-          "f9-title": "Trading Session Filter",
-          "f9-desc": 'Select allowed trading sessions: <strong style="color:#a78bfa">Asian</strong>, <strong style="color:#a78bfa">London</strong>, <strong style="color:#a78bfa">New York</strong>. Each can be enabled/disabled per strategy. Spread is also checked every tick.',
-          // RISK
+          "f1-desc": 'Detects candlestick patterns: <strong style="color:#c4b5fd">Bullish/Bearish Engulfing</strong>, <strong style="color:#c4b5fd">Bullish/Bearish Momentum</strong>, and <strong style="color:#c4b5fd">Pin Bar / Hammer / Shooting Star</strong> based on wick and body ratios.',
+          "f2-title": "M5 Trend Bias (Price Action)",
+          "f2-desc": 'Analyzes trend bias using <strong style="color:var(--gold)">2 of 3 last M5 candles</strong>. Majority bullish → UP trend, majority bearish → DOWN trend. Entry only in M5 trend direction.',
+          "f3-title": "EMA Trend Bias Filter",
+          "f3-desc": 'Filters trend direction using <strong style="color:var(--gold)">EMA Fast & Slow</strong>. Buy only if price > EMA Fast > EMA Slow. EMA lines drawn automatically on chart (green & red).',
+          "f4-title": "MACD M5 Confirmation",
+          "f4-desc": 'Confirms momentum via <strong style="color:#67e8f9">MACD histogram on M5</strong>. Buy needs positive and <em>rising</em> histogram; Sell needs negative and <em>falling</em> histogram. Entry blocked if momentum weakens.',
+          "f5-title": "RSI Overbought/Oversold",
+          "f5-desc": 'Filter using <strong style="color:#f87171">RSI</strong> on M1. Buy blocked if RSI ≥ 80, Sell blocked if RSI ≤ 26. Avoids entries in exhausted zones.',
+          "f6-title": "Choppiness Index (Sideways)",
+          "f6-desc": 'Calculates <strong style="color:#fb923c">Choppiness Index</strong> from M1. If CI > 61.8, market is sideways and EA stops entering. Panel displays CI value and SIDEWAYS/TRENDING status in real-time.',
+          "f7-title": "Support & Resistance Zone",
+          "f7-desc": 'EA auto-calculates <strong style="color:#4ade80">S/R levels</strong> from last N candles (default 50). Buy blocked near resistance, Sell blocked near support. Configurable zone buffer.',
+          "f8-title": "News Filter Auto",
+          "f8-desc": 'Fetches economic calendar via <strong style="color:#f87171">WebRequest</strong> every hour. Blocks entries X min before & after <em>USD High Impact</em> news. GMT auto-detect (ManualGMTOffset=99) or set manually.',
+          "f9-title": "Market Hours + Session Filter",
+          "f9-desc": 'Market hour protection: <strong style="color:#fb923c">blocks entries</strong> before close, <strong style="color:#fb923c">force closes</strong> near close, <strong style="color:#fb923c">waits for stabilization</strong> after open. Choose Asian, London, or NY sessions.',
+          "tier-label": "New Feature V4.4",
+          "tier-desc": 'Lot size, SL, TP, Trailing, and Break Even auto-adjust based on account balance. Enable with <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
+          "th-balance": "Balance",
+          "th-trail": "Trail Start",
+          "th-step": "Trail Step",
+          "th-lock": "Profit Lock",
+          "tier-f1-label": "Auto Tier",
+          "tier-f1-desc": "Lot & parameters change automatically as balance grows. No manual setting changes needed.",
+          "tier-f2-label": "Scalable Risk",
+          "tier-f2-desc": "Risk per trade stays proportional to balance. Protect small accounts, optimize large ones.",
+          "tier-f3-label": "Panel Indicator",
+          "tier-f3-desc": "Panel shows (AUTO) tag on Lot, SL/TP, Trailing, and BE when this mode is active.",
           "sec-label-risk": "Risk Management",
           "sec-title-risk1": "Capital Protection",
           "sec-title-risk2": "Layered",
           "mm-title": "💰 Money Management",
           "mm1-title": "USD-Based SL & TP",
-          "mm1-desc": "Stop Loss and Take Profit are calculated in USD (not points), automatically adjusting lot size. Example: SL $5, TP $10 — applies under any condition.",
+          "mm1-desc": "Stop Loss and Take Profit calculated in USD, automatically adjusting for lot size via GetPriceStep(). Accurate under any condition.",
           "mm2-title": "Trailing Stop USD",
-          "mm2-desc": "Trailing stop activates after profit reaches <em>TrailingStartUSD</em>. SL moves following price with a <em>TrailingStepUSD</em> distance. Locks in profit automatically.",
+          "mm2-desc": "Activates after profit ≥ TrailingStartUSD. SL follows price with TrailingStepUSD step. Auto-adjusts per tier if UseAutoRiskTier is active.",
           "mm3-title": "Break Even + Profit Lock",
-          "mm3-desc": "After profit reaches <em>BreakEvenUSD</em>, SL is moved to entry price + <em>BreakEvenProfitUSD</em>. Trade cannot lose once BE is active.",
-          "mm4-title": "Risk-Based Lot Sizing",
-          "mm4-desc": "Optional: lot size is automatically calculated based on % equity (e.g. 1% per trade). Lot adjusts dynamically to account balance.",
+          "mm3-desc": "After profit ≥ BreakEvenUSD, SL moves to entry price + BreakEvenProfitUSD. Trade cannot lose once BE is active.",
+          "mm4-title": "Auto Risk Tier",
+          "mm4-desc": "Lot, SL, TP, Trailing, and BE auto-adjust based on balance. 8 tiers from <$600 to >$10K.",
           "dl-title": "🛡️ Daily Limits & Safety",
           "dl1-title": "Daily Profit Target",
-          "dl1-desc": "EA stops trading automatically once daily profit reaches the USD target. Includes <em>Smart Close Buffer</em> — auto-closes positions when approaching the target.",
+          "dl1-desc": "EA stops automatically after daily profit ≥ MaxProfitPerDay. Progress shown via panel progress bar.",
+          "dl1b-title": "Smart Close Buffer",
+          "dl1b-desc": "If remaining target ≤ SmartCloseBuffer and EA floating profit covers it, all positions closed automatically. No need to wait for individual TP.",
           "dl2-title": "Daily Loss Limit",
-          "dl2-desc": "If today's loss exceeds the limit (MaxLossPerDay), EA stops entering. Protects capital from consecutive drawdowns in a single day.",
-          "dl3-title": "Daily Entry Limit",
-          "dl3-desc": "Limits total buy + sell entries per day (MaxEntryPerDay). Counter resets automatically each new day.",
+          "dl2-desc": "If today's loss ≥ MaxLossPerDay, EA stops entering. Loss progress bar shown on panel in real-time.",
           "dl4-title": "Emergency Close All",
-          "dl4-desc": "Closes all positions if floating loss/profit exceeds global limits (MaxLossUSD / TargetProfitUSD). Overall account protection.",
-          "sc-title": "Smart Target Close",
-          "sc-desc": "Exclusive feature: if remaining daily target ≤ <em>SmartCloseBuffer</em> (e.g. $2) and EA floating profit already covers the remainder, all positions are closed automatically. No need to wait for individual TP — instantly <em>book profit</em>.",
-          // GRID
+          "dl4-desc": "Closes all positions if floating loss/profit exceeds global limits MaxLossUSD / TargetProfitUSD.",
           "grid-label": "Grid System",
-          "grid-desc": 'EA supports multi-entry strategies with controlled position spacing. Two grid modes: <strong style="color:white">Fixed Points</strong> and <strong style="color:white">ATR Dynamic</strong> which adjusts spacing based on current volatility.',
-          "grid-li1": "MaxMultiEntry — maximum number of simultaneous open positions",
-          "grid-li2": "GridDistance_Points — distance to next entry (fixed)",
-          "grid-li3": "UseATRGrid — dynamic distance based on ATR period",
+          "grid-desc": 'EA supports multi-entry with controlled spacing. <strong style="color:white">Fixed Points</strong> or <strong style="color:white">ATR Dynamic</strong> mode. Grid only adds positions in the same direction as the last.',
+          "grid-li1": "MaxMultiEntry — max number of simultaneous open positions",
+          "grid-li2": "GridDistance_Points — distance to next entry (fixed, default 300)",
+          "grid-li3": "UseATRGrid — dynamic distance based on ATR × Multiplier",
           "grid-li4": "Grid only adds positions in the same direction as last position",
-          "grid-li5": "MultiEntryEnable — can be disabled for single position mode",
+          "grid-li5": "MultiEntryEnable — disable for single position mode",
           "grid-param-title": "Grid Parameters",
           "grid-p1": "false (default off)",
           "grid-p2": "3 max positions",
           "grid-p3": "300 points",
           "grid-p4": "false (optional)",
-          // NEWS
           "news-label": "News Protection",
           "news-title1": "High Impact News",
           "news-title2": "Protection",
           "ns1-title": "Auto Economic Calendar Fetch",
-          "ns1-desc": "EA fetches XML data from ForexFactory every hour via <em>WebRequest</em>. No manual input needed — all USD High Impact news is detected automatically.",
-          "ns2-title": "Auto GMT Detection",
-          "ns2-desc": "Broker GMT offset is auto-detected (or can be set manually). News time is converted to broker time accurately without timezone configuration.",
+          "ns1-desc": "EA fetches XML from ForexFactory every hour via WebRequest. All USD High Impact news auto-detected. 5-minute retry cooldown on connection failure.",
+          "ns2-title": "Auto GMT Detection (ManualGMTOffset=99)",
+          "ns2-desc": "Default: broker GMT offset auto-detected from TimeCurrent() - TimeGMT(). Can be set manually if auto-detection is inaccurate.",
           "ns3-title": "Block X Minutes Before News",
-          "ns3-desc": 'Entry is blocked <em>NewsStopMinutesBefore</em> (default 10 minutes) before news release. Panel shows real-time countdown "Before: Xm Xs".',
+          "ns3-desc": "Entry blocked NewsStopMinutesBefore (default 10 minutes) before release. Panel shows real-time countdown Before: Xm Xs.",
           "ns4-title": "Wait X Minutes After News",
-          "ns4-desc": 'After news release, EA waits <em>NewsWaitMinutesAfter</em> (default 10 minutes) for market to stabilize. Panel shows countdown "After: Xm Xs".',
+          "ns4-desc": "After release, EA waits NewsWaitMinutesAfter (default 10 minutes). Panel shows countdown After: Xm Xs separately from Before.",
           "ns5-title": "Resume Normal Trading",
-          "ns5-desc": "After the waiting period ends, EA automatically allows entries again. All 9 filters remain active as usual.",
-          // PANEL
+          "ns5-desc": "After waiting period ends, EA allows entries again. Panel shows next news: time, currency, impact, and title.",
           "panel-label": "Live Dashboard",
-          "panel-desc": "Information panel directly on the MT5 chart. All statuses monitored without opening other windows.",
+          "panel-desc": "Information panel directly on MT5 chart (top right corner). All statuses visible without opening other windows.",
           "panel-li1": "Balance, Equity, Today's P/L, Floating",
-          "panel-li2": "Daily profit & loss progress bar",
-          "panel-li3": "Market status: Open / Closed / Stabilizing",
-          "panel-li4": "Choppiness Index: Sideways / Trending",
-          "panel-li5": "News countdown: Before / After",
-          "panel-li6": "Next news name & impact",
-          "panel-li7": "News connection status (OK / ERR)",
-          "panel-li8": "EMA Filter: Above / Below + EMA value",
-          "panel-li9": "SR Levels: Resistance & Support",
-          "panel-li10": "Session, Spread, PA Trend, Active Positions",
-          // SPECS
+          "panel-li2": "Daily profit & loss progress bar (with %)",
+          "panel-li3": "Market status: Open / Closed / Stabilizing / Pre-Close Lock",
+          "panel-li4": "Choppiness Index: SIDEWAYS / TRENDING (+ CI value)",
+          "panel-li5": "News countdown: Before & After (separate)",
+          "panel-li6": "Next news name, currency & impact",
+          "panel-li7": "News connection status (OK / ERR NET / ERR: Add URL)",
+          "panel-li8": "M5 Trend: BULLISH / BEARISH / FLAT",
+          "panel-li9": "M1 Pattern: BUY SIG / SELL SIG / NONE",
+          "panel-li10": "Lot/SL/TP/Trailing/BE with (AUTO) tag if AutoTier active",
+          "panel-li11": "Active positions vs MaxMultiEntry",
           "spec-title": "Technical Specifications",
           "spec-platform": "Platform",
           "spec-tf": "Execution Timeframe",
-          "spec-ema-tf": "EMA Indicator TF",
-          "spec-macd-tf": "MACD Indicator TF",
-          "spec-sltp": "USD Based (Money Mgmt)",
+          "spec-trend-tf": "Trend Filter TF",
+          "spec-ema-tf": "EMA Filter TF",
+          "spec-macd-tf": "MACD Filter TF",
+          "spec-sltp": "USD Based",
           "spec-trailing": "Trailing Stop",
           "spec-trailing-val": "Yes, USD-based step",
           "spec-be": "Break Even",
           "spec-be-val": "Yes, with profit lock",
+          "spec-tier-val": "8 tiers (optional)",
           "spec-grid": "Grid / Multi Entry",
           "spec-grid-val": "Optional (off by default)",
           "spec-news": "News Source",
@@ -1172,24 +1210,26 @@
           "spec-deposit-val": "Recommended $100+",
           "spec-state": "State Persistence",
           "sys-title": "System Features",
-          "sys-li1": "Auto order retry (3x with backoff)",
-          "sys-li2": "Slippage control per execution",
+          "sys-li1": "Auto order retry (3x with exponential backoff)",
+          "sys-li2": "Slippage control per order execution",
           "sys-li3": "Spread check before every entry",
           "sys-li4": "Auto filling mode (IOC/FOK/Return)",
           "sys-li5": "Daily counter auto-reset each new day",
-          "sys-li6": "History-based P/L tracker (accurate)",
-          "sys-li7": "License lock per account number",
-          "sys-li8": "News cooldown retry on connection failure",
-          "sys-li9": "Weekend & market close detection",
-          "sys-li10": "All input parameters fully customizable",
-          // PRICING
+          "sys-li6": "History-based P/L tracker from deal history",
+          "sys-li7": "License lock per MT5 account number",
+          "sys-li8": "News cooldown retry 5 min on connection failure",
+          "sys-li9": "Weekend & market close auto-detection",
+          "sys-li10": "EMA lines drawn automatically on chart (green/red)",
+          "sys-li11": "Auto Risk Tier updates every tick",
+          "sys-li12": "All input parameters fully customizable",
           "price-label": "Get Access",
           "price-title1": "Lifetime",
           "fc1": "1 License for 1 MT5 account",
-          "fc2": "All 9 filter features active",
-          "fc3": "Automatic News Filter",
-          "fc4": "Market Hours Guard + Smart Close",
-          "fc5": "Real-time panel on chart",
+          "fc2": "All 9 layer filters active",
+          "fc2b": 'Auto Risk Tier (8 auto tiers) <span class="new-badge">NEW</span>',
+          "fc3": "Automatic News Filter + countdown panel",
+          "fc4": "Market Hours Guard + Smart Close Buffer",
+          "fc5": "Full real-time panel on chart",
           "fc6": "Recommended Set File from developer",
           "fc7": "Setup & installation guide",
           "fc8": "Installation support via AnyDesk",
@@ -1198,16 +1238,10 @@
           "nr-title": "⚠ NO REFUND POLICY",
           "nr-desc": "Purchase is <strong>final and non-refundable</strong>. As this is a digital software product (EA/.ex5 file) delivered immediately after payment, we <strong>do not accept refunds</strong> under any circumstances. Please read the full product description and understand how the EA works before purchasing.",
           "price-note": "Settings adjusted to your broker's characteristics.",
-          // DISCLAIMER
-          "disclaimer": '<i class="fas fa-triangle-exclamation"></i> <strong>RISK WARNING:</strong> Trading financial instruments carries high risk and is not suitable for everyone. The EA is a technical tool, not a money machine, and does not guarantee profit. Past performance does not reflect future results. Only trade with capital you can afford to lose. Trading decisions are entirely your responsibility.',
-          // FOOTER
-          "footer-about": "About",
-          "footer-privacy": "Privacy",
-          "footer-terms": "Terms",
-          "footer-risk": "Risk Disclosure",
-          // POPUP
+          "disclaimer": '<i class="fas fa-triangle-exclamation"></i> <strong>RISK WARNING:</strong> Trading financial instruments carries high risk and is not suitable for everyone. The EA is a technical tool, not a money machine and does not guarantee profit. Past performance does not reflect future results. Only use capital you can afford to lose. Trading decisions are entirely your responsibility.',
+          "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "This website provides a XAUUSD trading EA with a layered filter system for maximum protection.",
+          popup_about_body: "This website provides a XAUUSD trading EA with layered filters and Auto Risk Tier for maximum protection.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "We do not store personal user data without consent. All transactions are secure and encrypted.",
           popup_terms_title: "Terms & Conditions",
@@ -1222,33 +1256,20 @@
       function setLang(lang) {
         if (lang === currentLang) return;
         currentLang = lang;
-
-        // Update button states
         document.getElementById('btn-id').classList.toggle('active', lang === 'id');
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
-        // Fade out
         document.body.classList.add('lang-switching');
-
         setTimeout(() => {
           const t = translations[lang];
-          // Update all elements with data-id
           document.querySelectorAll('[data-id]').forEach(el => {
             const key = el.getAttribute('data-id');
-            if (t[key] !== undefined) {
-              el.innerHTML = t[key];
-            }
+            if (t[key] !== undefined) el.innerHTML = t[key];
           });
-
-          // Update html lang attribute
           document.documentElement.lang = lang;
-
-          // Fade in
           document.body.classList.remove('lang-switching');
         }, 200);
       }
 
-      // Scroll reveal
       function reveal() {
         document.querySelectorAll(".reveal").forEach(el => {
           if (el.getBoundingClientRect().top < window.innerHeight - 100)
@@ -1258,18 +1279,14 @@
       window.addEventListener("scroll", reveal);
       reveal();
 
-      // Card mouse follow glow
       document.querySelectorAll(".card").forEach(card => {
         card.addEventListener("mousemove", e => {
           const rect = card.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-          card.style.setProperty("--mx", x + "%");
-          card.style.setProperty("--my", y + "%");
+          card.style.setProperty("--mx", ((e.clientX - rect.left) / rect.width) * 100 + "%");
+          card.style.setProperty("--my", ((e.clientY - rect.top) / rect.height) * 100 + "%");
         });
       });
 
-      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener("click", e => {
           e.preventDefault();
@@ -1278,7 +1295,6 @@
         });
       });
 
-      // Popup
       function openPopup(type) {
         const modal = document.getElementById("popupModal");
         const body = document.getElementById("popupBody");
