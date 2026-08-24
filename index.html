@@ -246,11 +246,23 @@
       .btn-order { display: flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 30px rgba(34, 197, 94, 0.3); margin-top: 2rem; }
       .btn-order:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(34, 197, 94, 0.5); }
 
-      .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
+      .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; align-items: stretch; }
       .pricing-grid .pricing-box { max-width: none; margin: 0; padding: 2.5rem 2rem; display: flex; flex-direction: column; position: relative; }
+      .pricing-grid .price-big { font-size: clamp(2.1rem, 2.2vw, 2.7rem); }
+      .pricing-grid .price-big + span { font-size: 1rem !important; }
       .pricing-grid .btn-order { margin-top: auto; }
       .pricing-featured { border-color: rgba(245, 200, 66, 0.45); box-shadow: 0 0 60px rgba(245, 200, 66, 0.1), inset 0 1px 0 rgba(255,255,255,0.05); }
       .pricing-popular { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); font-size: 0.65rem !important; white-space: nowrap; }
+      .pricing-unlimited {
+        background: radial-gradient(circle at 50% 0%, rgba(245, 200, 66, 0.17), transparent 38%), linear-gradient(145deg, rgba(31, 20, 49, 0.98), rgba(4, 4, 12, 0.98));
+        border-color: rgba(245, 200, 66, 0.65);
+        box-shadow: 0 0 70px rgba(245, 200, 66, 0.16), inset 0 1px 0 rgba(255,255,255,0.12);
+      }
+      .pricing-unlimited .price-big {
+        background: linear-gradient(120deg, #fff3b0, #f5c842, #ffffff); background-size: 200% auto;
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s linear infinite;
+      }
+      .pricing-unlimited .feature-check:first-child { color: white; font-weight: 700; }
 
       .no-refund-box { margin-top: 1.2rem; background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem; }
       .no-refund-box .nr-icon { font-size: 1.1rem; color: #f87171; flex-shrink: 0; margin-top: 0.1rem; }
@@ -288,12 +300,17 @@
       .reveal-delay-2 { transition-delay: 0.2s; }
       .reveal-delay-3 { transition-delay: 0.3s; }
 
+      @media (max-width: 1100px) {
+        .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      }
       @media (max-width: 768px) {
         .nav-links { display: none; }
         .stats-inner { grid-template-columns: repeat(2, 1fr); }
         .filter-grid { grid-template-columns: 1fr; }
         .two-col { grid-template-columns: 1fr !important; }
         .pricing-grid { grid-template-columns: 1fr; }
+        .pricing-grid .price-big { font-size: 3.5rem; }
+        .pricing-grid .price-big + span { font-size: 1.4rem !important; }
       }
       @media (max-width: 480px) {
         .nav-right { gap: 0.4rem; }
@@ -1044,6 +1061,29 @@
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
           </div>
+
+          <!-- UNLIMITED -->
+          <div class="pricing-box pricing-unlimited reveal reveal-delay-3">
+            <div class="tag tag-gold pricing-popular" data-id="pk-unlimited-badge">AKSES TANPA BATAS</div>
+            <div><span class="tag tag-gold" style="font-size:0.7rem" data-id="pk4-name">UNLIMITED</span></div>
+            <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem" data-id="pk4-dur">Lisensi Permanen · Tanpa Batas ID</h3>
+            <div style="margin-bottom:1.5rem">
+              <span class="price-currency">Rp</span>
+              <span class="price-big">1.600.000</span>
+              <span style="font-family:'Orbitron',monospace;font-size:1.4rem;color:var(--sub)"> / $100</span>
+            </div>
+            <div style="margin-bottom:1rem">
+              <div class="feature-check"><i class="fas fa-infinity"></i><span data-id="pk4-f1">Lisensi permanen untuk ID akun MT5 tanpa batas</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f2">Gunakan EA di semua ID akun MT5 Anda</span></div>
+              <div class="feature-check"><i class="fas fa-unlock"></i><span data-id="pk4-f3">Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f4">Semua fitur EA + set file + panduan instalasi</span></div>
+              <div class="feature-check"><i class="fas fa-star"></i><span data-id="pk4-f5">Prioritas support WhatsApp + update minor gratis</span></div>
+            </div>
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.0%20XAUUSD%20-%20Paket%20UNLIMITED%20(ID%20MT5%20tanpa%20batas)%20Rp%201.600.000%20/%20%24100" class="btn-order">
+              <i class="fab fa-whatsapp"></i>
+              <span data-id="btn-order">Pesan via WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         <div class="no-refund-box" style="max-width:760px;margin:1.5rem auto 0;text-align:left">
@@ -1310,8 +1350,16 @@
           "pk3-f2": "Semua fitur: 9 layer filter + Auto Risk Tier",
           "pk3-f3": "H1 EMA Grid Mode + True/False Cross + pilihan timeframe",
           "pk3-f4": "Panel real-time + set file + panduan instalasi",
-          "pk3-f5": "Update versi minor gratis + prioritas support",
-          "btn-order": "Pesan via WhatsApp",
+           "pk3-f5": "Update versi minor gratis + prioritas support",
+           "pk-unlimited-badge": "AKSES TANPA BATAS",
+           "pk4-name": "UNLIMITED",
+           "pk4-dur": "Lisensi Permanen · Tanpa Batas ID",
+           "pk4-f1": "Lisensi permanen untuk ID akun MT5 tanpa batas",
+           "pk4-f2": "Gunakan EA di semua ID akun MT5 Anda",
+           "pk4-f3": "Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu",
+           "pk4-f4": "Semua fitur EA + set file + panduan instalasi",
+           "pk4-f5": "Prioritas support WhatsApp + update minor gratis",
+           "btn-order": "Pesan via WhatsApp",
           "nr-title": "⚠ KEBIJAKAN TIDAK ADA PENGEMBALIAN DANA",
           "nr-desc": "Pembelian bersifat <strong>final dan tidak dapat dikembalikan</strong>. Karena produk ini adalah perangkat lunak digital (EA/file .ex5) yang langsung dikirim setelah pembayaran, kami <strong>tidak menerima refund</strong> dalam kondisi apapun.",
           "price-note": "Setting disesuaikan dengan karakteristik broker Anda. Cek tab Experts untuk debug log.",
@@ -1544,8 +1592,16 @@
           "pk3-f2": "All features: 9 layer filters + Auto Risk Tier",
           "pk3-f3": "H1 EMA Grid Mode + True/False Cross + timeframe selection",
           "pk3-f4": "Real-time panel + set files + installation guide",
-          "pk3-f5": "Free minor version updates + priority support",
-          "btn-order": "Order via WhatsApp",
+           "pk3-f5": "Free minor version updates + priority support",
+           "pk-unlimited-badge": "UNLIMITED ACCESS",
+           "pk4-name": "UNLIMITED",
+           "pk4-dur": "Lifetime License · Unlimited IDs",
+           "pk4-f1": "Lifetime license for unlimited MT5 account IDs",
+           "pk4-f2": "Use the EA across all of your MT5 account IDs",
+           "pk4-f3": "No account-ID registration or activation required",
+           "pk4-f4": "All EA features + set files + installation guide",
+           "pk4-f5": "Priority WhatsApp support + free minor updates",
+           "btn-order": "Order via WhatsApp",
           "nr-title": "⚠ NO REFUND POLICY",
           "nr-desc": "Purchase is <strong>final and non-refundable</strong>. As this is a digital software product (EA/.ex5 file) delivered immediately after payment, we <strong>do not accept refunds</strong> under any circumstances.",
           "price-note": "Settings adjusted to your broker's characteristics. Check Experts tab for debug log.",
