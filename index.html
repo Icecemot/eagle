@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EAGLETRADEAVL V8.0 – EA XAUUSD M1 Auto Trading</title>
-    <meta name="description" content="EA XAUUSD M1 scalping otomatis dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter. Auto Risk Tier + Manual GMT Fallback + H1 EMA Basket Grid + Debug Log." />
+    <title>EAGLETRADEAVL V8.2 – EA Multi-Symbol M1 Auto Trading</title>
+    <meta name="description" content="EA multi-symbol M1 scalping otomatis untuk XAUUSD, BTC, dan major forex pair dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter. Auto Risk Tier + Manual GMT Fallback + EMA Basket Grid + Debug Log." />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="EAGLETRADEAVL V8.0 – EA XAUUSD M1" />
-    <meta property="og:description" content="Bot trading XAUUSD dengan 9 layer filter, Auto Risk Tier, News Protection, H1 EMA Basket Grid, Manual GMT Offset Fallback, dan Debug Log." />
+    <meta property="og:title" content="EAGLETRADEAVL V8.2 – EA Multi-Symbol M1" />
+    <meta property="og:description" content="Bot trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier, News Protection, EMA Basket Grid, Manual GMT Offset Fallback, dan Debug Log." />
     <meta property="og:type" content="website" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -280,7 +280,7 @@
 
       .new-badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); border-radius: 4px; padding: 0.1rem 0.4rem; margin-left: 0.4rem; vertical-align: middle; }
 
-      /* WHAT'S NEW V8.0 SECTION */
+      /* WHAT'S NEW V8.2 SECTION */
       .whatsnew-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
       .whatsnew-item { background: rgba(245,200,66,0.04); border: 1px solid rgba(245,200,66,0.15); border-radius: 12px; padding: 1.2rem 1.4rem; }
       .whatsnew-item h4 { font-size: 0.9rem; color: var(--gold); margin-bottom: 0.4rem; }
@@ -335,13 +335,13 @@
       <div class="nav-inner">
         <div class="logo">EAGLETRADEAVL</div>
         <ul class="nav-links">
-          <li><a href="#whatsnew" data-id="nav-new">V8.0 New</a></li>
+          <li><a href="#whatsnew" data-id="nav-new">V8.2 New</a></li>
           <li><a href="#filters" data-id="nav-filters">9 Filter</a></li>
           <li><a href="#risk" data-id="nav-risk">Risk Mgmt</a></li>
           <li><a href="#tier" data-id="nav-tier">Auto Tier</a></li>
           <li><a href="#news" data-id="nav-news">News Guard</a></li>
           <li><a href="#panel" data-id="nav-panel">Panel</a></li>
-          <li><a href="#h1grid" data-id="nav-h1grid">Grid H1</a></li>
+          <li><a href="#h1grid" data-id="nav-h1grid">EMA Grid</a></li>
           <li><a href="#paket" data-id="nav-price">Harga</a></li>
         </ul>
         <div class="nav-right">
@@ -365,10 +365,10 @@
       <div class="grid-bg"></div>
       <div style="position:relative;z-index:1">
         <div class="hero-badge">
-          <i class="fas fa-bolt"></i> VERSION 8.0 · XAUUSD ONLY · MT5
+          <i class="fas fa-bolt"></i> VERSION 8.2 · MULTI-SYMBOL · MT5
         </div>
         <h1>
-          <span class="grad-text">XAUUSD</span><br />
+          <span class="grad-text">MULTI-SYMBOL</span><br />
           <span style="color:white">SCALPING EA</span>
         </h1>
         <p class="hero-sub" data-id="hero-sub">
@@ -377,7 +377,7 @@
           <strong style="color:white">9 layer filter</strong> berlapis +
           <strong style="color:var(--gold)">Auto Risk Tier</strong> +
           <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk
-          proteksi maksimal di pasar Gold.
+          Gold, BTC, dan major forex pair.
         </p>
         <div class="hero-warning" data-id="hero-warning">
           <i class="fas fa-exclamation-triangle"></i>
@@ -410,26 +410,26 @@
           <span class="stat-label" data-id="stat-tf">Scalping TF</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">8.0</span>
+          <span class="stat-num">8.2</span>
           <span class="stat-label" data-id="stat-news">Latest Version</span>
         </div>
       </div>
     </div>
 
-    <!-- WHAT'S NEW V4.5 -->
+    <!-- WHAT'S NEW V8.2 -->
     <section class="section" id="whatsnew" style="background:rgba(245,200,66,0.02)">
       <div class="container">
         <div class="reveal" style="margin-bottom:2.5rem;text-align:center">
           <span class="section-label" data-id="new-label">Changelog</span>
           <h2 class="section-title" style="color:white">
-            <span data-id="new-title">Apa yang Baru di</span> <span class="grad-text">V8.0</span>
+            <span data-id="new-title">Apa yang Baru di</span> <span class="grad-text">V8.2</span>
           </h2>
           <div class="divider" style="margin:1rem auto 0"></div>
         </div>
         <div class="whatsnew-grid reveal">
           <div class="whatsnew-item">
-            <h4 data-id="wn1-title">Manual GMT Offset Fallback</h4>
-            <p data-id="wn1-desc">Parameter <code>ManualGMTOffset</code> (default=99) untuk auto-detect. Set ke nilai tertentu jika deteksi otomatis tidak akurat di broker Anda. Debug log dicatat di tab Experts.</p>
+            <h4 data-id="wn1-title">Multi-Symbol Forex & BTC Support</h4>
+            <p data-id="wn1-desc">EA tidak lagi terbatas XAUUSD. Versi 8.2 mendukung Gold, BTC, dan major forex pair: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, dan NZDUSD.</p>
           </div>
           <div class="whatsnew-item">
             <h4 data-id="wn2-title">Debug Log di Tab Experts</h4>
@@ -452,7 +452,7 @@
             <p data-id="wn6-desc">Sistem lisensi mendukung array nomor akun. Developer dapat mendaftarkan beberapa akun resmi tanpa perlu compile ulang per akun.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn7-title">H1 EMA Basket Grid Mode</h4>
+            <h4 data-id="wn7-title">EMA Basket Grid Mode</h4>
             <p data-id="wn7-desc">Strategi terpisah dengan UseH1EMAGridMode=true. EMA 50/100 (timeframe pilihan) memulai basket BUY/SELL, grid satu arah dengan lot tetap, maks 10 level, tutup basket saat profit/loss $100 atau limit harian tercapai.</p>
           </div>
           <div class="whatsnew-item">
@@ -561,13 +561,13 @@
             <div class="filter-num">08</div>
             <div class="icon-badge ib-red"><i class="fas fa-newspaper"></i></div>
             <h4 data-id="f8-title">News Filter Auto</h4>
-            <p data-id="f8-desc">Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah <em>USD High Impact</em>. GMT offset auto-detect dari <code>TimeCurrent()-TimeGMT()</code>, atau set manual via <code>ManualGMTOffset</code>. Fail cooldown 5 menit.</p>
+            <p data-id="f8-desc">Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah news high impact yang relevan dengan simbol aktif. Gold/BTC mengikuti USD, pair forex mengikuti currency di pair tersebut. GMT offset bisa auto atau manual.</p>
             <div>
               <span class="filter-param">StopBefore=10m</span>
               <span class="filter-param">WaitAfter=10m</span>
               <span class="filter-param">AutoGMT / Manual</span>
             </div>
-            <div style="margin-top:0.8rem"><span class="tag tag-red">USD High Impact</span></div>
+            <div style="margin-top:0.8rem"><span class="tag tag-red" data-id="f8-tag">Relevant High Impact</span></div>
           </div>
 
           <div class="card filter-card reveal reveal-delay-2">
@@ -590,7 +590,7 @@
     <section class="section" id="tier" style="background:rgba(0,0,0,0.4)">
       <div class="container">
         <div class="reveal" style="margin-bottom:3rem;text-align:center">
-          <span class="section-label" data-id="tier-label">Fitur Unggulan V8.0</span>
+          <span class="section-label" data-id="tier-label">Fitur Unggulan V8.2</span>
           <h2 class="section-title" style="color:white">
             Auto Risk Tier <span class="new-badge">AUTO</span>
           </h2>
@@ -761,14 +761,14 @@
       </div>
     </section>
 
-    <!-- H1 EMA BASKET GRID -->
+    <!-- EMA BASKET GRID -->
     <section class="section" id="h1grid" style="background:rgba(124,58,237,0.03)">
       <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" class="two-col">
           <div class="reveal">
-            <span class="section-label" data-id="h1g-label">Mode Baru · Grid H1</span>
+            <span class="section-label" data-id="h1g-label">Mode Baru · EMA Grid</span>
             <h2 class="section-title" style="color:white">
-              H1 EMA <span class="grad-text-purple">Basket Grid</span>
+              EMA <span class="grad-text-purple">Basket Grid</span>
             </h2>
             <div class="divider"></div>
             <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="h1g-desc">Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100.</p>
@@ -784,10 +784,10 @@
           </div>
           <div class="reveal reveal-delay-1">
             <div class="card" style="background:rgba(124,58,237,0.05);border-color:rgba(124,58,237,0.2)">
-              <h4 style="margin-bottom:1.2rem;color:var(--purple-light)" data-id="h1g-param-title">Parameter Grid H1</h4>
+              <h4 style="margin-bottom:1.2rem;color:var(--purple-light)" data-id="h1g-param-title">Parameter EMA Grid</h4>
               <table class="spec-table">
                 <tr><td>UseH1EMAGridMode</td><td data-id="h1g-p1">true (terpisah dari mode M1)</td></tr>
-                <tr><td>GridEMATimeframe</td><td data-id="h1g-p2">M1 – D1 (default H1)</td></tr>
+                <tr><td>GridEMATimeframe</td><td data-id="h1g-p2">M1 – D1 (default M15)</td></tr>
                 <tr><td>GridCrossMode</td><td data-id="h1g-p3">True / False Cross</td></tr>
                 <tr><td>GridLotPreset</td><td data-id="h1g-p4">0.01 – 1.00 (dropdown)</td></tr>
                 <tr><td>GridMaxLevels</td><td data-id="h1g-p5">10 level (termasuk entry pertama)</td></tr>
@@ -797,9 +797,9 @@
               </table>
             </div>
             <div class="panel-mockup" style="margin-top:1.5rem">
-              <div class="pm-title">EAGLE V8.0 META</div>
+              <div class="pm-title">EAGLE V8.2 META</div>
               <div class="pm-section">── GRID SETTINGS ──</div>
-              <div class="pm-row"><span class="pm-key">Mode</span><span class="pm-val c-cyan">H1 EMA 50/100</span></div>
+              <div class="pm-row"><span class="pm-key">Mode</span><span class="pm-val c-cyan">EMA 50/100</span></div>
               <div class="pm-row"><span class="pm-key">Cross</span><span class="pm-val c-cyan">TRUE</span></div>
               <div class="pm-row"><span class="pm-key">Lot</span><span class="pm-val c-white">0.01</span></div>
               <div class="pm-row"><span class="pm-key">Step</span><span class="pm-val c-white">$1.00</span></div>
@@ -832,7 +832,7 @@
             <div class="ns-circle info">01</div>
             <div class="ns-text">
               <h4 data-id="ns1-title">Fetch Kalender Ekonomi Otomatis</h4>
-              <p data-id="ns1-desc">EA mengambil data XML dari ForexFactory tiap jam via WebRequest. Semua berita USD High Impact terdeteksi otomatis. Jika koneksi gagal, ada retry cooldown 5 menit — mencegah spam request ke server.</p>
+              <p data-id="ns1-desc">EA mengambil data XML dari ForexFactory tiap jam via WebRequest. News high impact difilter sesuai simbol aktif: Gold/BTC mengikuti USD, sedangkan pair forex mengikuti currency di pair tersebut. Jika koneksi gagal, ada retry cooldown 5 menit.</p>
             </div>
           </div>
           <div class="news-step">
@@ -893,7 +893,7 @@
             </ul>
           </div>
           <div class="panel-mockup reveal reveal-delay-1">
-            <div class="pm-title">⚡ EAGLE V8.0 META ⚡</div>
+            <div class="pm-title">⚡ EAGLE V8.2 META ⚡</div>
             <div class="pm-section">── ACCOUNT ──</div>
             <div class="pm-row"><span class="pm-key">Balance</span><span class="pm-val c-white">$ 1,250.00</span></div>
             <div class="pm-row"><span class="pm-key">Equity</span><span class="pm-val c-cyan">$ 1,262.50</span></div>
@@ -937,7 +937,7 @@
             <h3 style="font-size:1.2rem;margin-bottom:1.2rem;color:white" data-id="spec-title">Spesifikasi Teknis</h3>
             <table class="spec-table">
               <tr><td data-id="spec-platform">Platform</td><td>MetaTrader 5 (MT5)</td></tr>
-              <tr><td>Pair</td><td>XAUUSD / Gold</td></tr>
+              <tr><td data-id="spec-pair">Pair / Simbol</td><td data-id="spec-pair-val">XAUUSD/Gold, BTC, EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, NZDUSD</td></tr>
               <tr><td data-id="spec-tf">Timeframe Eksekusi</td><td>M1 (Scalping)</td></tr>
               <tr><td data-id="spec-trend-tf">TF Trend Filter</td><td>M5 (Price Action)</td></tr>
               <tr><td data-id="spec-ema-tf">TF EMA Filter</td><td>M5 (bisa diubah)</td></tr>
@@ -948,8 +948,8 @@
               <tr><td>Auto Risk Tier</td><td data-id="spec-tier-val">8 tier (opsional)</td></tr>
               <tr><td>GMT Offset</td><td data-id="spec-gmt-val">Auto-detect / Manual Fallback</td></tr>
               <tr><td data-id="spec-grid">Grid / Multi Entry</td><td data-id="spec-grid-val">Opsional (off by default)</td></tr>
-              <tr><td data-id="spec-gridmode">H1 Grid Mode</td><td data-id="spec-gridmode-val">Ya (EMA 50/100, mode terpisah)</td></tr>
-              <tr><td data-id="spec-gridlot">Grid Lot</td><td data-id="spec-gridlot-val">Dropdown 0.01 – 8.00</td></tr>
+              <tr><td data-id="spec-gridmode">EMA Grid Mode</td><td data-id="spec-gridmode-val">Ya (EMA 50/100, mode terpisah)</td></tr>
+              <tr><td data-id="spec-gridlot">Grid Lot</td><td data-id="spec-gridlot-val">Dropdown 0.01 – 1.00</td></tr>
               <tr><td data-id="spec-gridstep">Grid Step</td><td data-id="spec-gridstep-val">Otomatis ($1 per 0.01 lot)</td></tr>
               <tr><td data-id="spec-gridlevels">Grid Max Level</td><td data-id="spec-gridlevels-val">10 (bisa diatur)</td></tr>
               <tr><td data-id="spec-gridbt">Basket TP / Loss</td><td data-id="spec-gridbt-val">$100 / $100 (bisa off)</td></tr>
@@ -957,7 +957,7 @@
               <tr><td>MagicNumber</td><td>777 (default)</td></tr>
               <tr><td data-id="spec-deposit">Min Deposit</td><td data-id="spec-deposit-val">Rekomendasi $100+</td></tr>
               <tr><td data-id="spec-state">State Persistence</td><td>GlobalVariables MT5</td></tr>
-              <tr><td data-id="spec-version">Versi</td><td>8.0</td></tr>
+              <tr><td data-id="spec-version">Versi</td><td>8.2</td></tr>
             </table>
           </div>
           <div class="reveal reveal-delay-1">
@@ -967,6 +967,7 @@
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li2">Slippage control per eksekusi order</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li3">Spread check sebelum setiap entry</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li4">Filling mode otomatis (IOC/FOK/Return)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li4b">Validasi simbol otomatis untuk Gold, BTC, dan major forex pair</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li5">Daily counter reset otomatis tiap hari baru</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li6">History-based P/L tracker dari deal history MT5</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li7">License lock per nomor akun MT5 (array multi-akun)</span></li>
@@ -1006,12 +1007,12 @@
             </div>
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f1">Lisensi 1 ID akun MT5 · berlaku 1 bulan</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f2">Semua fitur: 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f3">H1 EMA Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f4">Panel real-time + set file rekomendasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f5">Panduan setting & instalasi + support WhatsApp</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V4.5%20XAUUSD%20-%20Paket%20STANDARD%20(1%20Bulan)%20Rp%20100.000%20/%20%2413" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.2%20MULTI-SYMBOL%20-%20Paket%20STANDARD%20(1%20Bulan)%20Rp%20100.000%20/%20%2413" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1029,12 +1030,12 @@
             </div>
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f1">Lisensi 2 ID akun MT5 · berlaku 3 bulan</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f2">Semua fitur: 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f3">H1 EMA Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f4">Panel real-time + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f5">Update versi minor gratis + prioritas support</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V4.5%20XAUUSD%20-%20Paket%20PREMIUM%20(3%20Bulan)%20Rp%20250.000%20/%20%2425" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.2%20MULTI-SYMBOL%20-%20Paket%20PREMIUM%20(4%20Bulan)%20Rp%20300.000%20/%20%2425" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1051,12 +1052,12 @@
             </div>
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f1">Lisensi 5 ID akun MT5 · tanpa kedaluwarsa</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f2">Semua fitur: 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f3">H1 EMA Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f4">Panel real-time + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f5">Update versi minor gratis + prioritas support</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V4.5%20XAUUSD%20-%20Paket%20PROFESIONAL%20(Permanen)%20Rp%20500.000%20/%20%2435" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.2%20MULTI-SYMBOL%20-%20Paket%20PROFESIONAL%20(Permanen)%20Rp%20500.000%20/%20%2435" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1076,10 +1077,10 @@
               <div class="feature-check"><i class="fas fa-infinity"></i><span data-id="pk4-f1">Lisensi permanen untuk ID akun MT5 tanpa batas</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f2">Gunakan EA di semua ID akun MT5 Anda</span></div>
               <div class="feature-check"><i class="fas fa-unlock"></i><span data-id="pk4-f3">Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f4">Semua fitur EA + set file + panduan instalasi</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f4">Semua fitur EA multi-symbol + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-star"></i><span data-id="pk4-f5">Prioritas support WhatsApp + update minor gratis</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.0%20XAUUSD%20-%20Paket%20UNLIMITED%20(ID%20MT5%20tanpa%20batas)%20Rp%201.600.000%20/%20%24100" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.2%20MULTI-SYMBOL%20-%20Paket%20UNLIMITED%20(ID%20MT5%20tanpa%20batas)%20Rp%201.600.000%20/%20%24100" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1118,7 +1119,7 @@
           <a href="#" onclick="openPopup('terms')" data-id="footer-terms">Terms</a>
           <a href="#" onclick="openPopup('risk')" data-id="footer-risk">Risk Disclosure</a>
         </div>
-        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved. · V8.0</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved. · V8.2</p>
         <p style="color:var(--muted);font-size:0.82rem;margin-top:0.3rem"><i class="fab fa-whatsapp" style="color:#22c55e"></i> 0895-2831-1840 · eagletradeavl.my.id</p>
       </div>
     </footer>
@@ -1134,15 +1135,15 @@
     <script>
       const translations = {
         id: {
-          "nav-new": "V8.0 New",
+          "nav-new": "V8.2 New",
           "nav-filters": "9 Filter",
           "nav-risk": "Risk Mgmt",
           "nav-tier": "Auto Tier",
           "nav-news": "News Guard",
           "nav-panel": "Panel",
           "nav-price": "Harga",
-          "nav-h1grid": "Grid H1",
-          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk proteksi maksimal di pasar Gold.',
+          "nav-h1grid": "EMA Grid",
+          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk Gold, BTC, dan major forex pair.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading memiliki risiko tinggi. EA adalah alat bantu teknis, bukan mesin uang.',
           "btn-get": "Dapatkan Sekarang",
           "btn-see-filter": "Lihat 9 Filter",
@@ -1152,8 +1153,8 @@
           "stat-news": "Latest Version",
           "new-label": "Changelog",
           "new-title": "Apa yang Baru di",
-          "wn1-title": "Manual GMT Offset Fallback",
-          "wn1-desc": "Parameter ManualGMTOffset (default=99) untuk auto-detect. Set ke nilai tertentu jika deteksi otomatis tidak akurat di broker Anda. Debug log dicatat di tab Experts.",
+          "wn1-title": "Multi-Symbol Forex & BTC Support",
+          "wn1-desc": "EA tidak lagi terbatas XAUUSD. Versi 8.2 mendukung Gold, BTC, dan major forex pair: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, dan NZDUSD.",
           "wn2-title": "Debug Log di Tab Experts",
           "wn2-desc": "Semua aktivitas penting — order entry, SL/TP modify, news block, BE activation — kini dicatat ke tab Experts MT5 untuk kemudahan troubleshooting.",
           "wn3-title": "News Fail Cooldown 5 Menit",
@@ -1164,7 +1165,7 @@
           "wn5-desc": "EMA Fast (hijau) dan EMA Slow (merah) digambar langsung di chart sebagai line OBJ_TREND per candle. Update tiap bar baru, dihapus bersih saat EA dilepas.",
           "wn6-title": "License Lock Multi-Akun",
           "wn6-desc": "Sistem lisensi mendukung array nomor akun. Developer dapat mendaftarkan beberapa akun resmi tanpa perlu compile ulang per akun.",
-          "wn7-title": "H1 EMA Basket Grid Mode",
+          "wn7-title": "EMA Basket Grid Mode",
           "wn7-desc": "Strategi terpisah dengan UseH1EMAGridMode=true. EMA 50/100 (timeframe pilihan) memulai basket BUY/SELL, grid satu arah dengan lot tetap, maks 10 level, tutup basket saat profit/loss $100 atau limit harian tercapai.",
           "wn8-title": "True / False Cross + Pilihan Timeframe",
           "wn8-desc": "True Cross: entry hanya saat EMA 50 benar-benar memotong EMA 100. False Cross: entry saat EMA 50 sudah di atas/bawah EMA 100. Timeframe EMA bisa dipilih dari M1 hingga D1.",
@@ -1188,10 +1189,11 @@
           "f7-title": "Support & Resistance Zone",
           "f7-desc": 'EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50 candle M1). Buy diblokir dekat resistance, Sell diblokir dekat support.',
           "f8-title": "News Filter Auto",
-          "f8-desc": 'Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah <em>USD High Impact</em>. GMT offset auto-detect atau manual fallback. Fail cooldown 5 menit.',
+          "f8-desc": 'Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah news high impact yang relevan dengan simbol aktif. Gold/BTC mengikuti USD, pair forex mengikuti currency di pair tersebut. GMT offset bisa auto atau manual.',
+          "f8-tag": "Relevant High Impact",
           "f9-title": "Market Hours + Session Filter",
           "f9-desc": 'Proteksi jam pasar: <strong style="color:#fb923c">blokir entry</strong> sebelum tutup, <strong style="color:#fb923c">force close</strong> saat mendekati tutup, <strong style="color:#fb923c">tunggu stabilisasi</strong> setelah buka. Sesi Asian (00–08), London (08–13), NY (13–24).',
-          "tier-label": "Fitur Unggulan V8.0",
+          "tier-label": "Fitur Unggulan V8.2",
           "tier-desc": 'Lot size, SL, TP, Trailing, BE, dan MaxProfit/Day otomatis menyesuaikan berdasarkan balance. Aktifkan dengan <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
           "th-balance": "Balance",
           "th-trail": "Trail Start",
@@ -1237,7 +1239,7 @@
           "grid-p2": "3 posisi maks",
           "grid-p3": "300 poin",
           "grid-p4": "false (opsional)",
-          "h1g-label": "Mode Baru · Grid H1",
+          "h1g-label": "Mode Baru · EMA Grid",
           "h1g-desc": 'Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100.',
           "h1g-li1": "EMA 50/100 pada timeframe pilihan (M1 – D1)",
           "h1g-li2": "True Cross: entry hanya saat EMA benar-benar memotong",
@@ -1246,9 +1248,9 @@
           "h1g-li5": "Grid satu arah dari entry pertama, maks 10 level",
           "h1g-li6": "Basket TP/Loss $100 (bisa dinonaktifkan)",
           "h1g-li7": "Limit harian menutup basket & mengunci sampai hari berikutnya",
-          "h1g-param-title": "Parameter Grid H1",
+          "h1g-param-title": "Parameter EMA Grid",
           "h1g-p1": "true (terpisah dari mode M1)",
-          "h1g-p2": "M1 – D1 (default H1)",
+          "h1g-p2": "M1 – D1 (default M15)",
           "h1g-p3": "True / False Cross",
           "h1g-p4": "0.01 – 1.00 (dropdown)",
           "h1g-p5": "10 level (termasuk entry pertama)",
@@ -1259,7 +1261,7 @@
           "news-title1": "Proteksi Berita",
           "news-title2": "High Impact",
           "ns1-title": "Fetch Kalender Ekonomi Otomatis",
-          "ns1-desc": "EA mengambil data XML dari ForexFactory tiap jam via WebRequest. Semua berita USD High Impact terdeteksi otomatis. Jika koneksi gagal, ada retry cooldown 5 menit.",
+          "ns1-desc": "EA mengambil data XML dari ForexFactory tiap jam via WebRequest. News high impact difilter sesuai simbol aktif: Gold/BTC mengikuti USD, sedangkan pair forex mengikuti currency di pair tersebut. Jika koneksi gagal, ada retry cooldown 5 menit.",
           "ns2-title": "GMT Offset Auto + Manual Fallback",
           "ns2-desc": "Default (ManualGMTOffset=99): offset dihitung otomatis dari TimeCurrent()-TimeGMT(). Jika broker tidak sinkron, set nilai manual (misal: 3 untuk GMT+3). Offset tampil di panel.",
           "ns3-title": "Blokir X Menit Sebelum Berita",
@@ -1283,6 +1285,8 @@
           "panel-li11": "Posisi aktif vs MaxMultiEntry",
           "spec-title": "Spesifikasi Teknis",
           "spec-platform": "Platform",
+          "spec-pair": "Pair / Simbol",
+          "spec-pair-val": "XAUUSD/Gold, BTC, EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, NZDUSD",
           "spec-tf": "Timeframe Eksekusi",
           "spec-trend-tf": "TF Trend Filter",
           "spec-ema-tf": "TF EMA Filter",
@@ -1296,7 +1300,7 @@
           "spec-gmt-val": "Auto-detect / Manual Fallback",
           "spec-grid": "Grid / Multi Entry",
           "spec-grid-val": "Opsional (off by default)",
-          "spec-gridmode": "H1 Grid Mode",
+          "spec-gridmode": "EMA Grid Mode",
           "spec-gridmode-val": "Ya (EMA 50/100, mode terpisah)",
           "spec-gridlot": "Grid Lot",
           "spec-gridlot-val": "Dropdown 0.01 – 1.00",
@@ -1316,6 +1320,7 @@
           "sys-li2": "Slippage control per eksekusi order",
           "sys-li3": "Spread check sebelum setiap entry",
           "sys-li4": "Filling mode otomatis (IOC/FOK/Return)",
+          "sys-li4b": "Validasi simbol otomatis untuk Gold, BTC, dan major forex pair",
           "sys-li5": "Daily counter reset otomatis tiap hari baru",
           "sys-li6": "History-based P/L tracker dari deal history MT5",
           "sys-li7": "License lock per nomor akun MT5 (array multi-akun)",
@@ -1332,23 +1337,23 @@
           "pk1-name": "STANDARD",
           "pk1-dur": "Lisensi 1 Bulan",
           "pk1-f1": "Lisensi 1 ID MT5 · berlaku 1 bulan",
-          "pk1-f2": "Semua fitur: 9 layer filter + Auto Risk Tier",
-          "pk1-f3": "H1 EMA Grid Mode + True/False Cross + pilihan timeframe",
+          "pk1-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
+          "pk1-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
           "pk1-f4": "Panel real-time + set file rekomendasi",
           "pk1-f5": "Panduan setting & instalasi + support WhatsApp",
           "pk-popular": "PALING LARIS",
           "pk2-name": "PREMIUM",
           "pk2-dur": "Lisensi 3 Bulan",
           "pk2-f1": "Lisensi 2 ID akun MT5 · berlaku 3 bulan",
-          "pk2-f2": "Semua fitur: 9 layer filter + Auto Risk Tier",
-          "pk2-f3": "H1 EMA Grid Mode + True/False Cross + pilihan timeframe",
+          "pk2-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
+          "pk2-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
           "pk2-f4": "Panel real-time + set file + panduan instalasi",
           "pk2-f5": "Update versi minor gratis + prioritas support",
           "pk3-name": "PROFESIONAL",
           "pk3-dur": "Lisensi Permanen",
           "pk3-f1": "Lisensi 5 ID akun MT5 · tanpa kedaluwarsa",
-          "pk3-f2": "Semua fitur: 9 layer filter + Auto Risk Tier",
-          "pk3-f3": "H1 EMA Grid Mode + True/False Cross + pilihan timeframe",
+          "pk3-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
+          "pk3-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
           "pk3-f4": "Panel real-time + set file + panduan instalasi",
            "pk3-f5": "Update versi minor gratis + prioritas support",
            "pk-unlimited-badge": "AKSES TANPA BATAS",
@@ -1357,7 +1362,7 @@
            "pk4-f1": "Lisensi permanen untuk ID akun MT5 tanpa batas",
            "pk4-f2": "Gunakan EA di semua ID akun MT5 Anda",
            "pk4-f3": "Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu",
-           "pk4-f4": "Semua fitur EA + set file + panduan instalasi",
+           "pk4-f4": "Semua fitur EA multi-symbol + set file + panduan instalasi",
            "pk4-f5": "Prioritas support WhatsApp + update minor gratis",
            "btn-order": "Pesan via WhatsApp",
           "nr-title": "⚠ KEBIJAKAN TIDAK ADA PENGEMBALIAN DANA",
@@ -1367,7 +1372,7 @@
           "disclaimer-title": "PERINGATAN RISIKO:",
           "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "EAGLETRADEAVL V8.0 menyediakan EA trading XAUUSD dengan 9 layer filter, Auto Risk Tier 8 tier, Manual GMT Fallback, dan Debug Log untuk proteksi dan transparansi maksimal.",
+          popup_about_body: "EAGLETRADEAVL V8.2 menyediakan EA trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier 8 tier, Manual GMT Fallback, dan Debug Log untuk proteksi dan transparansi maksimal.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "Kami tidak menyimpan data pribadi pengguna tanpa izin. Semua transaksi aman dan terenkripsi.",
           popup_terms_title: "Terms & Conditions",
@@ -1376,15 +1381,15 @@
           popup_risk_body: "Trading memiliki risiko tinggi. EA adalah alat bantu teknis. Gunakan money management dengan bijak dan hanya gunakan modal yang siap Anda risikokan.",
         },
         en: {
-          "nav-new": "V8.0 New",
+          "nav-new": "V8.2 New",
           "nav-filters": "9 Filters",
           "nav-risk": "Risk Mgmt",
           "nav-tier": "Auto Tier",
           "nav-news": "News Guard",
           "nav-panel": "Panel",
           "nav-price": "Pricing",
-          "nav-h1grid": "H1 Grid",
-          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> for maximum protection in the Gold market.',
+          "nav-h1grid": "EMA Grid",
+          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> for Gold, BTC, and major forex pairs.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading carries high risk. The EA is a technical tool, not a money machine.',
           "btn-get": "Get It Now",
           "btn-see-filter": "View 9 Filters",
@@ -1394,8 +1399,8 @@
           "stat-news": "Latest Version",
           "new-label": "Changelog",
           "new-title": "What's New in",
-          "wn1-title": "Manual GMT Offset Fallback",
-          "wn1-desc": "ManualGMTOffset parameter (default=99) for auto-detect. Set manually if auto-detection is inaccurate on your broker. Debug log recorded in Experts tab.",
+          "wn1-title": "Multi-Symbol Forex & BTC Support",
+          "wn1-desc": "The EA is no longer limited to XAUUSD. Version 8.2 supports Gold, BTC, and major forex pairs: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, and NZDUSD.",
           "wn2-title": "Debug Log in Experts Tab",
           "wn2-desc": "All important activities — order entry, SL/TP modify, news block, BE activation — now logged to MT5 Experts tab for easy troubleshooting.",
           "wn3-title": "News Fail Cooldown 5 Minutes",
@@ -1406,7 +1411,7 @@
           "wn5-desc": "EMA Fast (green) and EMA Slow (red) drawn directly on chart as OBJ_TREND lines per candle. Updates each new bar, cleaned up when EA is removed.",
           "wn6-title": "Multi-Account License Lock",
           "wn6-desc": "License system supports account number arrays. Developer can register multiple authorized accounts without recompiling per account.",
-          "wn7-title": "H1 EMA Basket Grid Mode",
+          "wn7-title": "EMA Basket Grid Mode",
           "wn7-desc": "Separate strategy with UseH1EMAGridMode=true. EMA 50/100 (chosen timeframe) starts a BUY/SELL basket, one-way grid with fixed lot, max 10 levels, basket closes at $100 profit/loss or daily limit reached.",
           "wn8-title": "True / False Cross + Timeframe Selection",
           "wn8-desc": "True Cross: entry only when EMA 50 actually crosses EMA 100. False Cross: entry when EMA 50 is already above/below EMA 100. EMA timeframe selectable from M1 to D1.",
@@ -1430,10 +1435,11 @@
           "f7-title": "Support & Resistance Zone",
           "f7-desc": 'EA auto-calculates <strong style="color:#4ade80">S/R levels</strong> from last N M1 candles (default 50). Buy blocked near resistance, Sell blocked near support. Configurable zone buffer.',
           "f8-title": "News Filter Auto",
-          "f8-desc": 'Fetches economic calendar via <strong style="color:#f87171">WebRequest</strong> every hour. Blocks entries X min before & after <em>USD High Impact</em> news. GMT auto-detect or manual fallback. 5-min fail cooldown.',
+          "f8-desc": 'Fetches economic calendar via <strong style="color:#f87171">WebRequest</strong> every hour. Blocks entries X min before & after high-impact news relevant to the active symbol. Gold/BTC follow USD, while forex pairs follow their pair currencies. GMT can be auto-detected or set manually.',
+          "f8-tag": "Relevant High Impact",
           "f9-title": "Market Hours + Session Filter",
           "f9-desc": 'Market hour protection: <strong style="color:#fb923c">blocks entries</strong> before close, <strong style="color:#fb923c">force closes</strong> near close, <strong style="color:#fb923c">waits for stabilization</strong> after open. Asian (00–08), London (08–13), NY (13–24).',
-          "tier-label": "Key Feature V8.0",
+          "tier-label": "Key Feature V8.2",
           "tier-desc": 'Lot size, SL, TP, Trailing, BE, and MaxProfit/Day auto-adjust based on account balance. Enable with <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
           "th-balance": "Balance",
           "th-trail": "Trail Start",
@@ -1479,7 +1485,7 @@
           "grid-p2": "3 max positions",
           "grid-p3": "300 points",
           "grid-p4": "false (optional)",
-          "h1g-label": "New Mode · H1 Grid",
+          "h1g-label": "New Mode · EMA Grid",
           "h1g-desc": 'Separate strategy mode with <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. The EA stops running the M1 strategy and focuses fully on the EMA 50/100 grid basket.',
           "h1g-li1": "EMA 50/100 on chosen timeframe (M1 – D1)",
           "h1g-li2": "True Cross: entry only on a real EMA crossover",
@@ -1488,9 +1494,9 @@
           "h1g-li5": "One-way grid from first entry, max 10 levels",
           "h1g-li6": "Basket TP/Loss $100 (can be disabled)",
           "h1g-li7": "Daily limit closes basket & locks until next day",
-          "h1g-param-title": "H1 Grid Parameters",
+          "h1g-param-title": "EMA Grid Parameters",
           "h1g-p1": "true (separate from M1 mode)",
-          "h1g-p2": "M1 – D1 (default H1)",
+          "h1g-p2": "M1 – D1 (default M15)",
           "h1g-p3": "True / False Cross",
           "h1g-p4": "0.01 – 1.00 (dropdown)",
           "h1g-p5": "10 levels (including first entry)",
@@ -1501,7 +1507,7 @@
           "news-title1": "High Impact News",
           "news-title2": "Protection",
           "ns1-title": "Auto Economic Calendar Fetch",
-          "ns1-desc": "EA fetches XML from ForexFactory every hour via WebRequest. All USD High Impact news auto-detected. 5-minute retry cooldown on connection failure.",
+          "ns1-desc": "EA fetches XML from ForexFactory every hour via WebRequest. High-impact news is filtered by active symbol: Gold/BTC follow USD, while forex pairs follow their pair currencies. 5-minute retry cooldown on connection failure.",
           "ns2-title": "GMT Offset Auto + Manual Fallback",
           "ns2-desc": "Default (ManualGMTOffset=99): offset auto-calculated from TimeCurrent()-TimeGMT(). If broker is out of sync, set manually (e.g. 3 for GMT+3). Offset shown on panel.",
           "ns3-title": "Block X Minutes Before News",
@@ -1525,6 +1531,8 @@
           "panel-li11": "Active positions vs MaxMultiEntry",
           "spec-title": "Technical Specifications",
           "spec-platform": "Platform",
+          "spec-pair": "Pair / Symbol",
+          "spec-pair-val": "XAUUSD/Gold, BTC, EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, NZDUSD",
           "spec-tf": "Execution Timeframe",
           "spec-trend-tf": "Trend Filter TF",
           "spec-ema-tf": "EMA Filter TF",
@@ -1538,7 +1546,7 @@
           "spec-gmt-val": "Auto-detect / Manual Fallback",
           "spec-grid": "Grid / Multi Entry",
           "spec-grid-val": "Optional (off by default)",
-          "spec-gridmode": "H1 Grid Mode",
+          "spec-gridmode": "EMA Grid Mode",
           "spec-gridmode-val": "Yes (EMA 50/100, separate mode)",
           "spec-gridlot": "Grid Lot",
           "spec-gridlot-val": "Dropdown 0.01 – 1.00",
@@ -1558,6 +1566,7 @@
           "sys-li2": "Slippage control per order execution",
           "sys-li3": "Spread check before every entry",
           "sys-li4": "Auto filling mode (IOC/FOK/Return)",
+          "sys-li4b": "Automatic symbol validation for Gold, BTC, and major forex pairs",
           "sys-li5": "Daily counter auto-reset each new day",
           "sys-li6": "History-based P/L tracker from MT5 deal history",
           "sys-li7": "License lock per MT5 account (multi-account array)",
@@ -1574,23 +1583,23 @@
           "pk1-name": "STANDARD",
           "pk1-dur": "1 Month License",
           "pk1-f1": "License for 1 MT5 account · valid 1 month",
-          "pk1-f2": "All features: 9 layer filters + Auto Risk Tier",
-          "pk1-f3": "H1 EMA Grid Mode + True/False Cross + timeframe selection",
+          "pk1-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
+          "pk1-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
           "pk1-f4": "Real-time panel + recommended set files",
           "pk1-f5": "Setup & installation guide + WhatsApp support",
           "pk-popular": "BEST SELLER",
           "pk2-name": "PREMIUM",
           "pk2-dur": "4 Month License",
           "pk2-f1": "License for 1 MT5 account · valid 3 months",
-          "pk2-f2": "All features: 9 layer filters + Auto Risk Tier",
-          "pk2-f3": "H1 EMA Grid Mode + True/False Cross + timeframe selection",
+          "pk2-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
+          "pk2-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
           "pk2-f4": "Real-time panel + set files + installation guide",
           "pk2-f5": "Free minor version updates + priority support",
           "pk3-name": "PROFESSIONAL",
           "pk3-dur": "Lifetime License",
           "pk3-f1": "License for 1 MT5 account · no expiration",
-          "pk3-f2": "All features: 9 layer filters + Auto Risk Tier",
-          "pk3-f3": "H1 EMA Grid Mode + True/False Cross + timeframe selection",
+          "pk3-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
+          "pk3-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
           "pk3-f4": "Real-time panel + set files + installation guide",
            "pk3-f5": "Free minor version updates + priority support",
            "pk-unlimited-badge": "UNLIMITED ACCESS",
@@ -1599,7 +1608,7 @@
            "pk4-f1": "Lifetime license for unlimited MT5 account IDs",
            "pk4-f2": "Use the EA across all of your MT5 account IDs",
            "pk4-f3": "No account-ID registration or activation required",
-           "pk4-f4": "All EA features + set files + installation guide",
+           "pk4-f4": "All multi-symbol EA features + set files + installation guide",
            "pk4-f5": "Priority WhatsApp support + free minor updates",
            "btn-order": "Order via WhatsApp",
           "nr-title": "⚠ NO REFUND POLICY",
@@ -1609,7 +1618,7 @@
           "disclaimer-title": "RISK WARNING:",
           "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "EAGLETRADEAVL V8.0 provides a XAUUSD trading EA with 9 layered filters, 8-tier Auto Risk Tier, Manual GMT Fallback, and Debug Log for maximum protection and transparency.",
+          popup_about_body: "EAGLETRADEAVL V8.2 provides a multi-symbol trading EA for Gold, BTC, and major forex pairs with 9 layered filters, 8-tier Auto Risk Tier, Manual GMT Fallback, and Debug Log for maximum protection and transparency.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "We do not store personal user data without consent. All transactions are secure and encrypted.",
           popup_terms_title: "Terms & Conditions",
