@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EAGLETRADEAVL V8.3 – EA Multi-Symbol M1 Auto Trading</title>
-    <meta name="description" content="EA multi-symbol M1 scalping otomatis untuk XAUUSD, BTC, dan major forex pair dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter. Auto Risk Tier + Manual GMT Fallback + EMA Basket Grid + Debug Log." />
+    <title>EAGLETRADEAVL V8.6 – EA Multi-Symbol M1 Auto Trading</title>
+    <meta name="description" content="EA multi-symbol M1 scalping otomatis untuk XAUUSD, BTC, dan major forex pair dengan 9 layer filter: Price Action, EMA, MACD, RSI, Choppiness Index, SR, News Filter, Market Hours Guard, Session Filter. Auto Risk Tier + Manual GMT Fallback + EMA Basket Grid + Stochastic Filter + Debug Log." />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="EAGLETRADEAVL V8.3 – EA Multi-Symbol M1" />
-    <meta property="og:description" content="Bot trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier, News Protection, EMA Basket Grid, Manual GMT Offset Fallback, dan Debug Log." />
+    <meta property="og:title" content="EAGLETRADEAVL V8.6 – EA Multi-Symbol M1" />
+    <meta property="og:description" content="Bot trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier, News Protection, EMA Basket Grid + Stochastic Filter, Manual GMT Offset Fallback, dan Debug Log." />
     <meta property="og:type" content="website" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -246,7 +246,7 @@
       .btn-order { display: flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 30px rgba(34, 197, 94, 0.3); margin-top: 2rem; }
       .btn-order:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(34, 197, 94, 0.5); }
 
-      .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; align-items: stretch; }
+      .pricing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; align-items: stretch; }
       .pricing-grid .pricing-box { max-width: none; margin: 0; padding: 2.5rem 2rem; display: flex; flex-direction: column; position: relative; }
       .pricing-grid .price-big { font-size: clamp(2.1rem, 2.2vw, 2.7rem); }
       .pricing-grid .price-big + span { font-size: 1rem !important; }
@@ -280,7 +280,7 @@
 
       .new-badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); border-radius: 4px; padding: 0.1rem 0.4rem; margin-left: 0.4rem; vertical-align: middle; }
 
-      /* WHAT'S NEW V8.3 SECTION */
+      /* WHAT'S NEW V8.6 SECTION */
       .whatsnew-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
       .whatsnew-item { background: rgba(245,200,66,0.04); border: 1px solid rgba(245,200,66,0.15); border-radius: 12px; padding: 1.2rem 1.4rem; }
       .whatsnew-item h4 { font-size: 0.9rem; color: var(--gold); margin-bottom: 0.4rem; }
@@ -301,7 +301,7 @@
       .reveal-delay-3 { transition-delay: 0.3s; }
 
       @media (max-width: 1100px) {
-        .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        .pricing-grid { grid-template-columns: repeat(3, 1fr); }
       }
       @media (max-width: 768px) {
         .nav-links { display: none; }
@@ -335,7 +335,7 @@
       <div class="nav-inner">
         <div class="logo">EAGLETRADEAVL</div>
         <ul class="nav-links">
-          <li><a href="#whatsnew" data-id="nav-new">V8.3 New</a></li>
+          <li><a href="#whatsnew" data-id="nav-new">V8.6 New</a></li>
           <li><a href="#filters" data-id="nav-filters">9 Filter</a></li>
           <li><a href="#risk" data-id="nav-risk">Risk Mgmt</a></li>
           <li><a href="#tier" data-id="nav-tier">Auto Tier</a></li>
@@ -365,7 +365,7 @@
       <div class="grid-bg"></div>
       <div style="position:relative;z-index:1">
         <div class="hero-badge">
-          <i class="fas fa-bolt"></i> VERSION 8.3 · MULTI-SYMBOL · MT5
+          <i class="fas fa-bolt"></i> VERSION 8.6 · MULTI-SYMBOL · MT5
         </div>
         <h1>
           <span class="grad-text">MULTI-SYMBOL</span><br />
@@ -377,7 +377,9 @@
           <strong style="color:white">9 layer filter</strong> berlapis +
           <strong style="color:var(--gold)">Auto Risk Tier</strong> +
           <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk
-          Gold, BTC, dan major forex pair.
+          Gold, BTC, dan major forex pair. Dilengkapi mode
+          <strong style="color:var(--gold)">EMA Basket Grid</strong> dengan
+          <strong style="color:var(--gold)">Stochastic Filter</strong>.
         </p>
         <div class="hero-warning" data-id="hero-warning">
           <i class="fas fa-exclamation-triangle"></i>
@@ -410,58 +412,58 @@
           <span class="stat-label" data-id="stat-tf">Scalping TF</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">8.3</span>
+          <span class="stat-num">8.6</span>
           <span class="stat-label" data-id="stat-news">Latest Version</span>
         </div>
       </div>
     </div>
 
-    <!-- WHAT'S NEW V8.3 -->
+    <!-- WHAT'S NEW V8.6 -->
     <section class="section" id="whatsnew" style="background:rgba(245,200,66,0.02)">
       <div class="container">
         <div class="reveal" style="margin-bottom:2.5rem;text-align:center">
           <span class="section-label" data-id="new-label">Changelog</span>
           <h2 class="section-title" style="color:white">
-            <span data-id="new-title">Apa yang Baru di</span> <span class="grad-text">V8.3</span>
+            <span data-id="new-title">Apa yang Baru di</span> <span class="grad-text">V8.6</span>
           </h2>
           <div class="divider" style="margin:1rem auto 0"></div>
         </div>
         <div class="whatsnew-grid reveal">
           <div class="whatsnew-item">
-            <h4 data-id="wn1-title">Multi-Symbol Forex & BTC Support</h4>
-            <p data-id="wn1-desc">EA tidak lagi terbatas XAUUSD. Versi 8.3 mendukung Gold, BTC, dan major forex pair: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, dan NZDUSD.</p>
+            <h4 data-id="wn1-title">Stochastic Grid Filter</h4>
+            <p data-id="wn1-desc">Mode grid kini dilindungi filter Stochastic: SELL diblokir saat K di bawah 10, BUY diblokir saat K di atas 90. Parameter K/D 5/3/3 dengan pilihan timeframe M5, M15, M30, dan H1.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn2-title">Debug Log di Tab Experts</h4>
-            <p data-id="wn2-desc">Semua aktivitas penting — order entry, SL/TP modify, news block, BE activation — kini dicatat ke tab Experts MT5 untuk kemudahan troubleshooting.</p>
+            <h4 data-id="wn2-title">Stochastic Cross Entry</h4>
+            <p data-id="wn2-desc">Entry baru saat K memotong D di zona ekstrem: cross di bawah 7 = BUY, cross di atas 90 = SELL. Basket lama ditutup otomatis dan basket baru dibuka berlawanan arah.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn3-title">News Fail Cooldown 5 Menit</h4>
-            <p data-id="wn3-desc">Jika koneksi news gagal, EA menunggu 5 menit sebelum retry. Mencegah spam request dan overhead koneksi berlebihan.</p>
+            <h4 data-id="wn3-title">One-Shot Grid SL Lock</h4>
+            <p data-id="wn3-desc">Saat entry pertama basket sudah profit $7 (trigger), SL seluruh level grid otomatis dikunci di +$5 dari harga entry pertama. Mengamankan profit basket di tengah perjalanan.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn4-title">Smart Close Buffer Disempurnakan</h4>
-            <p data-id="wn4-desc">Logic Smart Close diperbarui: cek floating hanya dari posisi EA (MagicNumber), bukan floating akun keseluruhan. Lebih akurat dan tidak terganggu posisi manual.</p>
+            <h4 data-id="wn4-title">Fixed SL/TP Basket</h4>
+            <p data-id="wn4-desc">Basket bisa diberi SL/TP tetap dari harga entry pertama: SL $11 dan TP $10 secara default. Keduanya dapat diatur atau dimatikan.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn5-title">EMA Visual Otomatis di Chart</h4>
-            <p data-id="wn5-desc">EMA Fast (hijau) dan EMA Slow (merah) digambar langsung di chart sebagai line OBJ_TREND per candle. Update tiap bar baru, dihapus bersih saat EA dilepas.</p>
+            <h4 data-id="wn5-title">Smart Daily Target</h4>
+            <p data-id="wn5-desc">EnableGridSmartDailyTarget menutup seluruh basket begitu sisa target profit harian tercapai. Target harian dan basket bekerja selaras tanpa saling bertabrakan.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn6-title">License Lock Multi-Akun</h4>
-            <p data-id="wn6-desc">Sistem lisensi mendukung array nomor akun. Developer dapat mendaftarkan beberapa akun resmi tanpa perlu compile ulang per akun.</p>
+            <h4 data-id="wn6-title">Loss Cooldown 5 Menit</h4>
+            <p data-id="wn6-desc">Setelah posisi loss tertutup, EA menunggu LossCooldownMinutes (default 5 menit) sebelum entry baru. Mencegah revenge trading dan overtrade saat kondisi buruk.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn7-title">EMA Basket Grid Mode</h4>
-            <p data-id="wn7-desc">Strategi terpisah dengan UseH1EMAGridMode=true. EMA 50/100 (timeframe pilihan) memulai basket BUY/SELL, grid satu arah dengan lot tetap, maks 10 level, tutup basket saat profit/loss $100 atau limit harian tercapai.</p>
+            <h4 data-id="wn7-title">SR Bounce Entry</h4>
+            <p data-id="wn7-desc">EnableBounceEntry mengizinkan entry bounce saat harga memantul dari zona Support/Resistance. Sinyal lebih dini di area kunci dengan validasi pola tetap aktif.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn8-title">True / False Cross + Pilihan Timeframe</h4>
-            <p data-id="wn8-desc">True Cross: entry hanya saat EMA 50 benar-benar memotong EMA 100. False Cross: entry saat EMA 50 sudah di atas/bawah EMA 100. Timeframe EMA bisa dipilih dari M1 hingga D1.</p>
+            <h4 data-id="wn8-title">Grid Entry Cooldown + License Panel</h4>
+            <p data-id="wn8-desc">Cooldown antar basket baru (GridEntryCooldownMinutes). Panel juga menampilkan status lisensi: ACTIVE (LIFETIME), sisa hari, atau EXPIRED beserta tanggalnya.</p>
           </div>
           <div class="whatsnew-item">
-            <h4 data-id="wn9-title">Lot Dropdown 0.01 – 1.00 + Step Otomatis</h4>
-            <p data-id="wn9-desc">Pilih lot dari daftar 0.01 sampai 1.00 tanpa mengetik. Jarak grid otomatis mengikuti lot: $1 per 0.01 lot, tanpa input manual.</p>
+            <h4 data-id="wn9-title">EMA TF Selectable + MACD Min Histogram</h4>
+            <p data-id="wn9-desc">Timeframe filter EMA kini bisa dipilih langsung (EMA_TF, default M5). Filter MACD dilengkapi ambang kekuatan histogram minimum (MACD_MinHistogram).</p>
           </div>
         </div>
       </div>
@@ -506,6 +508,7 @@
             <div style="margin-top:0.8rem">
               <span class="filter-param">EMA_FastPeriod=20</span>
               <span class="filter-param">EMA_SlowPeriod=50</span>
+              <span class="filter-param">EMA_TF=M5 (M1–D1)</span>
               <span class="tag tag-gold">Visual On Chart</span>
             </div>
           </div>
@@ -517,6 +520,7 @@
             <p data-id="f4-desc">Konfirmasi momentum via <strong style="color:#67e8f9">MACD histogram M5</strong>. Buy butuh histogram positif dan <em>naik</em>; Sell butuh histogram negatif dan <em>turun</em>. Entry diblokir jika momentum melemah (histogram berbalik arah).</p>
             <div style="margin-top:0.8rem">
               <span class="filter-param">Fast=12 Slow=26 Sig=9</span>
+              <span class="filter-param">MACD_MinHistogram=0.0</span>
               <span class="tag tag-cyan">Momentum Guard</span>
             </div>
           </div>
@@ -549,10 +553,11 @@
             <div class="filter-num">07</div>
             <div class="icon-badge ib-green"><i class="fas fa-layer-group"></i></div>
             <h4 data-id="f7-title">Support & Resistance Zone</h4>
-            <p data-id="f7-desc">EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50 candle M1). Buy diblokir dekat resistance, Sell diblokir dekat support. Buffer zona bisa dikonfigurasi.</p>
+            <p data-id="f7-desc">EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50 candle M1). Buy diblokir dekat resistance, Sell diblokir dekat support. Buffer zona bisa dikonfigurasi, dan <strong style="color:#4ade80">EnableBounceEntry</strong> mengizinkan entry bounce saat harga memantul dari zona.</p>
             <div style="margin-top:0.8rem">
               <span class="filter-param">Lookback=50</span>
               <span class="filter-param">Buffer=100 pts</span>
+              <span class="filter-param">EnableBounceEntry=true</span>
               <span class="tag tag-green">Zone Aware</span>
             </div>
           </div>
@@ -590,7 +595,7 @@
     <section class="section" id="tier" style="background:rgba(0,0,0,0.4)">
       <div class="container">
         <div class="reveal" style="margin-bottom:3rem;text-align:center">
-          <span class="section-label" data-id="tier-label">Fitur Unggulan V8.3</span>
+          <span class="section-label" data-id="tier-label">Fitur Unggulan V8.6</span>
           <h2 class="section-title" style="color:white">
             Auto Risk Tier <span class="new-badge">AUTO</span>
           </h2>
@@ -713,6 +718,13 @@
                 </div>
               </div>
               <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
+                <div class="icon-badge ib-purple" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-hourglass-half"></i></div>
+                <div>
+                  <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl5-title">Loss Cooldown</h4>
+                  <p style="font-size:0.82rem;color:var(--sub);line-height:1.5" data-id="dl5-desc">Setelah posisi loss tertutup, EA menunggu LossCooldownMinutes (default 5 menit) sebelum entry baru. Mencegah revenge trading dan overtrade.</p>
+                </div>
+              </div>
+              <div class="card" style="display:flex;gap:1rem;align-items:flex-start">
                 <div class="icon-badge ib-red" style="width:40px;height:40px;font-size:1rem;flex-shrink:0"><i class="fas fa-shield-halved"></i></div>
                 <div>
                   <h4 style="font-size:0.95rem;margin-bottom:0.3rem" data-id="dl4-title">Close All Emergency</h4>
@@ -766,20 +778,23 @@
       <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" class="two-col">
           <div class="reveal">
-            <span class="section-label" data-id="h1g-label">Mode Baru · EMA Grid</span>
+            <span class="section-label" data-id="h1g-label">Mode Baru · EMA Grid + Stoch</span>
             <h2 class="section-title" style="color:white">
               EMA <span class="grad-text-purple">Basket Grid</span>
             </h2>
             <div class="divider"></div>
-            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="h1g-desc">Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100.</p>
+            <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="h1g-desc">Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100 + filter Stochastic.</p>
             <ul class="checklist">
               <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li1">EMA 50/100 pada timeframe pilihan (M1 – D1)</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li2">True Cross: entry hanya saat EMA benar-benar memotong</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li3">False Cross: entry saat EMA 50 di atas/bawah EMA 100</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li4">Lot tetap 0.01 – 1.00, step grid otomatis ($1 per 0.01 lot)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li5">Grid satu arah dari entry pertama, maks 10 level</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li6">Basket TP/Loss $100 (bisa dinonaktifkan)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li7">Limit harian menutup basket & mengunci sampai hari berikutnya</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li5">Grid satu arah dari entry pertama, default 5 level (bisa diatur)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li6">Stochastic Filter: blokir SELL saat K &lt; 10, BUY saat K &gt; 90 (TF M5–H1)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li7">Stochastic Cross: tutup basket lama &amp; buka basket baru (cross 7/90)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li8">One-Shot SL: kunci SL semua level di +$5 saat entry pertama profit $7</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li9">Basket TP $30 / Loss $130 default (bisa dinonaktifkan)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="h1g-li10">Smart Daily Target + cooldown antar basket + lock harian</span></li>
             </ul>
           </div>
           <div class="reveal reveal-delay-1">
@@ -790,27 +805,81 @@
                 <tr><td>GridEMATimeframe</td><td data-id="h1g-p2">M1 – D1 (default M15)</td></tr>
                 <tr><td>GridCrossMode</td><td data-id="h1g-p3">True / False Cross</td></tr>
                 <tr><td>GridLotPreset</td><td data-id="h1g-p4">0.01 – 1.00 (dropdown)</td></tr>
-                <tr><td>GridMaxLevels</td><td data-id="h1g-p5">10 level (termasuk entry pertama)</td></tr>
-                <tr><td>GridBasketProfitUSD</td><td data-id="h1g-p6">$100 (bisa off)</td></tr>
-                <tr><td>GridBasketMaxLossUSD</td><td data-id="h1g-p7">$100 (bisa off)</td></tr>
-                <tr><td>MaxProfitPerDay / MaxLossPerDay</td><td data-id="h1g-p8">Tutup basket + lock harian</td></tr>
+                <tr><td>GridMaxLevels</td><td data-id="h1g-p5">5 level default (bisa diatur)</td></tr>
+                <tr><td>GridBasketProfitUSD</td><td data-id="h1g-p6">$30 (bisa off)</td></tr>
+                <tr><td>GridBasketMaxLossUSD</td><td data-id="h1g-p7">$130 (bisa off)</td></tr>
+                <tr><td>EnableGridSLTP</td><td data-id="h1g-p8">SL $11 / TP $10 dari entry pertama</td></tr>
+                <tr><td>EnableGridOneShotSL</td><td data-id="h1g-p9">Trigger $7 → Lock $5</td></tr>
+                <tr><td>Stoch Filter / Cross</td><td data-id="h1g-p10">K&lt;10 / K&gt;90 · cross 7/90 · TF M5–H1</td></tr>
+                <tr><td>GridEntryCooldownMinutes</td><td data-id="h1g-p11">0 = off (opsional)</td></tr>
               </table>
             </div>
             <div class="panel-mockup" style="margin-top:1.5rem">
-              <div class="pm-title">EAGLE V8.3 META</div>
+              <div class="pm-title">EAGLE V8.6 META</div>
+              <div class="pm-section">── LICENSE ──</div>
+              <div class="pm-row"><span class="pm-key">Status</span><span class="pm-val c-green">ACTIVE (LIFETIME)</span></div>
+              <div class="pm-row"><span class="pm-key">Expires</span><span class="pm-val c-white">LIFETIME</span></div>
+              <div class="pm-section">── DAILY LIMITS ──</div>
+              <div class="pm-row"><span class="pm-key">Max Profit</span><span class="pm-val c-green">[█████░░░░░░░] 42% $30</span></div>
+              <div class="pm-row"><span class="pm-key">Max Loss</span><span class="pm-val c-white">[██░░░░░░░░░░] 17% $130</span></div>
+              <div class="pm-row"><span class="pm-key">State</span><span class="pm-val c-green">ACTIVE</span></div>
               <div class="pm-section">── GRID SETTINGS ──</div>
-              <div class="pm-row"><span class="pm-key">Mode</span><span class="pm-val c-cyan">EMA 50/100</span></div>
+              <div class="pm-row"><span class="pm-key">Mode</span><span class="pm-val c-cyan">M15 EMA 50/100</span></div>
               <div class="pm-row"><span class="pm-key">Cross</span><span class="pm-val c-cyan">TRUE</span></div>
+              <div class="pm-row"><span class="pm-key">Stoch</span><span class="pm-val c-cyan">12.3 / 10.1 H1</span></div>
+              <div class="pm-row"><span class="pm-key">S.Cross</span><span class="pm-val c-green">ON (7/90)</span></div>
               <div class="pm-row"><span class="pm-key">Lot</span><span class="pm-val c-white">0.01</span></div>
               <div class="pm-row"><span class="pm-key">Step</span><span class="pm-val c-white">$1.00</span></div>
-              <div class="pm-row"><span class="pm-key">Levels</span><span class="pm-val c-yellow">3 / 10</span></div>
+              <div class="pm-row"><span class="pm-key">Levels</span><span class="pm-val c-yellow">3 / 5</span></div>
+              <div class="pm-row"><span class="pm-key">Cooldown</span><span class="pm-val c-green">READY</span></div>
               <div class="pm-row"><span class="pm-key">Basket</span><span class="pm-val c-green">BUY</span></div>
               <div class="pm-row"><span class="pm-key">B.Profit</span><span class="pm-val c-green">$ +12.40</span></div>
-              <div class="pm-row"><span class="pm-key">Target</span><span class="pm-val c-white">$100.00</span></div>
-              <div class="pm-section">── DAILY LIMITS ──</div>
-              <div class="pm-row"><span class="pm-key">Max Profit</span><span class="pm-val c-green">[█████░░░░░░░] 42% $100</span></div>
-              <div class="pm-row"><span class="pm-key">Max Loss</span><span class="pm-val c-white">[██░░░░░░░░░░] 17% $100</span></div>
-              <div class="pm-row"><span class="pm-key">State</span><span class="pm-val c-green">ACTIVE</span></div>
+              <div class="pm-row"><span class="pm-key">Target</span><span class="pm-val c-white">$30.00</span></div>
+              <div class="pm-row"><span class="pm-key">Loss Lim</span><span class="pm-val c-white">$130.00</span></div>
+              <div class="pm-row"><span class="pm-key">SL/TP Fix</span><span class="pm-val c-white">$11.00 / $10.00</span></div>
+              <div class="pm-row"><span class="pm-key">Positions</span><span class="pm-val c-yellow">3</span></div>
+              <div class="pm-section">AUTO TRADE EAGLETRADEAVL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STOCHASTIC GRID -->
+        <div style="margin-top:4rem">
+          <div class="reveal" style="text-align:center;margin-bottom:2rem">
+            <span class="section-label" data-id="stoch-label">V8.6 New · Grid Filter</span>
+            <h2 class="section-title" style="color:white">
+              Stochastic <span class="grad-text-purple">Grid Intelligence</span>
+            </h2>
+            <div class="divider" style="margin:1rem auto 0"></div>
+            <p class="section-desc" style="margin:0 auto" data-id="stoch-desc">Dua lapis proteksi Stochastic untuk mode EMA Basket Grid: block filter mencegah entry melawan ekstrem, cross entry menangkap pembalikan di zona jenuh.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem">
+            <div class="card reveal" style="border-color:rgba(249,115,22,0.25)">
+              <div class="icon-badge ib-orange"><i class="fas fa-ban"></i></div>
+              <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:white" data-id="st1-title">Block Filter</h4>
+              <p style="font-size:0.82rem;color:var(--sub);line-height:1.6" data-id="st1-desc">UseStochFilter memblokir SELL saat K di bawah StochSellBlockLevel (10) dan BUY saat K di atas StochBuyBlockLevel (90). Basket tidak pernah entry melawan kondisi jenuh.</p>
+              <div style="margin-top:0.8rem">
+                <span class="filter-param">K &lt; 10 = no SELL</span>
+                <span class="filter-param">K &gt; 90 = no BUY</span>
+              </div>
+            </div>
+            <div class="card reveal reveal-delay-1" style="border-color:rgba(124,58,237,0.25)">
+              <div class="icon-badge ib-purple"><i class="fas fa-arrows-left-right"></i></div>
+              <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:white" data-id="st2-title">Cross Entry</h4>
+              <p style="font-size:0.82rem;color:var(--sub);line-height:1.6" data-id="st2-desc">StochCrossEntry membuka entry baru saat K memotong D: cross di bawah 7 = BUY, cross di atas 90 = SELL. Basket lama ditutup otomatis dan basket baru dibuka.</p>
+              <div style="margin-top:0.8rem">
+                <span class="filter-param">Cross &lt; 7 = BUY</span>
+                <span class="filter-param">Cross &gt; 90 = SELL</span>
+              </div>
+            </div>
+            <div class="card reveal reveal-delay-2" style="border-color:rgba(34,211,238,0.25)">
+              <div class="icon-badge ib-cyan"><i class="fas fa-sliders"></i></div>
+              <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:white" data-id="st3-title">Parameter Fleksibel</h4>
+              <p style="font-size:0.82rem;color:var(--sub);line-height:1.6" data-id="st3-desc">Stochastic K/D 5/3/3 dengan timeframe pilihan: M5, M15, M30, atau H1 (default). Level block dan cross semuanya bisa disesuaikan.</p>
+              <div style="margin-top:0.8rem">
+                <span class="filter-param">K=5 D=3 Slow=3</span>
+                <span class="filter-param">TF: M5 – H1</span>
+              </div>
             </div>
           </div>
         </div>
@@ -879,7 +948,7 @@
             <div class="divider"></div>
             <p style="color:var(--sub);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem" data-id="panel-desc">Panel informasi langsung di chart MT5 (pojok kanan atas). Semua status terpantau tanpa buka jendela lain.</p>
             <ul class="checklist">
-              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li1">Balance, Equity, P/L hari ini, Floating</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li1">Balance, Equity, P/L hari ini (EA), Floating EA</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li2">Progress bar profit & loss harian (dengan %)</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li3">Status pasar: Open / Closed / Stabilizing / Pre-Close Lock</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li4">Choppiness Index: SIDEWAYS / TRENDING (+ nilai CI)</span></li>
@@ -890,15 +959,19 @@
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li9">M1 Pattern: BUY SIG / SELL SIG / NONE</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li10">Lot/SL/TP/Trailing/BE dengan tag (AUTO) jika AutoTier aktif</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="panel-li11">Posisi aktif vs MaxMultiEntry</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="panel-li12">Status lisensi: ACTIVE (LIFETIME) / sisa hari / EXPIRED + tanggal</span></li>
             </ul>
           </div>
           <div class="panel-mockup reveal reveal-delay-1">
-            <div class="pm-title">⚡ EAGLE V8.3 META ⚡</div>
+            <div class="pm-title">⚡ EAGLE V8.6 META ⚡</div>
+            <div class="pm-section">── LICENSE ──</div>
+            <div class="pm-row"><span class="pm-key">Status</span><span class="pm-val c-green">ACTIVE (LIFETIME)</span></div>
+            <div class="pm-row"><span class="pm-key">Expires</span><span class="pm-val c-white">LIFETIME</span></div>
             <div class="pm-section">── ACCOUNT ──</div>
             <div class="pm-row"><span class="pm-key">Balance</span><span class="pm-val c-white">$ 1,250.00</span></div>
             <div class="pm-row"><span class="pm-key">Equity</span><span class="pm-val c-cyan">$ 1,262.50</span></div>
-            <div class="pm-row"><span class="pm-key">P/L Day</span><span class="pm-val c-green">$ +12.40</span></div>
-            <div class="pm-row"><span class="pm-key">Floating</span><span class="pm-val c-green">$ +12.50</span></div>
+            <div class="pm-row"><span class="pm-key">EA P/L Day</span><span class="pm-val c-green">$ +12.40</span></div>
+            <div class="pm-row"><span class="pm-key">EA Float</span><span class="pm-val c-green">$ +12.50</span></div>
             <div class="pm-section">── PROGRESS ──</div>
             <div class="pm-row"><span class="pm-key">Profit</span><span class="pm-val c-green">[████████░░░░] 83% $14</span></div>
             <div class="pm-row"><span class="pm-key">Max Loss</span><span class="pm-val c-gray">OFF</span></div>
@@ -917,8 +990,8 @@
             <div class="pm-row"><span class="pm-key">M5 Trend</span><span class="pm-val c-green">▲ BULLISH</span></div>
             <div class="pm-row"><span class="pm-key">M1 Pattern</span><span class="pm-val c-green">▲ BUY SIG</span></div>
             <div class="pm-section">── SETTINGS ──</div>
-            <div class="pm-row"><span class="pm-key">Lot (AUTO)</span><span class="pm-val c-cyan">0.02</span></div>
-            <div class="pm-row"><span class="pm-key">SL/TP (AUTO)</span><span class="pm-val c-white">$10 / $25</span></div>
+            <div class="pm-row"><span class="pm-key">Lot</span><span class="pm-val c-cyan">0.02</span></div>
+            <div class="pm-row"><span class="pm-key">SL / TP</span><span class="pm-val c-white">$10 / $25</span></div>
             <div class="pm-row"><span class="pm-key">Trailing</span><span class="pm-val c-white">$6 → $4</span></div>
             <div class="pm-row"><span class="pm-key">B.Even</span><span class="pm-val c-white">$4 → $0.50</span></div>
             <div class="pm-section">── ─────────────────── ──</div>
@@ -951,13 +1024,18 @@
               <tr><td data-id="spec-gridmode">EMA Grid Mode</td><td data-id="spec-gridmode-val">Ya (EMA 50/100, mode terpisah)</td></tr>
               <tr><td data-id="spec-gridlot">Grid Lot</td><td data-id="spec-gridlot-val">Dropdown 0.01 – 1.00</td></tr>
               <tr><td data-id="spec-gridstep">Grid Step</td><td data-id="spec-gridstep-val">Otomatis ($1 per 0.01 lot)</td></tr>
-              <tr><td data-id="spec-gridlevels">Grid Max Level</td><td data-id="spec-gridlevels-val">10 (bisa diatur)</td></tr>
-              <tr><td data-id="spec-gridbt">Basket TP / Loss</td><td data-id="spec-gridbt-val">$100 / $100 (bisa off)</td></tr>
+              <tr><td data-id="spec-gridlevels">Grid Max Level</td><td data-id="spec-gridlevels-val">5 default (bisa diatur)</td></tr>
+              <tr><td data-id="spec-gridbt">Basket TP / Loss</td><td data-id="spec-gridbt-val">$30 / $130 default (bisa off)</td></tr>
+              <tr><td data-id="spec-gridsltp">Fixed SL/TP Basket</td><td data-id="spec-gridsltp-val">SL $11 / TP $10 dari entry pertama</td></tr>
+              <tr><td data-id="spec-oneshot">One-Shot Grid SL</td><td data-id="spec-oneshot-val">Trigger $7 → Lock $5</td></tr>
+              <tr><td data-id="spec-stoch">Stochastic Grid</td><td data-id="spec-stoch-val">Filter + Cross Entry (TF M5–H1)</td></tr>
+              <tr><td data-id="spec-losscooldown">Loss Cooldown</td><td data-id="spec-losscooldown-val">5 menit default (bisa off)</td></tr>
+              <tr><td data-id="spec-bounce">SR Bounce Entry</td><td data-id="spec-bounce-val">Ya (EnableBounceEntry)</td></tr>
               <tr><td data-id="spec-news">News Source</td><td>XML (ForexFactory)</td></tr>
               <tr><td>MagicNumber</td><td>777 (default)</td></tr>
               <tr><td data-id="spec-deposit">Min Deposit</td><td data-id="spec-deposit-val">Rekomendasi $100+</td></tr>
               <tr><td data-id="spec-state">State Persistence</td><td>GlobalVariables MT5</td></tr>
-              <tr><td data-id="spec-version">Versi</td><td>8.3</td></tr>
+              <tr><td data-id="spec-version">Versi</td><td>8.6</td></tr>
             </table>
           </div>
           <div class="reveal reveal-delay-1">
@@ -978,6 +1056,9 @@
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li12">Debug log lengkap di tab Experts MT5</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li13">Smart Close hanya hitung floating posisi EA (by MagicNumber)</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-id="sys-li14">Semua parameter input dapat dikustomisasi</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li15">Stochastic cross entry menutup basket lama & membuka basket baru</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li16">Loss cooldown mencegah entry setelah posisi loss</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-id="sys-li17">Status & masa berlaku lisensi ditampilkan di panel</span></li>
             </ul>
           </div>
         </div>
@@ -1008,19 +1089,18 @@
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f1">Lisensi 1 ID akun MT5 · berlaku 1 bulan</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f3">EMA Basket Grid + Stochastic Filter/Cross + True/False Cross</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f4">Panel real-time + set file rekomendasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk1-f5">Panduan setting & instalasi + support WhatsApp</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.3%20MULTI-SYMBOL%20-%20Paket%20STANDARD%20(1%20Bulan)%20Rp%20150.000%20/%20%2413" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.6%20MULTI-SYMBOL%20-%20Paket%20STANDARD%20(1%20Bulan)%20Rp%20150.000%20/%20%2413" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
           </div>
 
           <!-- PREMIUM -->
-          <div class="pricing-box pricing-featured reveal reveal-delay-1">
-            <div class="tag tag-gold pricing-popular" data-id="pk-popular">PALING LARIS</div>
+          <div class="pricing-box reveal reveal-delay-1">
             <div><span class="tag tag-gold" style="font-size:0.7rem" data-id="pk2-name">PREMIUM</span></div>
             <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem" data-id="pk2-dur">Lisensi 4 Bulan</h3>
             <div style="margin-bottom:1.5rem">
@@ -1031,18 +1111,19 @@
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f1">Lisensi 2 ID akun MT5 · berlaku 3 bulan</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f3">EMA Basket Grid + Stochastic Filter/Cross + True/False Cross</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f4">Panel real-time + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk2-f5">Update versi minor gratis + prioritas support</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.3%20MULTI-SYMBOL%20-%20Paket%20PREMIUM%20(4%20Bulan)%20Rp%20350.000%20/%20%2425" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.6%20MULTI-SYMBOL%20-%20Paket%20PREMIUM%20(4%20Bulan)%20Rp%20350.000%20/%20%2425" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
           </div>
 
           <!-- PROFESIONAL -->
-          <div class="pricing-box reveal reveal-delay-2">
+          <div class="pricing-box pricing-featured reveal reveal-delay-2">
+            <div class="tag tag-gold pricing-popular" data-id="pk-popular">PALING LARIS</div>
             <div><span class="tag tag-green" style="font-size:0.7rem" data-id="pk3-name">PROFESIONAL</span></div>
             <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem" data-id="pk3-dur">Lisensi Permanen</h3>
             <div style="margin-bottom:1.5rem">
@@ -1053,11 +1134,33 @@
             <div style="margin-bottom:1rem">
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f1">Lisensi 3 ID akun MT5 · tanpa kedaluwarsa</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f2">Multi-symbol support + 9 layer filter + Auto Risk Tier</span></div>
-              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f3">EMA Basket Grid Mode + True/False Cross + pilihan timeframe</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f3">EMA Basket Grid + Stochastic Filter/Cross + True/False Cross</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f4">Panel real-time + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk3-f5">Update versi minor gratis + prioritas support</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.3%20MULTI-SYMBOL%20-%20Paket%20PROFESIONAL%20(Permanen)%20Rp%20500.000%20/%20%2435" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.6%20MULTI-SYMBOL%20-%20Paket%20PROFESIONAL%20(Permanen)%20Rp%20500.000%20/%20%2435" class="btn-order">
+              <i class="fab fa-whatsapp"></i>
+              <span data-id="btn-order">Pesan via WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- UNLIMITED ID 1 BULAN -->
+          <div class="pricing-box reveal reveal-delay-3">
+            <div><span class="tag tag-cyan" style="font-size:0.7rem" data-id="pk5-name">UNLIMITED ID</span></div>
+            <h3 style="font-size:1.1rem;color:var(--sub);margin:1rem 0 0.5rem" data-id="pk5-dur">Lisensi 1 Bulan · Tanpa Batas ID</h3>
+            <div style="margin-bottom:1.5rem">
+              <span class="price-currency">Rp</span>
+              <span class="price-big">400.000</span>
+              <span style="font-family:'Orbitron',monospace;font-size:1.4rem;color:var(--sub)"> / $30</span>
+            </div>
+            <div style="margin-bottom:1rem">
+              <div class="feature-check"><i class="fas fa-infinity"></i><span data-id="pk5-f1">Lisensi 1 bulan untuk ID akun MT5 tanpa batas</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk5-f2">Gunakan EA di semua ID akun MT5 Anda selama 1 bulan</span></div>
+              <div class="feature-check"><i class="fas fa-unlock"></i><span data-id="pk5-f3">Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu</span></div>
+              <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk5-f4">Semua fitur EA multi-symbol + set file + panduan instalasi</span></div>
+              <div class="feature-check"><i class="fas fa-star"></i><span data-id="pk5-f5">Support WhatsApp + update minor selama periode aktif</span></div>
+            </div>
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.6%20MULTI-SYMBOL%20-%20Paket%20UNLIMITED%20ID%20(1%20Bulan)%20Rp%20400.000%20/%20%2430" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1080,7 +1183,7 @@
               <div class="feature-check"><i class="fas fa-check-circle"></i><span data-id="pk4-f4">Semua fitur EA multi-symbol + set file + panduan instalasi</span></div>
               <div class="feature-check"><i class="fas fa-star"></i><span data-id="pk4-f5">Prioritas support WhatsApp + update minor gratis</span></div>
             </div>
-            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.3%20MULTI-SYMBOL%20-%20Paket%20UNLIMITED%20(ID%20MT5%20tanpa%20batas)%20Rp%201.600.000%20/%20%24100" class="btn-order">
+            <a href="https://wa.me/6289528311840?text=Halo,%20saya%20tertarik%20order%20EA%20EAGLETRADEAVL%20V8.6%20MULTI-SYMBOL%20-%20Paket%20UNLIMITED%20(ID%20MT5%20tanpa%20batas)%20Rp%201.600.000%20/%20%24100" class="btn-order">
               <i class="fab fa-whatsapp"></i>
               <span data-id="btn-order">Pesan via WhatsApp</span>
             </a>
@@ -1119,7 +1222,7 @@
           <a href="#" onclick="openPopup('terms')" data-id="footer-terms">Terms</a>
           <a href="#" onclick="openPopup('risk')" data-id="footer-risk">Risk Disclosure</a>
         </div>
-        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved. · V8.3</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:0.5rem">&copy; 2025 EAGLETRADEAVL. All rights reserved. · V8.6</p>
         <p style="color:var(--muted);font-size:0.82rem;margin-top:0.3rem"><i class="fab fa-whatsapp" style="color:#22c55e"></i> 0895-2831-1840 · eagletradeavl.my.id</p>
       </div>
     </footer>
@@ -1135,7 +1238,7 @@
     <script>
       const translations = {
         id: {
-          "nav-new": "V8.3 New",
+          "nav-new": "V8.6 New",
           "nav-filters": "9 Filter",
           "nav-risk": "Risk Mgmt",
           "nav-tier": "Auto Tier",
@@ -1143,7 +1246,7 @@
           "nav-panel": "Panel",
           "nav-price": "Harga",
           "nav-h1grid": "EMA Grid",
-          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk Gold, BTC, dan major forex pair.',
+          "hero-sub": 'Expert Advisor otomatis berbasis <strong style="color:white">Price Action M1</strong> dengan <strong style="color:white">9 layer filter</strong> berlapis + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> untuk Gold, BTC, dan major forex pair. Dilengkapi mode <strong style="color:var(--gold)">EMA Basket Grid</strong> dengan <strong style="color:var(--gold)">Stochastic Filter</strong>.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading memiliki risiko tinggi. EA adalah alat bantu teknis, bukan mesin uang.',
           "btn-get": "Dapatkan Sekarang",
           "btn-see-filter": "Lihat 9 Filter",
@@ -1153,24 +1256,24 @@
           "stat-news": "Latest Version",
           "new-label": "Changelog",
           "new-title": "Apa yang Baru di",
-          "wn1-title": "Multi-Symbol Forex & BTC Support",
-          "wn1-desc": "EA tidak lagi terbatas XAUUSD. Versi 8.3 mendukung Gold, BTC, dan major forex pair: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, dan NZDUSD.",
-          "wn2-title": "Debug Log di Tab Experts",
-          "wn2-desc": "Semua aktivitas penting — order entry, SL/TP modify, news block, BE activation — kini dicatat ke tab Experts MT5 untuk kemudahan troubleshooting.",
-          "wn3-title": "News Fail Cooldown 5 Menit",
-          "wn3-desc": "Jika koneksi news gagal, EA menunggu 5 menit sebelum retry. Mencegah spam request dan overhead koneksi berlebihan.",
-          "wn4-title": "Smart Close Buffer Disempurnakan",
-          "wn4-desc": "Logic Smart Close diperbarui: cek floating hanya dari posisi EA (MagicNumber), bukan floating akun keseluruhan. Lebih akurat dan tidak terganggu posisi manual.",
-          "wn5-title": "EMA Visual Otomatis di Chart",
-          "wn5-desc": "EMA Fast (hijau) dan EMA Slow (merah) digambar langsung di chart sebagai line OBJ_TREND per candle. Update tiap bar baru, dihapus bersih saat EA dilepas.",
-          "wn6-title": "License Lock Multi-Akun",
-          "wn6-desc": "Sistem lisensi mendukung array nomor akun. Developer dapat mendaftarkan beberapa akun resmi tanpa perlu compile ulang per akun.",
-          "wn7-title": "EMA Basket Grid Mode",
-          "wn7-desc": "Strategi terpisah dengan UseH1EMAGridMode=true. EMA 50/100 (timeframe pilihan) memulai basket BUY/SELL, grid satu arah dengan lot tetap, maks 10 level, tutup basket saat profit/loss $100 atau limit harian tercapai.",
-          "wn8-title": "True / False Cross + Pilihan Timeframe",
-          "wn8-desc": "True Cross: entry hanya saat EMA 50 benar-benar memotong EMA 100. False Cross: entry saat EMA 50 sudah di atas/bawah EMA 100. Timeframe EMA bisa dipilih dari M1 hingga D1.",
-          "wn9-title": "Lot Dropdown 0.01 – 1.00 + Step Otomatis",
-          "wn9-desc": "Pilih lot dari daftar 0.01 sampai 1.00 tanpa mengetik. Jarak grid otomatis mengikuti lot: $1 per 0.01 lot, tanpa input manual.",
+          "wn1-title": "Stochastic Grid Filter",
+          "wn1-desc": "Mode grid kini dilindungi filter Stochastic: SELL diblokir saat K di bawah 10, BUY diblokir saat K di atas 90. Parameter K/D 5/3/3 dengan pilihan timeframe M5, M15, M30, dan H1.",
+          "wn2-title": "Stochastic Cross Entry",
+          "wn2-desc": "Entry baru saat K memotong D di zona ekstrem: cross di bawah 7 = BUY, cross di atas 90 = SELL. Basket lama ditutup otomatis dan basket baru dibuka berlawanan arah.",
+          "wn3-title": "One-Shot Grid SL Lock",
+          "wn3-desc": "Saat entry pertama basket sudah profit $7 (trigger), SL seluruh level grid otomatis dikunci di +$5 dari harga entry pertama. Mengamankan profit basket di tengah perjalanan.",
+          "wn4-title": "Fixed SL/TP Basket",
+          "wn4-desc": "Basket bisa diberi SL/TP tetap dari harga entry pertama: SL $11 dan TP $10 secara default. Keduanya dapat diatur atau dimatikan.",
+          "wn5-title": "Smart Daily Target",
+          "wn5-desc": "EnableGridSmartDailyTarget menutup seluruh basket begitu sisa target profit harian tercapai. Target harian dan basket bekerja selaras tanpa saling bertabrakan.",
+          "wn6-title": "Loss Cooldown 5 Menit",
+          "wn6-desc": "Setelah posisi loss tertutup, EA menunggu LossCooldownMinutes (default 5 menit) sebelum entry baru. Mencegah revenge trading dan overtrade saat kondisi buruk.",
+          "wn7-title": "SR Bounce Entry",
+          "wn7-desc": "EnableBounceEntry mengizinkan entry bounce saat harga memantul dari zona Support/Resistance. Sinyal lebih dini di area kunci dengan validasi pola tetap aktif.",
+          "wn8-title": "Grid Entry Cooldown + License Panel",
+          "wn8-desc": "Cooldown antar basket baru (GridEntryCooldownMinutes). Panel juga menampilkan status lisensi: ACTIVE (LIFETIME), sisa hari, atau EXPIRED beserta tanggalnya.",
+          "wn9-title": "EMA TF Selectable + MACD Min Histogram",
+          "wn9-desc": "Timeframe filter EMA kini bisa dipilih langsung (EMA_TF, default M5). Filter MACD dilengkapi ambang kekuatan histogram minimum (MACD_MinHistogram).",
           "sec-label-filter": "Sistem Proteksi",
           "sec-title-filter": "9 Layer Filter Entry",
           "sec-desc-filter": "Setiap entry melewati 9 filter berlapis secara berurutan. Semua harus lolos baru order dikirim.",
@@ -1187,13 +1290,13 @@
           "f6-title": "Choppiness Index (Sideways)",
           "f6-desc": 'Menghitung <strong style="color:#fb923c">Choppiness Index</strong> dari M1. Jika CI > 61.8, pasar dianggap sideways dan EA berhenti entry. Panel menampilkan nilai CI realtime beserta status SIDEWAYS/TRENDING.',
           "f7-title": "Support & Resistance Zone",
-          "f7-desc": 'EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50 candle M1). Buy diblokir dekat resistance, Sell diblokir dekat support. Buffer zona bisa dikonfigurasi.',
+          "f7-desc": 'EA menghitung level <strong style="color:#4ade80">S/R otomatis</strong> dari high/low N candle terakhir (default 50 candle M1). Buy diblokir dekat resistance, Sell diblokir dekat support. Buffer zona bisa dikonfigurasi, dan <strong style="color:#4ade80">EnableBounceEntry</strong> mengizinkan entry bounce saat harga memantul dari zona.',
           "f8-title": "News Filter Auto",
           "f8-desc": 'Ambil data kalender ekonomi via <strong style="color:#f87171">WebRequest</strong> tiap jam. Blokir entry X menit sebelum & sesudah news high impact yang relevan dengan simbol aktif. Gold/BTC mengikuti USD, pair forex mengikuti currency di pair tersebut. GMT offset bisa auto atau manual.',
           "f8-tag": "Relevant High Impact",
           "f9-title": "Market Hours + Session Filter",
           "f9-desc": 'Proteksi jam pasar: <strong style="color:#fb923c">blokir entry</strong> sebelum tutup, <strong style="color:#fb923c">force close</strong> saat mendekati tutup, <strong style="color:#fb923c">tunggu stabilisasi</strong> setelah buka. Sesi Asian (00–08), London (08–13), NY (13–24).',
-          "tier-label": "Fitur Unggulan V8.3",
+          "tier-label": "Fitur Unggulan V8.6",
           "tier-desc": 'Lot size, SL, TP, Trailing, BE, dan MaxProfit/Day otomatis menyesuaikan berdasarkan balance. Aktifkan dengan <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
           "th-balance": "Balance",
           "th-trail": "Trail Start",
@@ -1225,6 +1328,8 @@
           "dl1b-desc": "Jika sisa target ≤ SmartCloseBuffer dan floating EA (by MagicNumber) sudah mencukupi, semua posisi ditutup otomatis. Tidak terganggu posisi manual lain.",
           "dl2-title": "Batas Loss Harian",
           "dl2-desc": "Jika loss hari ini ≥ MaxLossPerDay, EA berhenti entry. Progress bar loss ditampilkan di panel real-time.",
+          "dl5-title": "Loss Cooldown",
+          "dl5-desc": "Setelah posisi loss tertutup, EA menunggu LossCooldownMinutes (default 5 menit) sebelum entry baru. Mencegah revenge trading dan overtrade.",
           "dl4-title": "Close All Emergency",
           "dl4-desc": "Tutup semua posisi jika floating loss/profit melampaui batas global MaxLossUSD / TargetProfitUSD. Proteksi akun keseluruhan.",
           "grid-label": "Grid System",
@@ -1239,24 +1344,38 @@
           "grid-p2": "3 posisi maks",
           "grid-p3": "300 poin",
           "grid-p4": "false (opsional)",
-          "h1g-label": "Mode Baru · EMA Grid",
-          "h1g-desc": 'Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100.',
+          "h1g-label": "Mode Baru · EMA Grid + Stoch",
+          "h1g-desc": 'Mode strategi terpisah dengan <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. EA berhenti menjalankan strategi M1 dan fokus penuh pada basket grid EMA 50/100 + filter Stochastic.',
           "h1g-li1": "EMA 50/100 pada timeframe pilihan (M1 – D1)",
           "h1g-li2": "True Cross: entry hanya saat EMA benar-benar memotong",
           "h1g-li3": "False Cross: entry saat EMA 50 di atas/bawah EMA 100",
           "h1g-li4": "Lot tetap 0.01 – 1.00, step grid otomatis ($1 per 0.01 lot)",
-          "h1g-li5": "Grid satu arah dari entry pertama, maks 10 level",
-          "h1g-li6": "Basket TP/Loss $100 (bisa dinonaktifkan)",
-          "h1g-li7": "Limit harian menutup basket & mengunci sampai hari berikutnya",
+          "h1g-li5": "Grid satu arah dari entry pertama, default 5 level (bisa diatur)",
+          "h1g-li6": "Stochastic Filter: blokir SELL saat K < 10, BUY saat K > 90 (TF M5–H1)",
+          "h1g-li7": "Stochastic Cross: tutup basket lama & buka basket baru (cross 7/90)",
+          "h1g-li8": "One-Shot SL: kunci SL semua level di +$5 saat entry pertama profit $7",
+          "h1g-li9": "Basket TP $30 / Loss $130 default (bisa dinonaktifkan)",
+          "h1g-li10": "Smart Daily Target + cooldown antar basket + lock harian",
           "h1g-param-title": "Parameter EMA Grid",
           "h1g-p1": "true (terpisah dari mode M1)",
           "h1g-p2": "M1 – D1 (default M15)",
           "h1g-p3": "True / False Cross",
           "h1g-p4": "0.01 – 1.00 (dropdown)",
-          "h1g-p5": "10 level (termasuk entry pertama)",
-          "h1g-p6": "$100 (bisa off)",
-          "h1g-p7": "$100 (bisa off)",
-          "h1g-p8": "Tutup basket + lock harian",
+          "h1g-p5": "5 level default (bisa diatur)",
+          "h1g-p6": "$30 (bisa off)",
+          "h1g-p7": "$130 (bisa off)",
+          "h1g-p8": "SL $11 / TP $10 dari entry pertama",
+          "h1g-p9": "Trigger $7 → Lock $5",
+          "h1g-p10": "K<10 / K>90 · cross 7/90 · TF M5–H1",
+          "h1g-p11": "0 = off (opsional)",
+          "stoch-label": "V8.6 New · Grid Filter",
+          "stoch-desc": "Dua lapis proteksi Stochastic untuk mode EMA Basket Grid: block filter mencegah entry melawan ekstrem, cross entry menangkap pembalikan di zona jenuh.",
+          "st1-title": "Block Filter",
+          "st1-desc": "UseStochFilter memblokir SELL saat K di bawah StochSellBlockLevel (10) dan BUY saat K di atas StochBuyBlockLevel (90). Basket tidak pernah entry melawan kondisi jenuh.",
+          "st2-title": "Cross Entry",
+          "st2-desc": "StochCrossEntry membuka entry baru saat K memotong D: cross di bawah 7 = BUY, cross di atas 90 = SELL. Basket lama ditutup otomatis dan basket baru dibuka.",
+          "st3-title": "Parameter Fleksibel",
+          "st3-desc": "Stochastic K/D 5/3/3 dengan timeframe pilihan: M5, M15, M30, atau H1 (default). Level block dan cross semuanya bisa disesuaikan.",
           "news-label": "News Protection",
           "news-title1": "Proteksi Berita",
           "news-title2": "High Impact",
@@ -1272,7 +1391,7 @@
           "ns5-desc": "Setelah periode tunggu selesai, EA kembali mengizinkan entry. Panel menampilkan berita berikutnya: waktu, currency, impact (warna sesuai level), dan judul event.",
           "panel-label": "Live Dashboard",
           "panel-desc": "Panel informasi langsung di chart MT5 (pojok kanan atas). Semua status terpantau tanpa buka jendela lain.",
-          "panel-li1": "Balance, Equity, P/L hari ini, Floating",
+          "panel-li1": "Balance, Equity, P/L hari ini (EA), Floating EA",
           "panel-li2": "Progress bar profit & loss harian (dengan %)",
           "panel-li3": "Status pasar: Open / Closed / Stabilizing / Pre-Close Lock",
           "panel-li4": "Choppiness Index: SIDEWAYS / TRENDING (+ nilai CI)",
@@ -1283,6 +1402,7 @@
           "panel-li9": "M1 Pattern: BUY SIG / SELL SIG / NONE",
           "panel-li10": "Lot/SL/TP/Trailing/BE dengan tag (AUTO) jika AutoTier aktif",
           "panel-li11": "Posisi aktif vs MaxMultiEntry",
+          "panel-li12": "Status lisensi: ACTIVE (LIFETIME) / sisa hari / EXPIRED + tanggal",
           "spec-title": "Spesifikasi Teknis",
           "spec-platform": "Platform",
           "spec-pair": "Pair / Simbol",
@@ -1307,9 +1427,19 @@
           "spec-gridstep": "Grid Step",
           "spec-gridstep-val": "Otomatis ($1 per 0.01 lot)",
           "spec-gridlevels": "Grid Max Level",
-          "spec-gridlevels-val": "10 (bisa diatur)",
+          "spec-gridlevels-val": "5 default (bisa diatur)",
           "spec-gridbt": "Basket TP / Loss",
-          "spec-gridbt-val": "$100 / $100 (bisa off)",
+          "spec-gridbt-val": "$30 / $130 default (bisa off)",
+          "spec-gridsltp": "Fixed SL/TP Basket",
+          "spec-gridsltp-val": "SL $11 / TP $10 dari entry pertama",
+          "spec-oneshot": "One-Shot Grid SL",
+          "spec-oneshot-val": "Trigger $7 → Lock $5",
+          "spec-stoch": "Stochastic Grid",
+          "spec-stoch-val": "Filter + Cross Entry (TF M5–H1)",
+          "spec-losscooldown": "Loss Cooldown",
+          "spec-losscooldown-val": "5 menit default (bisa off)",
+          "spec-bounce": "SR Bounce Entry",
+          "spec-bounce-val": "Ya (EnableBounceEntry)",
           "spec-news": "News Source",
           "spec-deposit": "Min Deposit",
           "spec-deposit-val": "Rekomendasi $100+",
@@ -1331,6 +1461,9 @@
           "sys-li12": "Debug log lengkap di tab Experts MT5",
           "sys-li13": "Smart Close hanya hitung floating posisi EA (by MagicNumber)",
           "sys-li14": "Semua parameter input dapat dikustomisasi",
+          "sys-li15": "Stochastic cross entry menutup basket lama & membuka basket baru",
+          "sys-li16": "Loss cooldown mencegah entry setelah posisi loss",
+          "sys-li17": "Status & masa berlaku lisensi ditampilkan di panel",
           "price-label": "Dapatkan Akses",
           "price-title1": "Paket",
           "price-title2": "Pilihan",
@@ -1338,7 +1471,7 @@
           "pk1-dur": "Lisensi 1 Bulan",
           "pk1-f1": "Lisensi 1 ID MT5 · berlaku 1 bulan",
           "pk1-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
-          "pk1-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
+          "pk1-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk1-f4": "Panel real-time + set file rekomendasi",
           "pk1-f5": "Panduan setting & instalasi + support WhatsApp",
           "pk-popular": "PALING LARIS",
@@ -1346,14 +1479,14 @@
           "pk2-dur": "Lisensi 4 Bulan",
           "pk2-f1": "Lisensi 2 ID akun MT5 · berlaku 3 bulan",
           "pk2-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
-          "pk2-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
+          "pk2-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk2-f4": "Panel real-time + set file + panduan instalasi",
           "pk2-f5": "Update versi minor gratis + prioritas support",
           "pk3-name": "PROFESIONAL",
           "pk3-dur": "Lisensi Permanen",
           "pk3-f1": "Lisensi 3 ID akun MT5 · tanpa kedaluwarsa",
           "pk3-f2": "Multi-symbol support + 9 layer filter + Auto Risk Tier",
-          "pk3-f3": "EMA Basket Grid Mode + True/False Cross + pilihan timeframe",
+          "pk3-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk3-f4": "Panel real-time + set file + panduan instalasi",
            "pk3-f5": "Update versi minor gratis + prioritas support",
            "pk-unlimited-badge": "AKSES TANPA BATAS",
@@ -1364,6 +1497,13 @@
            "pk4-f3": "Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu",
            "pk4-f4": "Semua fitur EA multi-symbol + set file + panduan instalasi",
            "pk4-f5": "Prioritas support WhatsApp + update minor gratis",
+           "pk5-name": "UNLIMITED ID",
+           "pk5-dur": "Lisensi 1 Bulan · Tanpa Batas ID",
+           "pk5-f1": "Lisensi 1 bulan untuk ID akun MT5 tanpa batas",
+           "pk5-f2": "Gunakan EA di semua ID akun MT5 Anda selama 1 bulan",
+           "pk5-f3": "Tanpa pendaftaran atau aktivasi ID akun terlebih dahulu",
+           "pk5-f4": "Semua fitur EA multi-symbol + set file + panduan instalasi",
+           "pk5-f5": "Support WhatsApp + update minor selama periode aktif",
            "btn-order": "Pesan via WhatsApp",
           "nr-title": "⚠ KEBIJAKAN TIDAK ADA PENGEMBALIAN DANA",
           "nr-desc": "Pembelian bersifat <strong>final dan tidak dapat dikembalikan</strong>. Karena produk ini adalah perangkat lunak digital (EA/file .ex5) yang langsung dikirim setelah pembayaran, kami <strong>tidak menerima refund</strong> dalam kondisi apapun. Pastikan Anda membaca seluruh deskripsi produk dan memahami cara kerja EA sebelum melakukan pembelian.",
@@ -1372,7 +1512,7 @@
           "disclaimer-title": "PERINGATAN RISIKO:",
           "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "EAGLETRADEAVL V8.3 menyediakan EA trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier 8 tier, Manual GMT Fallback, dan Debug Log untuk proteksi dan transparansi maksimal.",
+          popup_about_body: "EAGLETRADEAVL V8.6 menyediakan EA trading multi-symbol untuk Gold, BTC, dan major forex pair dengan 9 layer filter, Auto Risk Tier 8 tier, EMA Basket Grid + Stochastic Filter, Manual GMT Fallback, dan Debug Log untuk proteksi dan transparansi maksimal.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "Kami tidak menyimpan data pribadi pengguna tanpa izin. Semua transaksi aman dan terenkripsi.",
           popup_terms_title: "Terms & Conditions",
@@ -1381,7 +1521,7 @@
           popup_risk_body: "Trading memiliki risiko tinggi. EA adalah alat bantu teknis. Gunakan money management dengan bijak dan hanya gunakan modal yang siap Anda risikokan.",
         },
         en: {
-          "nav-new": "V8.3 New",
+          "nav-new": "V8.6 New",
           "nav-filters": "9 Filters",
           "nav-risk": "Risk Mgmt",
           "nav-tier": "Auto Tier",
@@ -1389,7 +1529,7 @@
           "nav-panel": "Panel",
           "nav-price": "Pricing",
           "nav-h1grid": "EMA Grid",
-          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> for Gold, BTC, and major forex pairs.',
+          "hero-sub": 'Fully automated Expert Advisor based on <strong style="color:white">Price Action M1</strong> with <strong style="color:white">9 layered filters</strong> + <strong style="color:var(--gold)">Auto Risk Tier</strong> + <strong style="color:var(--gold)">Manual GMT Offset Fallback</strong> for Gold, BTC, and major forex pairs. Plus a dedicated <strong style="color:var(--gold)">EMA Basket Grid</strong> mode with <strong style="color:var(--gold)">Stochastic Filter</strong>.',
           "hero-warning": '<i class="fas fa-exclamation-triangle"></i> Trading carries high risk. The EA is a technical tool, not a money machine.',
           "btn-get": "Get It Now",
           "btn-see-filter": "View 9 Filters",
@@ -1399,24 +1539,24 @@
           "stat-news": "Latest Version",
           "new-label": "Changelog",
           "new-title": "What's New in",
-          "wn1-title": "Multi-Symbol Forex & BTC Support",
-          "wn1-desc": "The EA is no longer limited to XAUUSD. Version 8.3 supports Gold, BTC, and major forex pairs: EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, and NZDUSD.",
-          "wn2-title": "Debug Log in Experts Tab",
-          "wn2-desc": "All important activities — order entry, SL/TP modify, news block, BE activation — now logged to MT5 Experts tab for easy troubleshooting.",
-          "wn3-title": "News Fail Cooldown 5 Minutes",
-          "wn3-desc": "If news connection fails, EA waits 5 minutes before retry. Prevents request spam and excessive connection overhead.",
-          "wn4-title": "Improved Smart Close Buffer",
-          "wn4-desc": "Smart Close logic updated: checks floating only from EA positions (MagicNumber), not total account floating. More accurate and unaffected by manual positions.",
-          "wn5-title": "Auto EMA Visual on Chart",
-          "wn5-desc": "EMA Fast (green) and EMA Slow (red) drawn directly on chart as OBJ_TREND lines per candle. Updates each new bar, cleaned up when EA is removed.",
-          "wn6-title": "Multi-Account License Lock",
-          "wn6-desc": "License system supports account number arrays. Developer can register multiple authorized accounts without recompiling per account.",
-          "wn7-title": "EMA Basket Grid Mode",
-          "wn7-desc": "Separate strategy with UseH1EMAGridMode=true. EMA 50/100 (chosen timeframe) starts a BUY/SELL basket, one-way grid with fixed lot, max 10 levels, basket closes at $100 profit/loss or daily limit reached.",
-          "wn8-title": "True / False Cross + Timeframe Selection",
-          "wn8-desc": "True Cross: entry only when EMA 50 actually crosses EMA 100. False Cross: entry when EMA 50 is already above/below EMA 100. EMA timeframe selectable from M1 to D1.",
-          "wn9-title": "Lot Dropdown 0.01 – 1.00 + Auto Step",
-          "wn9-desc": "Pick lot from a 0.01 to 1.00 list without typing. Grid spacing follows lot automatically: $1 per 0.01 lot, no manual input.",
+          "wn1-title": "Stochastic Grid Filter",
+          "wn1-desc": "Grid mode is now protected by a Stochastic filter: SELL blocked when K is below 10, BUY blocked when K is above 90. K/D 5/3/3 with selectable timeframe M5, M15, M30, or H1.",
+          "wn2-title": "Stochastic Cross Entry",
+          "wn2-desc": "New entry when K crosses D in extreme zones: cross below 7 = BUY, cross above 90 = SELL. The old basket closes automatically and a new basket opens in the opposite direction.",
+          "wn3-title": "One-Shot Grid SL Lock",
+          "wn3-desc": "Once the first basket entry is +$7 in profit (trigger), the SL of all grid levels locks at +$5 from the first entry price. Secures basket profit mid-journey.",
+          "wn4-title": "Fixed SL/TP Basket",
+          "wn4-desc": "The basket can have fixed SL/TP from the first entry price: SL $11 and TP $10 by default. Both adjustable or can be disabled.",
+          "wn5-title": "Smart Daily Target",
+          "wn5-desc": "EnableGridSmartDailyTarget closes the entire basket once the remaining daily profit target is reached. Daily target and basket work in harmony without conflicts.",
+          "wn6-title": "5-Minute Loss Cooldown",
+          "wn6-desc": "After a losing position closes, the EA waits LossCooldownMinutes (default 5 minutes) before a new entry. Prevents revenge trading and overtrading in bad conditions.",
+          "wn7-title": "SR Bounce Entry",
+          "wn7-desc": "EnableBounceEntry allows bounce entries when price rebounds from Support/Resistance zones. Earlier signals at key areas with pattern validation still active.",
+          "wn8-title": "Grid Entry Cooldown + License Panel",
+          "wn8-desc": "New cooldown between baskets (GridEntryCooldownMinutes). The panel also shows license status: ACTIVE (LIFETIME), days remaining, or EXPIRED with its date.",
+          "wn9-title": "EMA TF Selectable + MACD Min Histogram",
+          "wn9-desc": "EMA filter timeframe is now selectable (EMA_TF, default M5). MACD filter gains a minimum histogram strength threshold (MACD_MinHistogram).",
           "sec-label-filter": "Protection System",
           "sec-title-filter": "9 Layer Filter Entry",
           "sec-desc-filter": "Every entry passes through 9 sequential filters. All must pass before an order is sent.",
@@ -1433,13 +1573,13 @@
           "f6-title": "Choppiness Index (Sideways)",
           "f6-desc": 'Calculates <strong style="color:#fb923c">Choppiness Index</strong> from M1. If CI > 61.8, market is sideways and EA stops entering. Panel displays CI value and SIDEWAYS/TRENDING status in real-time.',
           "f7-title": "Support & Resistance Zone",
-          "f7-desc": 'EA auto-calculates <strong style="color:#4ade80">S/R levels</strong> from last N M1 candles (default 50). Buy blocked near resistance, Sell blocked near support. Configurable zone buffer.',
+          "f7-desc": 'EA auto-calculates <strong style="color:#4ade80">S/R levels</strong> from last N M1 candles (default 50). Buy blocked near resistance, Sell blocked near support. Configurable zone buffer, and <strong style="color:#4ade80">EnableBounceEntry</strong> allows bounce entries when price rebounds from the zone.',
           "f8-title": "News Filter Auto",
           "f8-desc": 'Fetches economic calendar via <strong style="color:#f87171">WebRequest</strong> every hour. Blocks entries X min before & after high-impact news relevant to the active symbol. Gold/BTC follow USD, while forex pairs follow their pair currencies. GMT can be auto-detected or set manually.',
           "f8-tag": "Relevant High Impact",
           "f9-title": "Market Hours + Session Filter",
           "f9-desc": 'Market hour protection: <strong style="color:#fb923c">blocks entries</strong> before close, <strong style="color:#fb923c">force closes</strong> near close, <strong style="color:#fb923c">waits for stabilization</strong> after open. Asian (00–08), London (08–13), NY (13–24).',
-          "tier-label": "Key Feature V8.3",
+          "tier-label": "Key Feature V8.6",
           "tier-desc": 'Lot size, SL, TP, Trailing, BE, and MaxProfit/Day auto-adjust based on account balance. Enable with <code style="color:var(--gold)">UseAutoRiskTier = true</code>.',
           "th-balance": "Balance",
           "th-trail": "Trail Start",
@@ -1471,6 +1611,8 @@
           "dl1b-desc": "If remaining target ≤ SmartCloseBuffer and EA floating profit (by MagicNumber) covers it, all positions closed automatically. Unaffected by manual positions.",
           "dl2-title": "Daily Loss Limit",
           "dl2-desc": "If today's loss ≥ MaxLossPerDay, EA stops entering. Loss progress bar shown on panel in real-time.",
+          "dl5-title": "Loss Cooldown",
+          "dl5-desc": "After a losing position closes, the EA waits LossCooldownMinutes (default 5 minutes) before a new entry. Prevents revenge trading and overtrading.",
           "dl4-title": "Emergency Close All",
           "dl4-desc": "Closes all positions if floating loss/profit exceeds global limits MaxLossUSD / TargetProfitUSD. Overall account protection.",
           "grid-label": "Grid System",
@@ -1485,24 +1627,38 @@
           "grid-p2": "3 max positions",
           "grid-p3": "300 points",
           "grid-p4": "false (optional)",
-          "h1g-label": "New Mode · EMA Grid",
-          "h1g-desc": 'Separate strategy mode with <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. The EA stops running the M1 strategy and focuses fully on the EMA 50/100 grid basket.',
+          "h1g-label": "New Mode · EMA Grid + Stoch",
+          "h1g-desc": 'Separate strategy mode with <code style="color:var(--gold)">UseH1EMAGridMode = true</code>. The EA stops running the M1 strategy and focuses fully on the EMA 50/100 grid basket + Stochastic filter.',
           "h1g-li1": "EMA 50/100 on chosen timeframe (M1 – D1)",
           "h1g-li2": "True Cross: entry only on a real EMA crossover",
           "h1g-li3": "False Cross: entry when EMA 50 is above/below EMA 100",
           "h1g-li4": "Fixed lot 0.01 – 1.00, auto grid step ($1 per 0.01 lot)",
-          "h1g-li5": "One-way grid from first entry, max 10 levels",
-          "h1g-li6": "Basket TP/Loss $100 (can be disabled)",
-          "h1g-li7": "Daily limit closes basket & locks until next day",
+          "h1g-li5": "One-way grid from first entry, 5 levels by default (adjustable)",
+          "h1g-li6": "Stochastic Filter: block SELL when K < 10, BUY when K > 90 (TF M5–H1)",
+          "h1g-li7": "Stochastic Cross: close old basket & open new basket (cross 7/90)",
+          "h1g-li8": "One-Shot SL: lock all levels' SL at +$5 when first entry is +$7",
+          "h1g-li9": "Basket TP $30 / Loss $130 default (can be disabled)",
+          "h1g-li10": "Smart Daily Target + inter-basket cooldown + daily lock",
           "h1g-param-title": "EMA Grid Parameters",
           "h1g-p1": "true (separate from M1 mode)",
           "h1g-p2": "M1 – D1 (default M15)",
           "h1g-p3": "True / False Cross",
           "h1g-p4": "0.01 – 1.00 (dropdown)",
-          "h1g-p5": "10 levels (including first entry)",
-          "h1g-p6": "$100 (can be off)",
-          "h1g-p7": "$100 (can be off)",
-          "h1g-p8": "Close basket + daily lock",
+          "h1g-p5": "5 levels default (adjustable)",
+          "h1g-p6": "$30 (can be off)",
+          "h1g-p7": "$130 (can be off)",
+          "h1g-p8": "SL $11 / TP $10 from first entry",
+          "h1g-p9": "Trigger $7 → Lock $5",
+          "h1g-p10": "K<10 / K>90 · cross 7/90 · TF M5–H1",
+          "h1g-p11": "0 = off (optional)",
+          "stoch-label": "V8.6 New · Grid Filter",
+          "stoch-desc": "Two layers of Stochastic protection for EMA Basket Grid mode: block filter prevents entries against extremes, cross entry catches reversals in saturated zones.",
+          "st1-title": "Block Filter",
+          "st1-desc": "UseStochFilter blocks SELL when K is below StochSellBlockLevel (10) and BUY when K is above StochBuyBlockLevel (90). The basket never enters against saturated conditions.",
+          "st2-title": "Cross Entry",
+          "st2-desc": "StochCrossEntry opens a new entry when K crosses D: cross below 7 = BUY, cross above 90 = SELL. The old basket closes automatically and a new basket opens.",
+          "st3-title": "Flexible Parameters",
+          "st3-desc": "Stochastic K/D 5/3/3 with selectable timeframe: M5, M15, M30, or H1 (default). Block and cross levels are all adjustable.",
           "news-label": "News Protection",
           "news-title1": "High Impact News",
           "news-title2": "Protection",
@@ -1518,7 +1674,7 @@
           "ns5-desc": "After waiting period ends, EA allows entries again. Panel shows next news: time, currency, impact (color-coded by level), and event title.",
           "panel-label": "Live Dashboard",
           "panel-desc": "Information panel directly on MT5 chart (top right corner). All statuses visible without opening other windows.",
-          "panel-li1": "Balance, Equity, Today's P/L, Floating",
+          "panel-li1": "Balance, Equity, Today's EA P/L, EA Floating",
           "panel-li2": "Daily profit & loss progress bar (with %)",
           "panel-li3": "Market status: Open / Closed / Stabilizing / Pre-Close Lock",
           "panel-li4": "Choppiness Index: SIDEWAYS / TRENDING (+ CI value)",
@@ -1529,6 +1685,7 @@
           "panel-li9": "M1 Pattern: BUY SIG / SELL SIG / NONE",
           "panel-li10": "Lot/SL/TP/Trailing/BE with (AUTO) tag if AutoTier active",
           "panel-li11": "Active positions vs MaxMultiEntry",
+          "panel-li12": "License status: ACTIVE (LIFETIME) / days remaining / EXPIRED + date",
           "spec-title": "Technical Specifications",
           "spec-platform": "Platform",
           "spec-pair": "Pair / Symbol",
@@ -1553,9 +1710,19 @@
           "spec-gridstep": "Grid Step",
           "spec-gridstep-val": "Auto ($1 per 0.01 lot)",
           "spec-gridlevels": "Grid Max Level",
-          "spec-gridlevels-val": "10 (adjustable)",
+          "spec-gridlevels-val": "5 default (adjustable)",
           "spec-gridbt": "Basket TP / Loss",
-          "spec-gridbt-val": "$100 / $100 (can be off)",
+          "spec-gridbt-val": "$30 / $130 default (can be off)",
+          "spec-gridsltp": "Fixed SL/TP Basket",
+          "spec-gridsltp-val": "SL $11 / TP $10 from first entry",
+          "spec-oneshot": "One-Shot Grid SL",
+          "spec-oneshot-val": "Trigger $7 → Lock $5",
+          "spec-stoch": "Stochastic Grid",
+          "spec-stoch-val": "Filter + Cross Entry (TF M5–H1)",
+          "spec-losscooldown": "Loss Cooldown",
+          "spec-losscooldown-val": "5 min default (can be off)",
+          "spec-bounce": "SR Bounce Entry",
+          "spec-bounce-val": "Yes (EnableBounceEntry)",
           "spec-news": "News Source",
           "spec-deposit": "Min Deposit",
           "spec-deposit-val": "Recommended $100+",
@@ -1577,6 +1744,9 @@
           "sys-li12": "Full debug log in MT5 Experts tab",
           "sys-li13": "Smart Close only counts EA positions floating (by MagicNumber)",
           "sys-li14": "All input parameters fully customizable",
+          "sys-li15": "Stochastic cross entry closes old basket & opens new basket",
+          "sys-li16": "Loss cooldown prevents entries after a losing position",
+          "sys-li17": "License status & validity displayed on the panel",
           "price-label": "Get Access",
           "price-title1": "Plans",
           "price-title2": "Options",
@@ -1584,7 +1754,7 @@
           "pk1-dur": "1 Month License",
           "pk1-f1": "License for 1 MT5 account · valid 1 month",
           "pk1-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
-          "pk1-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
+          "pk1-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk1-f4": "Real-time panel + recommended set files",
           "pk1-f5": "Setup & installation guide + WhatsApp support",
           "pk-popular": "BEST SELLER",
@@ -1592,14 +1762,14 @@
           "pk2-dur": "4 Month License",
           "pk2-f1": "License for 2 MT5 accounts · valid 3 months",
           "pk2-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
-          "pk2-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
+          "pk2-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk2-f4": "Real-time panel + set files + installation guide",
           "pk2-f5": "Free minor version updates + priority support",
           "pk3-name": "PROFESSIONAL",
           "pk3-dur": "Lifetime License",
           "pk3-f1": "License for 3 MT5 accounts · no expiration",
           "pk3-f2": "Multi-symbol support + 9 layer filters + Auto Risk Tier",
-          "pk3-f3": "EMA Basket Grid Mode + True/False Cross + timeframe selection",
+          "pk3-f3": "EMA Basket Grid + Stochastic Filter/Cross + True/False Cross",
           "pk3-f4": "Real-time panel + set files + installation guide",
            "pk3-f5": "Free minor version updates + priority support",
            "pk-unlimited-badge": "UNLIMITED ACCESS",
@@ -1610,6 +1780,13 @@
            "pk4-f3": "No account-ID registration or activation required",
            "pk4-f4": "All multi-symbol EA features + set files + installation guide",
            "pk4-f5": "Priority WhatsApp support + free minor updates",
+           "pk5-name": "UNLIMITED ID",
+           "pk5-dur": "1 Month License · Unlimited IDs",
+           "pk5-f1": "1-month license for unlimited MT5 account IDs",
+           "pk5-f2": "Use the EA across all of your MT5 account IDs for 1 month",
+           "pk5-f3": "No account-ID registration or activation required",
+           "pk5-f4": "All multi-symbol EA features + set files + installation guide",
+           "pk5-f5": "WhatsApp support + minor updates during the active period",
            "btn-order": "Order via WhatsApp",
           "nr-title": "⚠ NO REFUND POLICY",
           "nr-desc": "Purchase is <strong>final and non-refundable</strong>. As this is a digital software product (EA/.ex5 file) delivered immediately after payment, we <strong>do not accept refunds</strong> under any circumstances. Please make sure you read the full product description and understand how the EA works before purchasing.",
@@ -1618,7 +1795,7 @@
           "disclaimer-title": "RISK WARNING:",
           "footer-about": "About", "footer-privacy": "Privacy", "footer-terms": "Terms", "footer-risk": "Risk Disclosure",
           popup_about_title: "About",
-          popup_about_body: "EAGLETRADEAVL V8.3 provides a multi-symbol trading EA for Gold, BTC, and major forex pairs with 9 layered filters, 8-tier Auto Risk Tier, Manual GMT Fallback, and Debug Log for maximum protection and transparency.",
+          popup_about_body: "EAGLETRADEAVL V8.6 provides a multi-symbol trading EA for Gold, BTC, and major forex pairs with 9 layered filters, 8-tier Auto Risk Tier, EMA Basket Grid + Stochastic Filter, Manual GMT Fallback, and Debug Log for maximum protection and transparency.",
           popup_privacy_title: "Privacy Policy",
           popup_privacy_body: "We do not store personal user data without consent. All transactions are secure and encrypted.",
           popup_terms_title: "Terms & Conditions",
